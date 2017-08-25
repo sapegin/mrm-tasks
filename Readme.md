@@ -1,6 +1,6 @@
 # [Mrm](https://github.com/sapegin/mrm) tasks.
 
-* [Gitter](packages/gitter)
+* [Gitter](packages/mrm-task-gitter)
 
 See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 
