@@ -11,6 +11,7 @@
     "prettier": "^1.6.1"
   },
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "lint": "eslint . --cache --fix",
     "pretest": "npm run lint",
     "test:jest": "jest",
