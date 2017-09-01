@@ -1,5 +1,7 @@
 # [Mrm](https://github.com/sapegin/mrm) tasks.
 
+[![Build Status](https://travis-ci.org/sapegin/mrm-tasks.svg)](https://travis-ci.org/sapegin/mrm-tasks)
+
 * [Gitter](packages/mrm-task-gitter)
 
 See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
