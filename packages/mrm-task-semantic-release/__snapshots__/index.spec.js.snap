@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add semantic-release 1`] = `
+Object {
+  "/.gitignore": "Changelog.md",
+  "/.travis.yml": "language: node_js
+node_js:
+  - 8
+after_success:
+  - npm install -g semantic-release
+  - semantic-release pre && npm publish && semantic-release post
+branches:
+  except:
+    - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/
+",
+  "/Readme.md": "# Unicorn
+
+[![npm](https://img.shields.io/npm/v/unicorn.svg)](https://www.npmjs.com/package/unicorn)",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {}
+}",
+}
+`;
