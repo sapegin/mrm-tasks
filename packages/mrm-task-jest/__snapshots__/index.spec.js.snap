@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add Jest 1`] = `
+Object {
+  "/.gitignore": "coverage/",
+  "/.npmignore": "__tests__/",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"test:jest\\": \\"jest\\",
+    \\"test:watch\\": \\"jest --watch\\",
+    \\"test:coverage\\": \\"jest --coverage\\",
+    \\"test\\": \\"npm run test:jest\\"
+  }
+}",
+}
+`;
+
+exports[`should add a basic test case when index.js file is present 1`] = `
+"it('should work please', () => {
+	const result = 42;
+	expect(result).toBeTruthy();
+});
+"
+`;

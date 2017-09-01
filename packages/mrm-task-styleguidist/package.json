@@ -1,0 +1,30 @@
+{
+  "name": "mrm-task-styleguidist",
+  "version": "0.1.0",
+  "description": "Mrm task that adds React Styleguidist",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me"
+  },
+  "homepage": "https://github.com/sapegin/mrm-tasks/packages/mrm-task-styleguidist",
+  "repository": "sapegin/mrm-tasks",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "templates"
+  ],
+  "scripts": {},
+  "keywords": [
+    "mrm",
+    "mrm-task",
+    "styleguidist",
+    "react"
+  ],
+  "dependencies": {
+    "mrm-core": "^2.2.2"
+  }
+}

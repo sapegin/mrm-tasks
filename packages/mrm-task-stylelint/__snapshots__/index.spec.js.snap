@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add stylelint 1`] = `
+Object {
+  "/.stylelintrc": "{
+  \\"extends\\": \\"stylelint-config-standard\\",
+  \\"rules\\": {
+    \\"selector-pseudo-class-no-unknown\\": [
+      true,
+      {
+        \\"ignorePseudoClasses\\": [
+          \\"global\\"
+        ]
+      }
+    ]
+  }
+}",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest\\",
+    \\"lint:css\\": \\"stylelint '**/*.css'\\",
+    \\"pretest\\": \\"npm run lint:css\\"
+  }
+}",
+}
+`;

@@ -1,3 +1,10 @@
 {
-  "extends": "tamia"
+  "extends": "tamia",
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "rules": {
+    "strict": [2, "global"],
+    "no-console": 0
+  }
 }

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add ESLint 1`] = `
+Object {
+  "/.eslintrc": "{
+  \\"extends\\": \\"eslint:recommended\\"
+}",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest\\",
+    \\"lint\\": \\"eslint . --cache --fix\\",
+    \\"pretest\\": \\"npm run lint\\"
+  }
+}",
+}
+`;

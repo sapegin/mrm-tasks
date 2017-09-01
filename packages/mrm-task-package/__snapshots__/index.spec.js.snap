@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add package.json 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"\\",
+  \\"version\\": \\"1.0.0\\",
+  \\"description\\": \\"\\",
+  \\"author\\": {
+    \\"name\\": \\"Gendalf\\",
+    \\"url\\": \\"http://middleearth.com\\"
+  },
+  \\"homepage\\": \\"https://github.com/gendalf/Gendalf\\",
+  \\"repository\\": \\"gendalf/Gendalf\\",
+  \\"license\\": \\"MIT\\",
+  \\"engines\\": {
+    \\"node\\": \\">=4\\"
+  },
+  \\"main\\": \\"index.js\\",
+  \\"files\\": [
+    \\"index.js\\"
+  ],
+  \\"scripts\\": {},
+  \\"keywords\\": []
+}",
+}
+`;

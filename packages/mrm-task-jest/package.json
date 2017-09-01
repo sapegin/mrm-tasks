@@ -1,0 +1,30 @@
+{
+  "name": "mrm-task-jest",
+  "version": "0.1.0",
+  "description": "Mrm task that adds Jest",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me"
+  },
+  "homepage": "https://github.com/sapegin/mrm-tasks/packages/mrm-task-jest",
+  "repository": "sapegin/mrm-tasks",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "templates"
+  ],
+  "scripts": {},
+  "keywords": [
+    "mrm",
+    "mrm-task",
+    "jest",
+    "testing"
+  ],
+  "dependencies": {
+    "mrm-core": "^2.2.2"
+  }
+}

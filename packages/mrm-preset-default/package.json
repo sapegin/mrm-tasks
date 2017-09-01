@@ -1,0 +1,28 @@
+{
+  "name": "mrm-preset-default",
+  "version": "0.1.0",
+  "description": "Common tasks for Mrm",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me"
+  },
+  "homepage": "https://github.com/sapegin/mrm-tasks/packages/mrm-preset-default",
+  "repository": "sapegin/mrm-tasks",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "config.json",
+  "files": [
+    "config.json"
+  ],
+  "scripts": {},
+  "keywords": [
+    "mrm",
+    "mrm-task",
+    "mrm-preset"
+  ],
+  "dependencies": {
+    "mrm-core": "^2.1.3"
+  }
+}

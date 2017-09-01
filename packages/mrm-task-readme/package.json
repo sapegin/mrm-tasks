@@ -1,0 +1,31 @@
+{
+  "name": "mrm-task-readme",
+  "version": "0.1.0",
+  "description": "Mrm task that adds a readme file",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me"
+  },
+  "homepage": "https://github.com/sapegin/mrm-tasks/packages/mrm-task-readme",
+  "repository": "sapegin/mrm-tasks",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "templates"
+  ],
+  "scripts": {},
+  "keywords": [
+    "mrm",
+    "mrm-task",
+    "readme"
+  ],
+  "dependencies": {
+    "git-username": "^0.5.0",
+    "mrm-core": "^2.2.2",
+    "user-meta": "^1.0.0"
+  }
+}

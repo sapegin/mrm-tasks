@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add lint-staged 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest\\",
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.js\\": [
+      \\"eslint --fix\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
