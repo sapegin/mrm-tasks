@@ -28,6 +28,8 @@
     "mrm-task-codecov": "^0.1.0",
     "mrm-task-editorconfig": "^0.1.0",
     "mrm-task-eslint": "^0.1.0",
+    "mrm-task-gitignore": "^0.1.0",
+    "mrm-task-jest": "^0.1.0",
     "mrm-task-license": "^0.1.0",
     "mrm-task-lintstaged": "^0.1.0",
     "mrm-task-package": "^0.1.0",

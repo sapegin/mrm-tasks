@@ -10,6 +10,7 @@ jest.mock('mrm-core/src/npm', () => ({
 	uninstall: jest.fn(),
 }));
 
+const { install } = require('mrm-core');
 const getConfigGetter = require('../../mrm').getConfigGetter;
 const vol = require('memfs').vol;
 const task = require('./index');
@@ -23,7 +24,10 @@ const packageJson = json({
 	},
 });
 
-afterEach(() => vol.reset());
+afterEach(() => {
+	vol.reset();
+	install.mockClear();
+});
 
 it('should add ESLint', () => {
 	vol.fromJSON({
@@ -33,8 +37,58 @@ it('should add ESLint', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
+	expect(install).toBeCalledWith(['eslint']);
 });
 
-it.skip('should install custom preset', () => {});
-it.skip('should install extra dependencies', () => {});
-it.skip('should keep custom extensions', () => {});
+it('should use a custom preset', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+	});
+
+	task(getConfigGetter({ eslintPreset: 'airbnb' }));
+
+	expect(vol.toJSON()['/.eslintrc']).toMatchSnapshot();
+	expect(install).toBeCalledWith(['eslint', 'eslint-config-airbnb']);
+});
+
+it('should install extra dependencies', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+	});
+
+	task(getConfigGetter({ eslintPeerDependencies: ['eslint-plugin-react'] }));
+
+	expect(install).toBeCalledWith(['eslint', 'eslint-plugin-react']);
+});
+
+it('should keep custom extensions defined in a package.json script', () => {
+	vol.fromJSON({
+		'/package.json': json({
+			name: 'unicorn',
+			scripts: {
+				lint: 'eslint --ext .ts',
+				test: 'jest',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});
+
+it('should remove custom extension if it’s "js" (default value)', () => {
+	vol.fromJSON({
+		'/package.json': json({
+			name: 'unicorn',
+			scripts: {
+				lint: 'eslint --ext .js',
+				test: 'jest',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});

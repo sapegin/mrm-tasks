@@ -15,3 +15,31 @@ Object {
 }",
 }
 `;
+
+exports[`should keep custom extensions defined in a package.json script 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"lint\\": \\"eslint . --cache --fix --ext .ts\\",
+    \\"test\\": \\"jest\\",
+    \\"pretest\\": \\"npm run lint\\"
+  }
+}"
+`;
+
+exports[`should remove custom extension if it’s "js" (default value) 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"lint\\": \\"eslint . --cache --fix\\",
+    \\"test\\": \\"jest\\",
+    \\"pretest\\": \\"npm run lint\\"
+  }
+}"
+`;
+
+exports[`should use a custom preset 1`] = `
+"{
+  \\"extends\\": \\"airbnb\\"
+}"
+`;

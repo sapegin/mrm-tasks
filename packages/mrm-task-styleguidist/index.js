@@ -5,10 +5,10 @@ const path = require('path');
 const { packageJson, template, install } = require('mrm-core');
 
 const configFile = 'styleguide.config.js';
-const prodPackages = ['react', 'react-dom'];
-const packages = ['react-styleguidist'];
 
 function task() {
+	const prodPackages = ['react', 'react-dom'];
+	const packages = ['react-styleguidist'];
 	let templateFile = configFile;
 
 	const pkg = packageJson();
@@ -27,9 +27,7 @@ function task() {
 
 	// Style guide config
 	if (!isCra) {
-		template(configFile, path.join(__dirname, 'templates', templateFile))
-			.apply()
-			.save();
+		template(configFile, path.join(__dirname, 'templates', templateFile)).apply().save();
 	}
 
 	// package.json
@@ -47,6 +45,6 @@ function task() {
 	install(prodPackages, { dev: false });
 	install(packages);
 }
-task.description = 'Adds React Styleguidist';
 
+task.description = 'Adds React Styleguidist';
 module.exports = task;

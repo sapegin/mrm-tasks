@@ -18,5 +18,3 @@ it('should add .gitignore', () => {
 
 	expect(vol.toJSON()).toMatchSnapshot();
 });
-
-it.skip('should add a single section when indent=2', () => {});

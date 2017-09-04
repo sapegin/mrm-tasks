@@ -4,27 +4,31 @@
 const minimist = require('minimist');
 const { json, packageJson, install, uninstall } = require('mrm-core');
 
-const oldPackages = ['jslint', 'jshint'];
-
 // TODO: .eslintignore
 
 function task(config) {
-	config.defaults({
-		eslintPreset: 'eslint:recommended',
-		eslintPeerDependencies: [],
-	});
-	const preset = config.values().eslintPreset;
-	const packages = config.values().eslintPeerDependencies;
+	const packages = ['eslint'];
+	const oldPackages = ['jslint', 'jshint'];
 
-	packages.push('eslint');
-	if (preset !== 'eslint:recommended') {
-		packages.push(`eslint-config-${preset}`);
+	const { eslintPreset, eslintPeerDependencies } = config
+		.defaults({
+			eslintPreset: 'eslint:recommended',
+			eslintPeerDependencies: [],
+		})
+		.values();
+
+	// Preset
+	if (eslintPreset !== 'eslint:recommended') {
+		packages.push(`eslint-config-${eslintPreset}`);
 	}
+
+	// Peer dependencies
+	packages.push(...eslintPeerDependencies);
 
 	// .eslintrc
 	const eslintrc = json('.eslintrc');
-	if (!eslintrc.get('extends', '').startsWith(preset)) {
-		eslintrc.set('extends', preset).save();
+	if (!eslintrc.get('extends', '').startsWith(eslintPreset)) {
+		eslintrc.set('extends', eslintPreset).save();
 	}
 
 	// package.json
@@ -35,7 +39,7 @@ function task(config) {
 	const lintScript = pkg.getScript('lint');
 	if (lintScript) {
 		const args = minimist(lintScript.split(' ').slice(1));
-		if (args.ext && args.ext !== 'js') {
+		if (args.ext && args.ext !== '.js') {
 			exts = ` --ext ${args.ext}`;
 		}
 	}

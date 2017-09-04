@@ -25,3 +25,30 @@ Object {
 }",
 }
 `;
+
+exports[`should install a custom preset 1`] = `
+"{
+  \\"extends\\": \\"stylelint-config-pizza\\",
+  \\"rules\\": {
+    \\"selector-pseudo-class-no-unknown\\": [
+      true,
+      {
+        \\"ignorePseudoClasses\\": [
+          \\"global\\"
+        ]
+      }
+    ]
+  }
+}"
+`;
+
+exports[`should use custom extension 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest\\",
+    \\"lint:css\\": \\"stylelint '**/*.sass'\\",
+    \\"pretest\\": \\"npm run lint:css\\"
+  }
+}"
+`;
