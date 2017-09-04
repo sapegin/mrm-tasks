@@ -2,9 +2,29 @@
 
 [![Build Status](https://travis-ci.org/sapegin/mrm-tasks.svg)](https://travis-ci.org/sapegin/mrm-tasks)
 
-* [Gitter](packages/mrm-task-gitter)
-
 See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
+
+## Defaults tasks
+
+See [mrm-preset-default](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-preset-default).
+
+* [codecov](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-codecov)
+* [editorconfig](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-editorconfig)
+* [eslint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-eslint)
+* [gitignore](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-gitignore)
+* [jest](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-jest)
+* [license](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-license)
+* [lintstaged](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-lintstaged)
+* [package](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-package)
+* [readme](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-readme)
+* [styleguidist](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-styleguidist)
+* [stylelint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-stylelint)
+* [travis](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-travis)
+* [typescript](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-typescript)
+
+## Additional tasks
+
+* [Gitter](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-gitter)
 
 ## Contributing
 
