@@ -27,7 +27,9 @@ function task() {
 
 	// Style guide config
 	if (!isCra) {
-		template(configFile, path.join(__dirname, 'templates', templateFile)).apply().save();
+		template(configFile, path.join(__dirname, 'templates', templateFile))
+			.apply()
+			.save();
 	}
 
 	// package.json
