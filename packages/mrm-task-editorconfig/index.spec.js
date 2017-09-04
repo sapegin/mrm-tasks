@@ -19,4 +19,10 @@ it('should add EditorConfig', () => {
 	expect(vol.toJSON()).toMatchSnapshot();
 });
 
-it.skip('should add a single section when indent=2', () => {});
+it('should add a single section when indent=2', () => {
+	vol.fromJSON();
+
+	task(getConfigGetter({ indent: 2 }));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});

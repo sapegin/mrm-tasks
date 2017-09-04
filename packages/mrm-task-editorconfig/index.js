@@ -38,7 +38,10 @@ function task(config) {
 	if (jsonSection) {
 		editorconfig.unset(jsonSection);
 	}
-	editorconfig.set('*.{' + jsonExtensions.join(',') + '}', jsonRules);
+
+	if (indent !== jsonRules.indent_size) {
+		editorconfig.set('*.{' + jsonExtensions.join(',') + '}', jsonRules);
+	}
 
 	editorconfig.save();
 }
