@@ -1,4 +1,4 @@
-# [Mrm](https://github.com/sapegin/mrm) tasks.
+# [Mrm](https://github.com/sapegin/mrm) tasks
 
 [![Build Status](https://travis-ci.org/sapegin/mrm-tasks.svg)](https://travis-ci.org/sapegin/mrm-tasks)
 
