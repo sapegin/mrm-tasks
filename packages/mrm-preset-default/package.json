@@ -1,6 +1,6 @@
 {
   "name": "mrm-preset-default",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Common tasks for Mrm",
   "author": {
     "name": "Artem Sapegin",
@@ -25,19 +25,19 @@
   ],
   "dependencies": {
     "mrm-core": "^2.1.3",
-    "mrm-task-codecov": "^0.1.0",
-    "mrm-task-editorconfig": "^0.1.0",
-    "mrm-task-eslint": "^0.1.0",
-    "mrm-task-gitignore": "^0.1.0",
-    "mrm-task-jest": "^0.1.0",
-    "mrm-task-license": "^0.1.0",
-    "mrm-task-lintstaged": "^0.1.0",
-    "mrm-task-package": "^0.1.0",
-    "mrm-task-readme": "^0.1.0",
-    "mrm-task-semantic-release": "^0.1.0",
-    "mrm-task-styleguidist": "^0.1.0",
-    "mrm-task-stylelint": "^0.1.0",
-    "mrm-task-travis": "^0.1.0",
-    "mrm-task-typescript": "^0.1.0"
+    "mrm-task-codecov": "^1.0.0",
+    "mrm-task-editorconfig": "^1.0.0",
+    "mrm-task-eslint": "^1.0.0",
+    "mrm-task-gitignore": "^1.0.0",
+    "mrm-task-jest": "^1.0.0",
+    "mrm-task-license": "^1.0.0",
+    "mrm-task-lintstaged": "^1.0.0",
+    "mrm-task-package": "^1.0.0",
+    "mrm-task-readme": "^1.0.0",
+    "mrm-task-semantic-release": "^1.0.0",
+    "mrm-task-styleguidist": "^1.0.0",
+    "mrm-task-stylelint": "^1.0.0",
+    "mrm-task-travis": "^1.0.0",
+    "mrm-task-typescript": "^1.0.0"
   }
 }
