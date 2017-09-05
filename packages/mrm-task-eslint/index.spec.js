@@ -51,6 +51,16 @@ it('should use a custom preset', () => {
 	expect(install).toBeCalledWith(['eslint', 'eslint-config-airbnb']);
 });
 
+it('should add custom rules', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+	});
+
+	task(getConfigGetter({ eslintRules: { 'no-undef': 0 } }));
+
+	expect(vol.toJSON()['/.eslintrc']).toMatchSnapshot();
+});
+
 it('should install extra dependencies', () => {
 	vol.fromJSON({
 		'/package.json': packageJson,
@@ -91,4 +101,20 @@ it('should remove custom extension if it’s "js" (default value)', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});
+
+it('should add extra rules, parser and extensions for a TypeScript project', () => {
+	vol.fromJSON({
+		'/package.json': json({
+			name: 'unicorn',
+			devDependencies: {
+				typescript: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+	expect(install).toBeCalledWith(['eslint', 'typescript-eslint-parser']);
 });

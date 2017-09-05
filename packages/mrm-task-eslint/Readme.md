@@ -2,6 +2,8 @@
 
 [Mrm](https://github.com/sapegin/mrm) task that adds [ESLint](http://eslint.org/).
 
+Supports JavaScript and TypeScript.
+
 ## What it does
 
 * Creates `.eslintrc`
@@ -26,6 +28,10 @@ ESLint preset name (not npm package name, e.g. `airbnb`).
 ### `eslintPeerDependencies` (optional)
 
 Additional dependencies to install (e.g. `['prettier', 'eslint-plugin-prettier']`).
+
+### `eslintRules` (optional)
+
+Additional rules (e.g. `{ 'no-undef': 0 }`).
 
 ## Changelog
 
