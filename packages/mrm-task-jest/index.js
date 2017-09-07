@@ -61,7 +61,7 @@ function task() {
 	}
 
 	// Test template for small projects
-	if (fs.existsSync('index.js') && !fs.existsSync('test')) {
+	if (fs.existsSync('index.js') && !fs.existsSync('test.js')) {
 		copyFiles(path.join(__dirname, 'templates'), 'test.js');
 	}
 

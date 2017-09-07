@@ -45,3 +45,15 @@ it('should add a basic test case when index.js file is present', () => {
 
 	expect(vol.toJSON()['/test.js']).toMatchSnapshot();
 });
+
+it('should not overwrite test.js', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+		'/index.js': '',
+		'/test.js': 'still here',
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/test.js']).toMatchSnapshot();
+});

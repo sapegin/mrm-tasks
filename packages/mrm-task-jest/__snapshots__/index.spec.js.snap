@@ -23,3 +23,5 @@ exports[`should add a basic test case when index.js file is present 1`] = `
 });
 "
 `;
+
+exports[`should not overwrite test.js 1`] = `"still here"`;
