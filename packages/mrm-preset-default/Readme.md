@@ -6,6 +6,8 @@ See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 
 ## Tasks
 
+<!-- textlint-disable terminology -->
+
 * [codecov](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-codecov)
 * [editorconfig](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-editorconfig)
 * [eslint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-eslint)
@@ -20,9 +22,11 @@ See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 * [travis](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-travis)
 * [typescript](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-typescript)
 
-## Changelog
+<!-- textlint-enable -->
 
-The changelog can be found in [Changelog.md](Changelog.md).
+## Change log
+
+The change log can be found in [Changelog.md](Changelog.md).
 
 ## Contributing
 
@@ -30,6 +34,6 @@ Everyone is welcome to contribute. Please take a moment to review the [contribut
 
 ## Authors and license
 
-[Artem Sapegin](http://sapegin.me) and [contributors](https://github.com/sapegin/mrm-preset-default/graphs/contributors).
+[Artem Sapegin](http://sapegin.me) and [contributors](https://github.com/sapegin/mrm-tasks/graphs/contributors).
 
 MIT License, see the included [License.md](License.md) file.

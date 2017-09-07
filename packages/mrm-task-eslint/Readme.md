@@ -1,6 +1,6 @@
 # mrm-task-eslint
 
-[Mrm](https://github.com/sapegin/mrm) task that adds [ESLint](http://eslint.org/).
+[Mrm](https://github.com/sapegin/mrm) task that adds [ESLint](https://eslint.org/).
 
 Supports JavaScript and TypeScript.
 
@@ -33,9 +33,9 @@ Additional dependencies to install (e.g. `['prettier', 'eslint-plugin-prettier']
 
 Additional rules (e.g. `{ 'no-undef': 0 }`).
 
-## Changelog
+## Change log
 
-The changelog can be found in [Changelog.md](Changelog.md).
+The change log can be found in [Changelog.md](Changelog.md).
 
 ## Contributing
 
@@ -43,6 +43,6 @@ Everyone is welcome to contribute. Please take a moment to review the [contribut
 
 ## Authors and license
 
-[Artem Sapegin](http://sapegin.me) and [contributors](https://github.com/sapegin/mrm-task-eslint/graphs/contributors).
+[Artem Sapegin](http://sapegin.me) and [contributors](https://github.com/sapegin/mrm-tasks/graphs/contributors).
 
 MIT License, see the included [License.md](License.md) file.

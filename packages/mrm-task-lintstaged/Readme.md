@@ -17,9 +17,9 @@ npm install -g mrm mrm-task-lintstaged
 mrm lintstaged
 ```
 
-## Changelog
+## Change log
 
-The changelog can be found in [Changelog.md](Changelog.md).
+The change log can be found in [Changelog.md](Changelog.md).
 
 ## Contributing
 

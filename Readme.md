@@ -9,6 +9,8 @@ See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 
 See [mrm-preset-default](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-preset-default).
 
+<!-- textlint-disable terminology -->
+
 * [codecov](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-codecov)
 * [editorconfig](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-editorconfig)
 * [eslint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-eslint)
@@ -22,6 +24,8 @@ See [mrm-preset-default](https://github.com/sapegin/mrm-tasks/tree/master/packag
 * [stylelint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-stylelint)
 * [travis](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-travis)
 * [typescript](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-typescript)
+
+<!-- textlint-enable -->
 
 ## Additional tasks
 

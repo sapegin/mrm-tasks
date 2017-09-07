@@ -14,9 +14,9 @@ npm install -g mrm mrm-task-styleguidist
 mrm styleguidist
 ```
 
-## Changelog
+## Change log
 
-The changelog can be found in [Changelog.md](Changelog.md).
+The change log can be found in [Changelog.md](Changelog.md).
 
 ## Contributing
 
@@ -24,6 +24,6 @@ Everyone is welcome to contribute. Please take a moment to review the [contribut
 
 ## Authors and license
 
-[Artem Sapegin](http://sapegin.me) and [contributors](https://github.com/sapegin/mrm-task-styleguidist/graphs/contributors).
+[Artem Sapegin](http://sapegin.me) and [contributors](https://github.com/sapegin/mrm-tasks/graphs/contributors).
 
 MIT License, see the included [License.md](License.md) file.
