@@ -4,5 +4,8 @@ cache:
     - node_modules
 node_js:
   - 8
-before_script:
-  npm run bootstrap
+before_script: npm run bootstrap
+script:
+  - 'npm run test:coverage'
+after_success:
+  - 'bash <(curl -s https://codecov.io/bash)'
