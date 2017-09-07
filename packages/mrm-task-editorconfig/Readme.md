@@ -27,7 +27,7 @@ The change log can be found in [Changelog.md](Changelog.md).
 
 ## Contributing
 
-Everyone is welcome to contribute. Please take a moment to review the [contributing guidelines](../Contributing.md).
+Everyone is welcome to contribute. Please take a moment to review the [contributing guidelines](../../Contributing.md).
 
 ## Authors and license
 
