@@ -12,9 +12,12 @@ jest.mock('mrm-core/src/npm', () => ({
 
 const fs = require.requireActual('fs');
 const path = require('path');
+const { install, uninstall } = require('mrm-core');
 const getConfigGetter = require('../../mrm').getConfigGetter;
 const vol = require('memfs').vol;
 const task = require('./index');
+
+const console$log = console.log;
 
 const json = o => JSON.stringify(o, null, '  ');
 
@@ -22,7 +25,16 @@ const packageJson = json({
 	name: 'unicorn',
 });
 
-afterEach(() => vol.reset());
+beforeEach(() => {
+	console.log = jest.fn();
+});
+
+afterEach(() => {
+	vol.reset();
+	install.mockClear();
+	uninstall.mockClear();
+	console.log = console$log;
+});
 
 it('should add Jest', () => {
 	vol.fromJSON({
@@ -32,6 +44,39 @@ it('should add Jest', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
+	expect(install).toBeCalledWith(['jest']);
+});
+
+it('should add Babel specific configuration if projects depends on Babel', () => {
+	vol.fromJSON({
+		'/package.json': json({
+			name: 'unicorn',
+			devDependencies: {
+				'babel-core': '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+	expect(install).toBeCalledWith(['jest', 'babel-jest']);
+});
+
+it('should update or create .eslintignore if projects depends on ESLint', () => {
+	vol.fromJSON({
+		'/package.json': json({
+			name: 'unicorn',
+			devDependencies: {
+				eslint: '*',
+				'babel-core': '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/.eslintignore']).toMatchSnapshot();
 });
 
 it('should add a basic test case when index.js file is present', () => {
@@ -56,4 +101,20 @@ it('should not overwrite test.js', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()['/test.js']).toMatchSnapshot();
+});
+
+it('should uninstall other test frameworks', () => {
+	vol.fromJSON({
+		'/package.json': json({
+			name: 'unicorn',
+			devDependencies: {
+				mocha: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(uninstall).toBeCalledWith(['mocha', 'chai', 'ava']);
+	expect(console.log).toBeCalledWith(expect.stringMatching('Migrate your tests to Jest'));
 });

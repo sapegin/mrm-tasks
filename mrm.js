@@ -41,7 +41,7 @@ function getConfigGetter(options) {
 	 * @return {Object} this
 	 */
 	function require(...names) {
-		const unknown = names.filter(name => options[name] === undefined);
+		const unknown = names.filter(name => !options[name]);
 		if (unknown.length > 0) {
 			throw new Error(`Required config options are missed: ${unknown.join(', ')}.`, {
 				unknown,

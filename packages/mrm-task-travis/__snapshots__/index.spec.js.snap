@@ -22,3 +22,27 @@ node_js:
 }",
 }
 `;
+
+exports[`should add a badge to the Readme 1`] = `
+"# Unicorn
+
+[![Build Status](https://travis-ci.org/gh/unicorn.svg)](https://travis-ci.org/gh/unicorn)"
+`;
+
+exports[`should add latest Node version if engines field is not defined 1`] = `
+Object {
+  "/.travis.yml": "language: node_js
+cache:
+  directories:
+    - node_modules
+node_js:
+  - 8
+",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest\\"
+  }
+}",
+}
+`;

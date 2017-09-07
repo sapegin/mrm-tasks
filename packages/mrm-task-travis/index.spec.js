@@ -14,6 +14,7 @@ const console$log = console.log;
 
 const json = o => JSON.stringify(o, null, '  ');
 
+const config = getConfigGetter({ github: 'gh' });
 const packageJson = json({
 	name: 'unicorn',
 	engines: {
@@ -38,7 +39,33 @@ it('should add Travis CI', () => {
 		'/package.json': packageJson,
 	});
 
-	task(getConfigGetter({}));
+	task(config);
 
 	expect(vol.toJSON()).toMatchSnapshot();
+});
+
+it('should add latest Node version if engines field is not defined', () => {
+	vol.fromJSON({
+		'/package.json': json({
+			name: 'unicorn',
+			scripts: {
+				test: 'jest',
+			},
+		}),
+	});
+
+	task(config);
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});
+
+it('should add a badge to the Readme', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+		'/Readme.md': '# Unicorn',
+	});
+
+	task(config);
+
+	expect(vol.toJSON()['/Readme.md']).toMatchSnapshot();
 });
