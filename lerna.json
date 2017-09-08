@@ -3,5 +3,14 @@
   "packages": [
     "packages/*"
   ],
-  "version": "1.0.0"
+  "version": "independent",
+  "commands": {
+    "publish": {
+      "ignore": [
+        "*.md",
+        "*.spec.js",
+        "*.snap"
+      ]
+    }
+  }
 }
