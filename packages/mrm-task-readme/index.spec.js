@@ -8,7 +8,7 @@ jest.mock('mrm-core/src/util/log', () => ({
 const fs = require.requireActual('fs');
 const path = require('path');
 const { omitBy } = require('lodash');
-const getConfigGetter = require('../../mrm').getConfigGetter;
+const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 

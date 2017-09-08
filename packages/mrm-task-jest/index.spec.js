@@ -13,7 +13,7 @@ jest.mock('mrm-core/src/npm', () => ({
 const fs = require.requireActual('fs');
 const path = require('path');
 const { install, uninstall } = require('mrm-core');
-const getConfigGetter = require('../../mrm').getConfigGetter;
+const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 

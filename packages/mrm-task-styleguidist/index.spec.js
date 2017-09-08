@@ -12,7 +12,7 @@ const fs = require.requireActual('fs');
 const path = require('path');
 const { install } = require('mrm-core');
 const { omitBy } = require('lodash');
-const getConfigGetter = require('../../mrm').getConfigGetter;
+const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 
