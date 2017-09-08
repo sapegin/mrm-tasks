@@ -1,12 +1,20 @@
 {
+  "description": "Mrm tasks repository",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me"
+  },
+  "homepage": "https://github.com/sapegin/mrm-tasks/packages/mrm-preset-default",
+  "repository": "sapegin/mrm-tasks",
+  "license": "MIT",
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "eslint-config-tamia": "^4.2.0",
+    "eslint": "^4.6.1",
+    "eslint-config-tamia": "^4.2.2",
     "eslint-plugin-prettier": "^2.2.0",
-    "jest": "^20.0.4",
+    "jest": "^21.0.1",
     "lerna": "^2.1.2",
     "lodash": "^4.17.4",
-    "memfs": "^2.5.0",
+    "memfs": "^2.5.3",
     "mrm": "^1.0.1",
     "prettier": "^1.6.1"
   },
