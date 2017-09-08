@@ -9,6 +9,7 @@ jest.mock('mrm-core/src/npm', () => ({
 	uninstall: jest.fn(),
 }));
 
+const { uninstall } = require('mrm-core');
 const getConfigGetter = require('../../mrm').getConfigGetter;
 const vol = require('memfs').vol;
 const task = require('./index');
@@ -27,7 +28,10 @@ const packageJson = json({
 });
 const readmeMd = '# Unicorn';
 
-afterEach(() => vol.reset());
+afterEach(() => {
+	vol.reset();
+	uninstall.mockClear();
+});
 
 it('should add semantic-release', () => {
 	vol.fromJSON({
@@ -39,6 +43,24 @@ it('should add semantic-release', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
+});
+
+it('should remove the official semantic-release runner', () => {
+	vol.fromJSON({
+		'/.travis.yml': `language: node_js
+node_js:
+  - 8
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+  - npm run semantic-release
+`,
+		'/package.json': packageJson,
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/.travis.yml']).toMatchSnapshot();
+	expect(uninstall).toBeCalledWith('semantic-release');
 });
 
 it('should throw when .travis.yml not found', () => {

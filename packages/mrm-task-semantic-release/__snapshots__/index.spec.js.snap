@@ -22,3 +22,17 @@ branches:
 }",
 }
 `;
+
+exports[`should remove the official semantic-release runner 1`] = `
+"language: node_js
+node_js:
+  - 8
+after_success:
+  - 'bash <(curl -s https://codecov.io/bash)'
+  - npm install -g semantic-release
+  - semantic-release pre && npm publish && semantic-release post
+branches:
+  except:
+    - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/
+"
+`;

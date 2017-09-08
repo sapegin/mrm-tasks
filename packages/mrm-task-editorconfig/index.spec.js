@@ -26,3 +26,14 @@ it('should add a single section when indent=2', () => {
 
 	expect(vol.toJSON()).toMatchSnapshot();
 });
+
+it('should update JSON section', () => {
+	vol.fromJSON({
+		'/.editorconfig': `[*.{json,yml}]
+indent_style = tab`,
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});

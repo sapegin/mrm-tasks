@@ -4,7 +4,7 @@
 const fs = require('fs');
 const { MrmError, packageJson, lines, yaml, markdown, uninstall } = require('mrm-core');
 
-const PACKAGE_NAME = 'semantic-release';
+const packageName = 'semantic-release';
 
 function task(config) {
 	const { readmeFile, changelogFile } = config
@@ -37,22 +37,20 @@ https://github.com/semantic-release/semantic-release#setup
 	}
 
 	// Remove semantic-release devDependency
-	pkg.unset(`devDependencies.${PACKAGE_NAME}`);
+	pkg.unset(`devDependencies.${packageName}`);
 
 	// Remove semantic-release script
-	pkg.removeScript(PACKAGE_NAME);
+	pkg.removeScript(packageName);
 
 	// Save package.json
 	pkg.save();
 
 	const travisYml = yaml('.travis.yml');
-	const travisCommands = travisYml.get('after_success');
+	const afterSuccess = travisYml.get('after_success');
+
 	// Remove the official semantic-release runner from commands list on .travis.yml
-	if (Array.isArray(travisCommands)) {
-		travisYml.set(
-			'after_success',
-			travisCommands.filter(cmd => cmd !== 'npm run semantic-release')
-		);
+	if (Array.isArray(afterSuccess)) {
+		travisYml.set('after_success', afterSuccess.filter(cmd => cmd !== 'npm run semantic-release'));
 	}
 	travisYml
 		// Add global semantic-release runner to .travis.yml
@@ -86,7 +84,7 @@ https://github.com/semantic-release/semantic-release#setup
 	}
 
 	// Dependencies
-	uninstall(PACKAGE_NAME);
+	uninstall(packageName);
 }
 
 task.description = 'Adds semantic-release';
