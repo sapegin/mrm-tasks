@@ -17,6 +17,7 @@ See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 * [lintstaged](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-lintstaged)
 * [package](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-package)
 * [readme](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-readme)
+* [semantic-release](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-semantic-release)
 * [styleguidist](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-styleguidist)
 * [stylelint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-stylelint)
 * [travis](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-travis)
