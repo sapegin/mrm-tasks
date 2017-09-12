@@ -49,7 +49,7 @@ function task(config) {
 				'no-useless-constructor': 0,
 			},
 		});
-		exts = ' --ext .{ts,tsx}';
+		exts = ' --ext .ts,.tsx';
 	}
 
 	eslintrc.save();

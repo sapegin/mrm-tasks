@@ -44,7 +44,7 @@ Object {
     \\"typescript\\": \\"*\\"
   },
   \\"scripts\\": {
-    \\"lint\\": \\"eslint . --cache --fix --ext .{ts,tsx}\\",
+    \\"lint\\": \\"eslint . --cache --fix --ext .ts,.tsx\\",
     \\"pretest\\": \\"npm run lint\\"
   }
 }",
