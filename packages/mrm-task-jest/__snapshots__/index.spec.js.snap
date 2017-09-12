@@ -17,6 +17,7 @@ Object {
   },
   \\"jest\\": {
     \\"testPathIgnorePatterns\\": [
+      \\"/node_modules/\\",
       \\"<rootDir>/lib/\\"
     ]
   }
@@ -35,6 +36,42 @@ Object {
     \\"test:watch\\": \\"jest --watch\\",
     \\"test:coverage\\": \\"jest --coverage\\",
     \\"test\\": \\"npm run test:jest\\"
+  }
+}",
+}
+`;
+
+exports[`should add TypeScript specific configuration if projects depends on TypeScript 1`] = `
+Object {
+  "/.gitignore": "coverage/",
+  "/.npmignore": "__tests__/",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"typescript\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"test:jest\\": \\"jest\\",
+    \\"test:watch\\": \\"jest --watch\\",
+    \\"test:coverage\\": \\"jest --coverage\\",
+    \\"test\\": \\"npm run test:jest\\"
+  },
+  \\"jest\\": {
+    \\"testPathIgnorePatterns\\": [
+      \\"/node_modules/\\",
+      \\"<rootDir>/lib/\\"
+    ],
+    \\"transform\\": {
+      \\"^.+\\\\\\\\.tsx?$\\": \\"<rootDir>/node_modules/ts-jest/preprocessor.js\\"
+    },
+    \\"testRegex\\": \\"(/__tests__/.*|(\\\\\\\\.|/)(test|spec))\\\\\\\\.(jsx?|tsx?)$\\",
+    \\"moduleFileExtensions\\": [
+      \\"ts\\",
+      \\"tsx\\",
+      \\"js\\",
+      \\"jsx\\",
+      \\"json\\"
+    ]
   }
 }",
 }

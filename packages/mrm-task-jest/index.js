@@ -5,10 +5,10 @@ const fs = require('fs');
 const path = require('path');
 const { lines, packageJson, copyFiles, install, uninstall } = require('mrm-core');
 
-const packages = ['jest'];
-const oldPackages = ['mocha', 'chai', 'ava'];
-
 function task() {
+	const packages = ['jest'];
+	const oldPackages = ['mocha', 'chai', 'ava'];
+
 	// package.json
 	const pkg = packageJson().merge({
 		scripts: {
@@ -19,14 +19,30 @@ function task() {
 	});
 
 	const needsMigration = oldPackages.some(name => pkg.get(`devDependencies.${name}`));
-	const hasBabel = pkg.get(`devDependencies.babel-core`);
+	const hasBabel = pkg.get('devDependencies.babel-core');
+	const hasTypeScript = pkg.get('devDependencies.typescript');
 
 	// Babel
 	if (hasBabel) {
 		packages.push('babel-jest');
 		pkg.merge({
 			jest: {
-				testPathIgnorePatterns: ['<rootDir>/lib/'],
+				testPathIgnorePatterns: ['/node_modules/', '<rootDir>/lib/'],
+			},
+		});
+	}
+
+	// TypeScript
+	if (hasTypeScript) {
+		packages.push('ts-jest', '@types/jest');
+		pkg.merge({
+			jest: {
+				testPathIgnorePatterns: ['/node_modules/', '<rootDir>/lib/'],
+				transform: {
+					'^.+\\.tsx?$': '<rootDir>/node_modules/ts-jest/preprocessor.js',
+				},
+				testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
+				moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
 			},
 		});
 	}

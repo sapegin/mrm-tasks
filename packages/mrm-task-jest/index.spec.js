@@ -63,6 +63,22 @@ it('should add Babel specific configuration if projects depends on Babel', () =>
 	expect(install).toBeCalledWith(['jest', 'babel-jest']);
 });
 
+it('should add TypeScript specific configuration if projects depends on TypeScript', () => {
+	vol.fromJSON({
+		'/package.json': json({
+			name: 'unicorn',
+			devDependencies: {
+				typescript: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+	expect(install).toBeCalledWith(['jest', 'ts-jest', '@types/jest']);
+});
+
 it('should update or create .eslintignore if projects depends on ESLint', () => {
 	vol.fromJSON({
 		'/package.json': json({
