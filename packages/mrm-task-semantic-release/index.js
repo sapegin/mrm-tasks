@@ -28,6 +28,7 @@ function task(config) {
   npx semantic-release-cli setup
 
 semantic-release needs to add required auth keys to Travis CI.
+
 WARNING: Do not agree to update your .travis.yml when asked.
 
 More info:
