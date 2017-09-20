@@ -37,6 +37,10 @@ Name of the Readme file.
 
 Name of the license file.
 
+### `packageName` (default: `name` field in `package.json`)
+
+Package name.
+
 ## Change log
 
 The change log can be found in [Changelog.md](Changelog.md).

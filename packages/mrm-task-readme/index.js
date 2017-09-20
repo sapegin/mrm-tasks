@@ -7,10 +7,15 @@ const gitUsername = require('git-username');
 const { template, packageJson } = require('mrm-core');
 
 function task(config) {
-	const { name, url, github, readmeFile, licenseFile } = config
-		.defaults({ github: gitUsername(), readmeFile: 'Readme.md', licenseFile: 'License.md' })
+	const { name, url, github, readmeFile, licenseFile, packageName } = config
+		.defaults({
+			github: gitUsername(),
+			readmeFile: 'Readme.md',
+			licenseFile: 'License.md',
+			packageName: packageJson().get('name'),
+		})
 		.defaults(meta)
-		.require('name', 'url', 'github')
+		.require('name', 'url', 'github', 'packageName')
 		.values();
 
 	// Create Readme.md (no update)
@@ -22,7 +27,7 @@ function task(config) {
 				url,
 				github,
 				license: licenseFile,
-				package: packageJson().get('name'),
+				package: packageName,
 			})
 			.save();
 	}
