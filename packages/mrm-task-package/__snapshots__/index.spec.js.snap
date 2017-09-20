@@ -1,17 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should add package.json 1`] = `
-Object {
-  "/package.json": "{
-  \\"name\\": \\"\\",
+"{
+  \\"name\\": \\"mrm-task-package\\",
   \\"version\\": \\"1.0.0\\",
   \\"description\\": \\"\\",
   \\"author\\": {
     \\"name\\": \\"Gendalf\\",
     \\"url\\": \\"http://middleearth.com\\"
   },
-  \\"homepage\\": \\"https://github.com/gendalf/Gendalf\\",
-  \\"repository\\": \\"gendalf/Gendalf\\",
+  \\"homepage\\": \\"https://github.com/gendalf/mrm-task-package\\",
+  \\"repository\\": \\"gendalf/mrm-task-package\\",
   \\"license\\": \\"MIT\\",
   \\"engines\\": {
     \\"node\\": \\">=4\\"
@@ -22,6 +21,5 @@ Object {
   ],
   \\"scripts\\": {},
   \\"keywords\\": []
-}",
-}
+}"
 `;

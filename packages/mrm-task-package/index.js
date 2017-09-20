@@ -14,7 +14,7 @@ function task(config) {
 		.values();
 
 	const packageName = path.basename(process.cwd());
-	const repository = `${github}/${name}`;
+	const repository = `${github}/${packageName}`;
 
 	// Create package.json (no update)
 	json('package.json', {
