@@ -19,6 +19,14 @@ mrm semantic-release
 
 See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 
+### `semanticConfig` (object, optional)
+
+A semantic-release [config object](https://github.com/semantic-release/semantic-release#plugins), will be added to `package.json` as a `release` key.
+
+### `semanticPeerDependencies` (array, optional)
+
+Additional dependencies to install.
+
 ### `readmeFile` (default: `Readme.md`)
 
 Name of the Readme file.

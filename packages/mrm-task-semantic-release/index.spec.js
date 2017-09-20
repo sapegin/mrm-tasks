@@ -45,6 +45,36 @@ it('should add semantic-release', () => {
 	expect(vol.toJSON()).toMatchSnapshot();
 });
 
+it('should add custom config to package.json', () => {
+	vol.fromJSON({
+		'/.travis.yml': travisYml,
+		'/package.json': packageJson,
+	});
+
+	task(
+		getConfigGetter({
+			semanticConfig: { pizza: 42 },
+		})
+	);
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});
+
+it('should install extra dependencies on CI', () => {
+	vol.fromJSON({
+		'/.travis.yml': travisYml,
+		'/package.json': packageJson,
+	});
+
+	task(
+		getConfigGetter({
+			semanticPeerDependencies: ['pizza'],
+		})
+	);
+
+	expect(vol.toJSON()['/.travis.yml']).toMatchSnapshot();
+});
+
 it('should remove the official semantic-release runner', () => {
 	vol.fromJSON({
 		'/.travis.yml': `language: node_js

@@ -7,8 +7,12 @@ const { MrmError, packageJson, lines, yaml, markdown, uninstall } = require('mrm
 const packageName = 'semantic-release';
 
 function task(config) {
-	const { readmeFile, changelogFile } = config
-		.defaults({ readmeFile: 'Readme.md', changelogFile: 'Changelog.md' })
+	const { readmeFile, changelogFile, semanticConfig, semanticPeerDependencies } = config
+		.defaults({
+			readmeFile: 'Readme.md',
+			changelogFile: 'Changelog.md',
+			semanticPeerDependencies: [],
+		})
 		.values();
 
 	// Require .travis.yml
@@ -43,6 +47,11 @@ https://github.com/semantic-release/semantic-release#setup
 	// Remove semantic-release script
 	pkg.removeScript(packageName);
 
+	// Add custom semantic-release config
+	if (semanticConfig) {
+		pkg.merge({ release: semanticConfig });
+	}
+
 	// Save package.json
 	pkg.save();
 
@@ -53,11 +62,13 @@ https://github.com/semantic-release/semantic-release#setup
 	if (Array.isArray(afterSuccess)) {
 		travisYml.set('after_success', afterSuccess.filter(cmd => cmd !== 'npm run semantic-release'));
 	}
+
+	// Add global semantic-release runner to .travis.yml
+	const packages = ['semantic-release'].concat(semanticPeerDependencies);
 	travisYml
-		// Add global semantic-release runner to .travis.yml
 		.merge({
 			after_success: [
-				`npm install -g semantic-release`,
+				`npm install -g ${packages.join(' ')}`,
 				'semantic-release pre && npm publish && semantic-release post',
 			],
 			branches: {
@@ -84,7 +95,7 @@ https://github.com/semantic-release/semantic-release#setup
 			.save();
 	}
 
-	// Dependencies
+	// Remove semantic-release from project dependencies
 	uninstall(packageName);
 }
 
