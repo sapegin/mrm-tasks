@@ -2,11 +2,14 @@
 
 [Mrm](https://github.com/sapegin/mrm) task that adds [Jest](https://facebook.github.io/jest/).
 
+Supports Babel (via [babel-jest](https://github.com/facebook/jest/tree/master/packages/babel-jest)) and TypeScript (via [ts-jest](https://github.com/kulshekhar/ts-jest)).
+
 ## What it does
 
 * Adds npm scripts
 * Updates `.gitignore`, `.npmignore`, `.eslintignore` with common patterns
-* Tries to get rid of Mocha and AVA configs
+* Creates a sample test file, `test.js`, when the project has `index.js` in the root folder
+* Tries to get rid of Mocha and AVA configs and dependencies
 * Installs dependencies
 
 ## Usage
