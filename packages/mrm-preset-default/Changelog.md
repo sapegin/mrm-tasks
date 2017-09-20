@@ -1,3 +1,17 @@
+## 1.2.0
+
+### package
+
+* Fix: Correct package name.
+
+### readme
+
+* Make package name required and configurable.
+
+### semantic-release
+
+* Fix: Install peer dependencies locally.
+
 ## 1.1.0
 
 ### eslint
