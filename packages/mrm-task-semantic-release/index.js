@@ -4,8 +4,6 @@
 const fs = require('fs');
 const { MrmError, packageJson, lines, yaml, markdown, uninstall } = require('mrm-core');
 
-const packageName = 'semantic-release';
-
 function task(config) {
 	const { readmeFile, changelogFile, semanticConfig, semanticPeerDependencies } = config
 		.defaults({
@@ -41,11 +39,8 @@ https://github.com/semantic-release/semantic-release#setup
 		);
 	}
 
-	// Remove semantic-release devDependency
-	pkg.unset(`devDependencies.${packageName}`);
-
 	// Remove semantic-release script
-	pkg.removeScript(packageName);
+	pkg.removeScript('semantic-release');
 
 	// Add custom semantic-release config
 	if (semanticConfig) {
@@ -64,13 +59,15 @@ https://github.com/semantic-release/semantic-release#setup
 	}
 
 	// Add global semantic-release runner to .travis.yml
-	const packages = ['semantic-release'].concat(semanticPeerDependencies);
+	const commands = [
+		'npm install -g semantic-release',
+		semanticPeerDependencies.length > 0 &&
+			`npm install --no-save ${semanticPeerDependencies.join(' ')}`,
+		'semantic-release pre && npm publish && semantic-release post',
+	].filter(Boolean);
 	travisYml
 		.merge({
-			after_success: [
-				`npm install -g ${packages.join(' ')}`,
-				'semantic-release pre && npm publish && semantic-release post',
-			],
+			after_success: commands,
 			branches: {
 				except: ['/^v\\d+\\.\\d+\\.\\d+$/'],
 			},
@@ -83,20 +80,20 @@ https://github.com/semantic-release/semantic-release#setup
 		.save();
 
 	// Add npm package version badge to Readme.md
-	const name = pkg.get('name');
+	const packageName = pkg.get('name');
 	const readme = markdown(readmeFile);
 	if (readme.exists()) {
 		readme
 			.addBadge(
-				`https://img.shields.io/npm/v/${name}.svg`,
-				`https://www.npmjs.com/package/${name}`,
+				`https://img.shields.io/npm/v/${packageName}.svg`,
+				`https://www.npmjs.com/package/${packageName}`,
 				'npm'
 			)
 			.save();
 	}
 
 	// Remove semantic-release from project dependencies
-	uninstall(packageName);
+	uninstall('semantic-release');
 }
 
 task.description = 'Adds semantic-release';

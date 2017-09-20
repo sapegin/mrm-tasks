@@ -38,7 +38,8 @@ exports[`should install extra dependencies on CI 1`] = `
 node_js:
   - 8
 after_success:
-  - npm install -g semantic-release pizza
+  - npm install -g semantic-release
+  - npm install --no-save pizza
   - semantic-release pre && npm publish && semantic-release post
 branches:
   except:
