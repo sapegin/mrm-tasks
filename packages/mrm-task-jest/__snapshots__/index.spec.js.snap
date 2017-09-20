@@ -82,8 +82,8 @@ exports[`should add a basic test case when index.js file is present 1`] = `
 
 describe('pizza()', () => {
 	it('should work please', () => {
-		const result = pizza(42);
-		expect(result).toBeTruthy();
+		const result = pizza(1);
+		expect(result).toBe(2);
 	});
 });
 "
