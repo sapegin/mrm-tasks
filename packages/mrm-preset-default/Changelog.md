@@ -1,3 +1,9 @@
+## 1.2.1
+
+### editorconfig
+
+* Add `root=true` flag.
+
 ## 1.2.0
 
 ### package
