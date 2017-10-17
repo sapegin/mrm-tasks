@@ -31,7 +31,7 @@ function task(config) {
 
 	// .editorconfig
 	const editorconfig = ini('.editorconfig', 'editorconfig.org');
-	editorconfig.set('root', true).set('*', generalRules);
+	editorconfig.set('_global', { root: true }).set('*', generalRules);
 
 	// Set/update JSON-like section
 	const jsonSection = editorconfig.get().find(section => /json/.test(section));
