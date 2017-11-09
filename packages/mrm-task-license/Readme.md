@@ -17,6 +17,10 @@ mrm license
 
 See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 
+### `license` (default: taken from `package.json`, if not found `MIT` is used)
+
+License name (like `MIT`, `Unlicense`). For full list of supported values see: [`/templates`](./templates/).
+
 ### `licenseFile` (default: `License.md`)
 
 File name.

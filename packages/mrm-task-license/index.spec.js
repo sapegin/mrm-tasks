@@ -10,10 +10,16 @@ const path = require('path');
 const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
+const { json } = require('mrm-core');
 
 const console$log = console.log;
+const json$stringify = o => JSON.stringify(o, null, '  ');
 
-const json = o => JSON.stringify(o, null, '  ');
+const config = {
+	name: 'Gendalf',
+	email: 'gendalf@middleearth.com',
+	url: 'http://middleearth.com',
+};
 
 beforeEach(() => {
 	console.log = jest.fn();
@@ -29,13 +35,7 @@ it('should add EditorConfig', () => {
 		[`${__dirname}/templates/MIT.md`]: fs.readFileSync(path.join(__dirname, 'templates/MIT.md')),
 	});
 
-	task(
-		getConfigGetter({
-			name: 'Gendalf',
-			email: 'gendalf@middleearth.com',
-			url: 'http://middleearth.com',
-		})
-	);
+	task(getConfigGetter(config));
 
 	expect(vol.toJSON()['/License.md']).toMatchSnapshot();
 });
@@ -45,19 +45,13 @@ it('should read lincese name from package.json', () => {
 		[`${__dirname}/templates/Apache-2.0.md`]: fs.readFileSync(
 			path.join(__dirname, 'templates/Apache-2.0.md')
 		),
-		'/package.json': json({
+		'/package.json': json$stringify({
 			name: 'unicorn',
 			license: 'Apache-2.0',
 		}),
 	});
 
-	task(
-		getConfigGetter({
-			name: 'Gendalf',
-			email: 'gendalf@middleearth.com',
-			url: 'http://middleearth.com',
-		})
-	);
+	task(getConfigGetter(config));
 
 	expect(vol.toJSON()['/License.md']).toMatchSnapshot();
 });
@@ -72,4 +66,28 @@ it('should skip when template not found', () => {
 	);
 
 	expect(console.log).toBeCalledWith(expect.stringMatching('skipping'));
+});
+
+it('should use license config argument', () => {
+	vol.fromJSON({
+		[`${__dirname}/templates/Unlicense.md`]: fs.readFileSync(path.join(__dirname, 'templates/Unlicense.md')), // eslint-disable-line
+	});
+
+	task(
+		getConfigGetter({
+			license: 'Unlicense',
+		})
+	);
+
+	expect(vol.readFileSync('/License.md', 'utf8')).toMatchSnapshot();
+});
+
+it('adds license to package.json if not set', () => {
+	vol.fromJSON({
+		[`${__dirname}/templates/MIT.md`]: fs.readFileSync(path.join(__dirname, 'templates/MIT.md')),
+	});
+
+	task(getConfigGetter(config));
+
+	expect(json('/package.json').get('license')).toBe('MIT');
 });
