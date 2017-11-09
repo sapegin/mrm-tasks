@@ -15,9 +15,9 @@ const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 
-const json = o => JSON.stringify(o, null, '  ');
+const stringify = o => JSON.stringify(o, null, '  ');
 
-const packageJson = json({
+const packageJson = stringify({
 	name: 'unicorn',
 	scripts: {
 		test: 'jest',
@@ -73,7 +73,7 @@ it('should install extra dependencies', () => {
 
 it('should keep custom extensions defined in a package.json script', () => {
 	vol.fromJSON({
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			scripts: {
 				lint: 'eslint --ext .ts',
@@ -89,7 +89,7 @@ it('should keep custom extensions defined in a package.json script', () => {
 
 it('should remove custom extension if it’s "js" (default value)', () => {
 	vol.fromJSON({
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			scripts: {
 				lint: 'eslint --ext .js',
@@ -105,7 +105,7 @@ it('should remove custom extension if it’s "js" (default value)', () => {
 
 it('should add extra rules, parser and extensions for a TypeScript project', () => {
 	vol.fromJSON({
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			devDependencies: {
 				typescript: '*',

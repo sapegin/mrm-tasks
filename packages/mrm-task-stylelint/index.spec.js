@@ -14,9 +14,9 @@ const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 
-const json = o => JSON.stringify(o, null, '  ');
+const stringify = o => JSON.stringify(o, null, '  ');
 
-const packageJson = json({
+const packageJson = stringify({
 	name: 'unicorn',
 	scripts: {
 		test: 'jest',

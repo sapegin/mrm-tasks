@@ -12,10 +12,10 @@ const task = require('./index');
 
 const console$log = console.log;
 
-const json = o => JSON.stringify(o, null, '  ');
+const stringify = o => JSON.stringify(o, null, '  ');
 
 const config = getConfigGetter({ github: 'gh' });
-const packageJson = json({
+const packageJson = stringify({
 	name: 'unicorn',
 	engines: {
 		node: 4,
@@ -46,7 +46,7 @@ it('should add Travis CI', () => {
 
 it('should add latest Node version if engines field is not defined', () => {
 	vol.fromJSON({
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			scripts: {
 				test: 'jest',

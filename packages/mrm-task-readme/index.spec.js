@@ -12,7 +12,7 @@ const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 
-const json = o => JSON.stringify(o, null, '  ');
+const stringify = o => JSON.stringify(o, null, '  ');
 
 afterEach(() => vol.reset());
 
@@ -21,7 +21,7 @@ it('should add a readme', () => {
 		[`${__dirname}/templates/Readme.md`]: fs.readFileSync(
 			path.join(__dirname, 'templates/Readme.md')
 		),
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 		}),
 	});

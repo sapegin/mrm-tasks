@@ -13,7 +13,8 @@ const task = require('./index');
 const { json } = require('mrm-core');
 
 const console$log = console.log;
-const json$stringify = o => JSON.stringify(o, null, '  ');
+
+const stringify = o => JSON.stringify(o, null, '  ');
 
 const config = {
 	name: 'Gendalf',
@@ -45,7 +46,7 @@ it('should read lincese name from package.json', () => {
 		[`${__dirname}/templates/Apache-2.0.md`]: fs.readFileSync(
 			path.join(__dirname, 'templates/Apache-2.0.md')
 		),
-		'/package.json': json$stringify({
+		'/package.json': stringify({
 			name: 'unicorn',
 			license: 'Apache-2.0',
 		}),

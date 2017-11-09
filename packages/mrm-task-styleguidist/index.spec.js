@@ -16,7 +16,7 @@ const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 
-const json = o => JSON.stringify(o, null, '  ');
+const stringify = o => JSON.stringify(o, null, '  ');
 
 afterEach(() => {
 	vol.reset();
@@ -28,7 +28,7 @@ it('should add React Styleguidist', () => {
 		[`${__dirname}/templates/styleguide.config.js`]: fs.readFileSync(
 			path.join(__dirname, 'templates/styleguide.config.js')
 		),
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 		}),
 	});
@@ -47,7 +47,7 @@ it('should use a TypeScript template for a TypeScript project', () => {
 		[`${__dirname}/templates/styleguide.config.typescript.js`]: fs.readFileSync(
 			path.join(__dirname, 'templates/styleguide.config.typescript.js')
 		),
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			devDependencies: {
 				typescript: '*',
@@ -65,7 +65,7 @@ it('should not install webpack when used with CRA', () => {
 		[`${__dirname}/templates/styleguide.config.js`]: fs.readFileSync(
 			path.join(__dirname, 'templates/styleguide.config.js')
 		),
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			dependencies: {
 				'react-scripts': '*',

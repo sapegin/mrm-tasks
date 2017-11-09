@@ -9,7 +9,7 @@ const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 
-const json = o => JSON.stringify(o, null, '  ');
+const stringify = o => JSON.stringify(o, null, '  ');
 
 const config = getConfigGetter({ github: 'gh' });
 
@@ -17,7 +17,7 @@ const travisYml = `language: node_js
 node_js:
   - 8
 `;
-const packageJson = json({
+const packageJson = stringify({
 	name: 'unicorn',
 	scripts: {
 		'test:coverage': 'jest --coverage',
@@ -53,7 +53,7 @@ it('should throw when .travis.yml not found', () => {
 it('should throw when coverage script not found', () => {
 	vol.fromJSON({
 		'/.travis.yml': travisYml,
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 		}),
 		'/Readme.md': readmeMd,

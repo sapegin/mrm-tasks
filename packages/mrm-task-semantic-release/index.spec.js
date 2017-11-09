@@ -14,13 +14,13 @@ const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 
-const json = o => JSON.stringify(o, null, '  ');
+const stringify = o => JSON.stringify(o, null, '  ');
 
 const travisYml = `language: node_js
 node_js:
   - 8
 `;
-const packageJson = json({
+const packageJson = stringify({
 	name: 'unicorn',
 	scripts: {
 		'semantic-release': 'semantic-release',

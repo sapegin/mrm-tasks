@@ -19,9 +19,9 @@ const task = require('./index');
 
 const console$log = console.log;
 
-const json = o => JSON.stringify(o, null, '  ');
+const stringify = o => JSON.stringify(o, null, '  ');
 
-const packageJson = json({
+const packageJson = stringify({
 	name: 'unicorn',
 });
 
@@ -49,7 +49,7 @@ it('should add Jest', () => {
 
 it('should add Babel specific configuration if projects depends on Babel', () => {
 	vol.fromJSON({
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			devDependencies: {
 				'babel-core': '*',
@@ -65,7 +65,7 @@ it('should add Babel specific configuration if projects depends on Babel', () =>
 
 it('should add TypeScript specific configuration if projects depends on TypeScript', () => {
 	vol.fromJSON({
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			devDependencies: {
 				typescript: '*',
@@ -81,7 +81,7 @@ it('should add TypeScript specific configuration if projects depends on TypeScri
 
 it('should update or create .eslintignore if projects depends on ESLint', () => {
 	vol.fromJSON({
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			devDependencies: {
 				eslint: '*',
@@ -121,7 +121,7 @@ it('should not overwrite test.js', () => {
 
 it('should uninstall other test frameworks', () => {
 	vol.fromJSON({
-		'/package.json': json({
+		'/package.json': stringify({
 			name: 'unicorn',
 			devDependencies: {
 				mocha: '*',
