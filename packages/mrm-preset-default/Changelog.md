@@ -1,3 +1,9 @@
+## 1.3.0
+
+### license
+
+* Add Unlicense license (#7).
+
 ## 1.2.1
 
 ### editorconfig
