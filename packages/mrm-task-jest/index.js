@@ -89,8 +89,7 @@ function task() {
 	if (needsMigration) {
 		console.log(`\nMigrate your tests to Jest:
 
-  npm i -g jest-codemods@latest
-  jest-codemods
+  npx jest-codemods
 
 More info:
 https://github.com/skovhus/jest-codemods
