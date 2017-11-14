@@ -89,9 +89,9 @@ function task() {
 
 	// Suggest jest-codemods if projects used other test frameworks
 	if (needsMigration) {
-		console.log(`\nCommit changes and migrate your tests to Jest:
+		console.log(`\nMigrate your tests to Jest:
 
-  npx jest-codemods
+  npx jest-codemods --force [--dry]
 
 More info:
 https://github.com/skovhus/jest-codemods
