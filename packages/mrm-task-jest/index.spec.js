@@ -107,6 +107,19 @@ it('should add a basic test case when index.js file is present', () => {
 	expect(vol.toJSON()['/test.js']).toMatchSnapshot();
 });
 
+it('should not update .npmignore for private packages', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			private: true,
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/.npmignore']).toBeUndefined();
+});
+
 it('should not overwrite test.js', () => {
 	vol.fromJSON({
 		'/package.json': packageJson,

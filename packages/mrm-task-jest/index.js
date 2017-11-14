@@ -63,9 +63,11 @@ function task() {
 		.save();
 
 	// .npmignore
-	lines('.npmignore')
-		.add('__tests__/')
-		.save();
+	if (!pkg.get('private')) {
+		lines('.npmignore')
+			.add('__tests__/')
+			.save();
+	}
 
 	// ESLint
 	if (pkg.get(`devDependencies.eslint`)) {
