@@ -1,3 +1,8 @@
+## 1.1.1
+
+* Don’t update `.npmignore` for private packages.
+* Suggest to run jest-codemods via npx and with the --force switch.
+
 ## 1.1.0
 
 * TypeScript support.

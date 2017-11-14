@@ -1,3 +1,10 @@
+## 1.3.1
+
+### jest
+
+* Don’t update `.npmignore` for private packages.
+* Suggest to run jest-codemods via npx and with the --force switch.
+
 ## 1.3.0
 
 ### license
