@@ -19,6 +19,7 @@ See [mrm-preset-default](https://github.com/sapegin/mrm-tasks/tree/master/packag
 * [license](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-license)
 * [lintstaged](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-lintstaged)
 * [package](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-package)
+* [prettier](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-prettier)
 * [readme](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-readme)
 * [semantic-release](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-semantic-release)
 * [styleguidist](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-styleguidist)

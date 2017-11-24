@@ -1,0 +1,35 @@
+{
+  "name": "mrm-task-prettier",
+  "version": "1.0.0",
+  "description": "Mrm task that adds Prettier",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me"
+  },
+  "homepage": "https://github.com/sapegin/mrm-tasks/packages/mrm-task-prettier",
+  "repository": "sapegin/mrm-tasks",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {},
+  "keywords": [
+    "mrm",
+    "mrm-task",
+    "prettier",
+    "format",
+    "formatting",
+    "javascript",
+    "css",
+    "markdown"
+  ],
+  "dependencies": {
+    "editorconfig-to-prettier": "0.0.3",
+    "minimist": "^1.2.0",
+    "mrm-core": "^2.4.0"
+  }
+}

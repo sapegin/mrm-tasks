@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add Prettier 1`] = `
+Object {
+  "/.prettierrc": "{
+  \\"printWidth\\": 100,
+  \\"singleQuote\\": true,
+  \\"trailingComma\\": \\"es5\\",
+  \\"useTabs\\": true,
+  \\"overrides\\": [
+    {
+      \\"files\\": \\"*.md\\",
+      \\"options\\": {
+        \\"printWidth\\": 70,
+        \\"useTabs\\": false,
+        \\"trailingComma\\": \\"none\\",
+        \\"proseWrap\\": false
+      }
+    }
+  ]
+}",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest\\",
+    \\"format\\": \\"prettier --write '**/*.{js,css,md}'\\",
+    \\"posttest\\": \\"npm run format\\"
+  }
+}",
+}
+`;
+
+exports[`should infer options from EditorConfig 1`] = `
+"{
+  \\"printWidth\\": 100,
+  \\"singleQuote\\": true,
+  \\"trailingComma\\": \\"es5\\",
+  \\"useTabs\\": false,
+  \\"tabWidth\\": 2,
+  \\"overrides\\": [
+    {
+      \\"files\\": \\"*.md\\",
+      \\"options\\": {
+        \\"printWidth\\": 70,
+        \\"useTabs\\": false,
+        \\"trailingComma\\": \\"none\\",
+        \\"proseWrap\\": false
+      }
+    }
+  ]
+}"
+`;
+
+exports[`should keep a custom pattern defined in a package.json script 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"format\\": \\"prettier --write '**/*.{xxx,yyy}'\\",
+    \\"test\\": \\"jest\\",
+    \\"posttest\\": \\"npm run format\\"
+  }
+}"
+`;
+
+exports[`should use a custom options 1`] = `
+"{
+  \\"printWidth\\": 333,
+  \\"singleQuote\\": true,
+  \\"trailingComma\\": \\"es5\\",
+  \\"useTabs\\": true,
+  \\"overrides\\": [
+    {
+      \\"files\\": \\"*.md\\",
+      \\"options\\": {
+        \\"printWidth\\": 70,
+        \\"useTabs\\": false,
+        \\"trailingComma\\": \\"none\\",
+        \\"proseWrap\\": false
+      }
+    }
+  ]
+}"
+`;
