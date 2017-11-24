@@ -1,0 +1,30 @@
+{
+  "name": "mrm-task-contributing",
+  "version": "1.0.0",
+  "description": "Mrm task that adds contributing guidelines",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me"
+  },
+  "homepage": "https://github.com/sapegin/mrm-tasks/packages/mrm-task-contributing",
+  "repository": "sapegin/mrm-tasks",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "templates"
+  ],
+  "scripts": {},
+  "keywords": [
+    "mrm",
+    "mrm-task",
+    "contributing"
+  ],
+  "dependencies": {
+    "git-username": "^0.5.0",
+    "mrm-core": "^2.2.2"
+  }
+}
