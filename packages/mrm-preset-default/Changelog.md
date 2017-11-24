@@ -1,3 +1,7 @@
+## 1.4.0
+
+New tasks: contributing, prettier.
+
 ## 1.3.1
 
 ### jest

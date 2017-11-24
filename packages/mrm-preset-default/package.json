@@ -26,6 +26,7 @@
   "dependencies": {
     "mrm-core": "^2.1.3",
     "mrm-task-codecov": "^1.0.0",
+    "mrm-task-contributing": "^1.0.0",
     "mrm-task-editorconfig": "^1.0.1",
     "mrm-task-eslint": "^1.0.1",
     "mrm-task-gitignore": "^1.0.0",
@@ -33,6 +34,7 @@
     "mrm-task-license": "^1.1.1",
     "mrm-task-lintstaged": "^1.0.0",
     "mrm-task-package": "^1.0.1",
+    "mrm-task-prettier": "^1.0.0",
     "mrm-task-readme": "^1.1.0",
     "mrm-task-semantic-release": "^1.1.1",
     "mrm-task-styleguidist": "^1.0.0",

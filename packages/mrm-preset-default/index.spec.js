@@ -7,6 +7,12 @@ it('should have codecov task', () => {
 	expect(task.description).toMatch('Codecov');
 });
 
+it('should have contributing task', () => {
+	const task = require('./contributing/index.js');
+	expect(task).toEqual(expect.any(Function));
+	expect(task.description).toMatch('contributing');
+});
+
 it('should have editorconfig task', () => {
 	const task = require('./editorconfig/index.js');
 	expect(task).toEqual(expect.any(Function));
@@ -47,6 +53,12 @@ it('should have package task', () => {
 	const task = require('./package/index.js');
 	expect(task).toEqual(expect.any(Function));
 	expect(task.description).toMatch('package.json');
+});
+
+it('should have prettier task', () => {
+	const task = require('./prettier/index.js');
+	expect(task).toEqual(expect.any(Function));
+	expect(task.description).toMatch('Prettier');
 });
 
 it('should have readme task', () => {
