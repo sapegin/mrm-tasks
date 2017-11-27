@@ -9,7 +9,6 @@ const { getStyleForFile } = require('mrm-core');
 
 const defaultPattern = '**/*.{js,css,md}';
 const defaultOptions = {
-	printWidth: 100,
 	singleQuote: true,
 	trailingComma: 'es5',
 	useTabs: true,
@@ -26,6 +25,16 @@ const defaultOverrides = {
 			},
 		},
 	],
+};
+const defaultPrettierOptions = {
+	printWidth: 80,
+	tabWidth: 2,
+	useTabs: false,
+	semi: true,
+	singleQuote: false,
+	trailingComma: 'none',
+	bracketSpacing: true,
+	jsxBracketSameLine: false,
 };
 
 function task(config) {
@@ -44,12 +53,24 @@ function task(config) {
 
 	const pkg = packageJson();
 
+	const options = Object.assign(
+		{},
+		defaultOptions,
+		editorconfigOptions,
+		prettierOptions,
+		defaultOverrides
+	);
+
+	// Remove options that have the same values as Prettier defaults
+	for (const option in options) {
+		if (options[option] === defaultPrettierOptions[option]) {
+			delete options[option];
+		}
+	}
+
 	// .prettierrc
 	json('.prettierrc')
-		.merge(defaultOptions)
-		.merge(editorconfigOptions)
-		.merge(defaultOverrides)
-		.merge(prettierOptions)
+		.merge(options)
 		.save();
 
 	// Keep custom pattern
