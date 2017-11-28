@@ -2,7 +2,7 @@
 
 [Mrm](https://github.com/sapegin/mrm) task that adds [lint-staged](https://github.com/okonet/lint-staged).
 
-**Note:** supports only ESLint now, pull requests are welcome.
+**Note:** supports only ESLint and stylelint now, pull requests are welcome.
 
 ## What it does
 
@@ -16,6 +16,22 @@
 npm install -g mrm mrm-task-lintstaged
 mrm lintstaged
 ```
+
+## Options
+
+See [Mrm docs](https://github.com/sapegin/mrm#usage) and [lint-staged docs](https://github.com/okonet/lint-staged/blob/master/README.md) for more details.
+
+### `lintStagedRules` (default: infer)
+
+Custom rules. By default will try to infer by project dependencies.
+
+### `eslintExtensions` (default: infer or `.js`)
+
+File extensions to run ESLint on. By default will try to infer from your `lint` npm script or use `.js`.
+
+### `stylelintExtensions` (default: `.css`)
+
+File extensions to run stylelint on.
 
 ## Change log
 

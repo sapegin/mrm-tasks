@@ -1,16 +1,128 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should add lint-staged 1`] = `
+exports[`should add ESLint if project depends on it 1`] = `
 Object {
   "/package.json": "{
   \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"eslint\\": \\"*\\"
+  },
   \\"scripts\\": {
-    \\"test\\": \\"jest\\",
     \\"precommit\\": \\"lint-staged\\"
   },
   \\"lint-staged\\": {
     \\"*.js\\": [
       \\"eslint --fix\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
+exports[`should add stylelint if project depends on it 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"stylelint\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.css\\": [
+      \\"stylelint --fix\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
+exports[`should infer ESLint extension for an npm script 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"lint\\": \\"eslint --fix --ext .js,.jsx\\",
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"devDependencies\\": {
+    \\"eslint\\": \\"*\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.js,.jsx\\": [
+      \\"eslint --fix\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
+exports[`should not do anything if not supported tools are found 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest\\"
+  }
+}",
+}
+`;
+
+exports[`should use a custom ESLint extension 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"eslint\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.js,.jsx\\": [
+      \\"eslint --fix\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
+exports[`should use a custom rules 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"eslint\\": \\"*\\",
+    \\"stylelint\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.js\\": \\"false\\"
+  }
+}",
+}
+`;
+
+exports[`should use a custom stylelint extension 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"stylelint\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.scss\\": [
+      \\"stylelint --fix\\",
       \\"git add\\"
     ]
   }
