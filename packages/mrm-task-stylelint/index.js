@@ -8,40 +8,37 @@ function task(config) {
 		stylelintExtensions: '.css',
 		stylelintPreset: 'stylelint-config-standard',
 	});
-	const { indent } = config.values();
-	const ext = config.values().stylelintExtensions;
-	const preset = config.values().stylelintPreset;
+	const { stylelintRules, stylelintPreset, stylelintExtensions } = config.values();
 
-	const packages = ['stylelint', preset];
+	const packages = ['stylelint'];
+
+	if (stylelintPreset) {
+		packages.push(stylelintPreset);
+	}
 
 	// .stylelintrc
 	const stylelintrc = json('.stylelintrc');
-	if (stylelintrc.get('extends') !== preset) {
-		stylelintrc
-			.merge({
-				extends: preset,
-				rules: {
-					indentation: indent,
-					'selector-pseudo-class-no-unknown': [
-						true,
-						{
-							ignorePseudoClasses: [
-								// CSS Modules
-								'global',
-							],
-						},
-					],
-				},
-			})
-			.save();
+
+	if (stylelintPreset) {
+		stylelintrc.merge({
+			extends: stylelintPreset,
+		});
 	}
+
+	if (stylelintRules) {
+		stylelintrc.merge({
+			rules: stylelintRules,
+		});
+	}
+
+	stylelintrc.save();
 
 	// package.json
 	const pkg = packageJson();
 
 	pkg
 		// Add lint script
-		.setScript('lint:css', `stylelint '**/*${ext}'`)
+		.setScript('lint:css', `stylelint '**/*${stylelintExtensions}'`)
 		// Add pretest script
 		.prependScript('pretest', 'npm run lint:css')
 		.save();

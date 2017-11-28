@@ -1,19 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should add custom rules 1`] = `
+"{
+  \\"rules\\": {
+    \\"max-empty-lines\\": 2
+  }
+}"
+`;
+
 exports[`should add stylelint 1`] = `
 Object {
   "/.stylelintrc": "{
-  \\"extends\\": \\"stylelint-config-standard\\",
-  \\"rules\\": {
-    \\"selector-pseudo-class-no-unknown\\": [
-      true,
-      {
-        \\"ignorePseudoClasses\\": [
-          \\"global\\"
-        ]
-      }
-    ]
-  }
+  \\"extends\\": \\"stylelint-config-standard\\"
 }",
   "/package.json": "{
   \\"name\\": \\"unicorn\\",
@@ -28,17 +26,7 @@ Object {
 
 exports[`should install a custom preset 1`] = `
 "{
-  \\"extends\\": \\"stylelint-config-pizza\\",
-  \\"rules\\": {
-    \\"selector-pseudo-class-no-unknown\\": [
-      true,
-      {
-        \\"ignorePseudoClasses\\": [
-          \\"global\\"
-        ]
-      }
-    ]
-  }
+  \\"extends\\": \\"stylelint-config-pizza\\"
 }"
 `;
 

@@ -17,19 +17,19 @@ mrm stylelint
 
 ## Options
 
-See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
+See [Mrm docs](https://github.com/sapegin/mrm#usage) and [stylelint docs](https://stylelint.io/user-guide/configuration/) for more details.
 
 ### `stylelintPreset` (default: `stylelint-config-standard`)
 
 Stylelint preset name.
 
+### `stylelintRules`
+
+Stylelint rules.
+
 ### `stylelintExtensions` (default: `.css`)
 
 File extensions to lint.
-
-### `indent` (default: `tab`)
-
-Indentation, `tab` or number of spaces.
 
 ## Change log
 

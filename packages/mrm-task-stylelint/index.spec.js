@@ -50,6 +50,16 @@ it('should install a custom preset', () => {
 	expect(install).toBeCalledWith(['stylelint', 'stylelint-config-pizza']);
 });
 
+it('should add custom rules', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+	});
+
+	task(getConfigGetter({ stylelintPreset: undefined, stylelintRules: { 'max-empty-lines': 2 } }));
+
+	expect(vol.toJSON()['/.stylelintrc']).toMatchSnapshot();
+});
+
 it('should use custom extension', () => {
 	vol.fromJSON({
 		'/package.json': packageJson,
