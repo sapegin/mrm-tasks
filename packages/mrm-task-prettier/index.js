@@ -5,7 +5,7 @@ const path = require('path');
 const minimist = require('minimist');
 const editorConfigToPrettier = require('editorconfig-to-prettier');
 const { json, packageJson, install } = require('mrm-core');
-const { read } = require('mrm-core/src/editorconfig');
+const { getStyleForFile } = require('mrm-core');
 
 const defaultPattern = '**/*.{js,css,md}';
 const defaultOptions = {
@@ -40,7 +40,7 @@ function task(config) {
 
 	// Try to read options from EditorConfig
 	const testJsFile = path.join(process.cwd(), 'test.js');
-	const editorconfigOptions = editorConfigToPrettier(read(testJsFile));
+	const editorconfigOptions = editorConfigToPrettier(getStyleForFile(testJsFile));
 
 	const pkg = packageJson();
 
