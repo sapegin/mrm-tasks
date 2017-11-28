@@ -1,5 +1,4 @@
-The 3-Clause BSD License (BSD-3-Clause)
-=======================================
+# The 3-Clause BSD License (BSD-3-Clause)
 
 Copyright ${year} ${name} (${url}), contributors
 

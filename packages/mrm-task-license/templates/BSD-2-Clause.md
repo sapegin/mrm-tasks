@@ -1,5 +1,4 @@
-The 2-Clause BSD License (BSD-2-Clause)
-=======================================
+# The 2-Clause BSD License (BSD-2-Clause)
 
 Copyright ${year} ${name} (${url}), contributors
 

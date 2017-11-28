@@ -17,15 +17,15 @@ I love pull requests. And following this simple guidelines will make your pull r
 
 ## Other notes
 
-- If you have commit access to repository and want to make big change or not sure about something, make a new branch and open pull request.
-- Don’t commit generated files: compiled from Stylus CSS, minified JavaScript, etc.
-- Don’t change version number and change log.
-- Install [EditorConfig](http://editorconfig.org/) plugin for your code editor.
-- Feel free to [ask me](http://sapegin.me) anything you need.
+* If you have commit access to repository and want to make big change or not sure about something, make a new branch and open pull request.
+* Don’t commit generated files: compiled from Stylus CSS, minified JavaScript, etc.
+* Don’t change version number and change log.
+* Install [EditorConfig](http://editorconfig.org/) plugin for your code editor.
+* Feel free to [ask me](http://sapegin.me) anything you need.
 
 ## Building and running tests
 
-*Run these commands in the root folder of the repository.*
+_Run these commands in the root folder of the repository._
 
 Install dependencies and bootstrap [Lerna](https://github.com/lerna/lerna):
 

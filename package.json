@@ -25,6 +25,8 @@
     "test:jest": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test": "npm run test:jest"
+    "test": "npm run test:jest",
+    "format": "prettier --write '**/*.md'",
+    "posttest": "npm run format"
   }
 }

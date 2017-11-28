@@ -1,7 +1,6 @@
 # [Mrm](https://github.com/sapegin/mrm) tasks
 
-[![Codecov](https://codecov.io/gh/sapegin/mrm-tasks/branch/master/graph/badge.svg)](https://codecov.io/gh/sapegin/mrm-tasks)
-[![Build Status](https://travis-ci.org/sapegin/mrm-tasks.svg)](https://travis-ci.org/sapegin/mrm-tasks)
+[![Codecov](https://codecov.io/gh/sapegin/mrm-tasks/branch/master/graph/badge.svg)](https://codecov.io/gh/sapegin/mrm-tasks) [![Build Status](https://travis-ci.org/sapegin/mrm-tasks.svg)](https://travis-ci.org/sapegin/mrm-tasks)
 
 See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 

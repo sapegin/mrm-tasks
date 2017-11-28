@@ -1,6 +1,6 @@
 # mrm-task-license
 
-[Mrm](https://github.com/sapegin/mrm) task that adds license file based on `license` field in `package.json`.
+[Mrm](https://github.com/sapegin/mrm) task that adds license file based on `license` field in `package.json`.
 
 ## What it does
 

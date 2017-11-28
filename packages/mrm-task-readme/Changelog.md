@@ -4,7 +4,7 @@
 
 ## 1.0.1
 
-“Changelog” → “change log”.
+“Changelog” → “change log”.
 
 ## 1.0.0
 
