@@ -21,7 +21,7 @@ it('should add .gitignore', () => {
 
 it('should add package-lock.json, if yarn.lock exists', () => {
 	vol.fromJSON({
-		'/yarn.lock': ''
+		'/yarn.lock': '',
 	});
 
 	task(getConfigGetter({}));
@@ -31,7 +31,7 @@ it('should add package-lock.json, if yarn.lock exists', () => {
 
 it('should add yarn.lock, if package-lock.json exists', () => {
 	vol.fromJSON({
-		'/package-lock.json': ''
+		'/package-lock.json': '',
 	});
 
 	task(getConfigGetter({}));
