@@ -7,6 +7,7 @@ const { json, packageJson, lines, install, uninstall } = require('mrm-core');
 function task(config) {
 	let exts = '';
 	const ignores = ['node_modules/'];
+	const gitIgnores = ['.eslintcache'];
 	const packages = ['eslint'];
 	const oldPackages = ['jslint', 'jshint'];
 	const { eslintPreset, eslintPeerDependencies, eslintRules } = config
@@ -57,6 +58,11 @@ function task(config) {
 	// .eslintignore
 	lines('.eslintignore')
 		.add(ignores)
+		.save();
+
+	// .gitignore
+	lines('.gitignore')
+		.add(gitIgnores)
 		.save();
 
 	// Keep custom extensions

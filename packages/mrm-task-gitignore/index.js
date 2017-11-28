@@ -15,7 +15,6 @@ function task() {
 		'*.sublime-project',
 		'*.sublime-workspace',
 		'*.log',
-		'.eslintcache',
 	];
 
 	// If project uses npm, ignore yarn.lock
