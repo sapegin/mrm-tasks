@@ -15,7 +15,7 @@ function task(config) {
 	// Create Contributing.md (no update)
 	const contributing = template(
 		contributingFile,
-		path.join(__dirname, 'templates', contributingFile)
+		path.join(__dirname, 'templates/Contributing.md')
 	);
 	if (!contributing.exists()) {
 		const { github, packageName } = config
