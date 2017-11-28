@@ -13,3 +13,35 @@ Thumbs.db
 .eslintcache",
 }
 `;
+
+exports[`should add package-lock.json, if yarn.lock exists 1`] = `
+Object {
+  "/.gitignore": "node_modules/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.log
+.eslintcache
+package-lock.json",
+  "/yarn.lock": "",
+}
+`;
+
+exports[`should add yarn.lock, if package-lock.json exists 1`] = `
+Object {
+  "/.gitignore": "node_modules/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.log
+.eslintcache
+yarn.lock",
+  "/package-lock.json": "",
+}
+`;

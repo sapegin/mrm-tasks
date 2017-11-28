@@ -18,3 +18,23 @@ it('should add .gitignore', () => {
 
 	expect(vol.toJSON()).toMatchSnapshot();
 });
+
+it('should add package-lock.json, if yarn.lock exists', () => {
+	vol.fromJSON({
+		'/yarn.lock': ''
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});
+
+it('should add yarn.lock, if package-lock.json exists', () => {
+	vol.fromJSON({
+		'/package-lock.json': ''
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});
