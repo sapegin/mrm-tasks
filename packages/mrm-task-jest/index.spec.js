@@ -79,6 +79,46 @@ it('should add TypeScript specific configuration if projects depends on TypeScri
 	expect(install).toBeCalledWith(['jest', 'ts-jest', '@types/jest']);
 });
 
+it('should add React specific configuration if projects depends on React', () => {
+	vol.fromJSON({
+		[`${__dirname}/templates/test/jestsetup.js`]: fs.readFileSync(
+			path.join(__dirname, 'templates/test/jestsetup.js')
+		),
+		'/package.json': stringify({
+			name: 'unicorn',
+			dependencies: {
+				react: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+	expect(vol.toJSON()['/test/jestsetup.js']).toMatchSnapshot();
+	expect(install).toBeCalledWith(expect.arrayContaining(['jest', 'enzyme']));
+});
+
+it('should not overwrite Jest setup file', () => {
+	vol.fromJSON({
+		[`${__dirname}/templates/test/jestsetup.js`]: fs.readFileSync(
+			path.join(__dirname, 'templates/test/jestsetup.js')
+		),
+		'/test/jestsetup.js': 'pizza',
+		'/package.json': stringify({
+			name: 'unicorn',
+			dependencies: {
+				react: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+	expect(vol.toJSON()['/test/jestsetup.js']).toBe('pizza');
+});
+
 it('should update or create .eslintignore if projects depends on ESLint', () => {
 	vol.fromJSON({
 		'/package.json': stringify({

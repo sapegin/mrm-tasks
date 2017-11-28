@@ -21,6 +21,7 @@ function task() {
 	const needsMigration = oldPackages.some(name => pkg.get(`devDependencies.${name}`));
 	const hasBabel = pkg.get('devDependencies.babel-core');
 	const hasTypeScript = pkg.get('devDependencies.typescript');
+	const hasReact = pkg.get('dependencies.react');
 
 	// Babel
 	if (hasBabel) {
@@ -45,6 +46,39 @@ function task() {
 				moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
 			},
 		});
+	}
+
+	// React
+	if (hasReact) {
+		packages.push('react-test-renderer', 'enzyme', 'enzyme-adapter-react-16', 'enzyme-to-json');
+
+		pkg.merge({
+			jest: {
+				snapshotSerializers: ['enzyme-to-json/serializer'],
+			},
+		});
+
+		const templatesDir = path.join(__dirname, 'templates');
+		const jestSetupFile = './test/jestsetup.js';
+		if (!fs.existsSync(jestSetupFile)) {
+			pkg.merge({
+				jest: {
+					setupFiles: [jestSetupFile],
+				},
+			});
+			copyFiles(templatesDir, jestSetupFile);
+		} else {
+			const contents = fs.readFileSync(jestSetupFile, 'utf8');
+			if (!contents.includes('enzyme-adapter-react-')) {
+				console.log(`\nCannot setup Enzyme. Add these lines to your Jest setup file:
+
+${fs.readFileSync(path.join(templatesDir, jestSetupFile), 'utf8')}
+
+More info:
+http://blog.sapegin.me/all/react-jest
+`);
+			}
+		}
 	}
 
 	// Clean up old scripts

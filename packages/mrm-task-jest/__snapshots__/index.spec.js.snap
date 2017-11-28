@@ -41,6 +41,37 @@ Object {
 }
 `;
 
+exports[`should add React specific configuration if projects depends on React 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"dependencies\\": {
+    \\"react\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"test:jest\\": \\"jest\\",
+    \\"test:watch\\": \\"jest --watch\\",
+    \\"test:coverage\\": \\"jest --coverage\\",
+    \\"test\\": \\"npm run test:jest\\"
+  },
+  \\"jest\\": {
+    \\"snapshotSerializers\\": [
+      \\"enzyme-to-json/serializer\\"
+    ],
+    \\"setupFiles\\": [
+      \\"./test/jestsetup.js\\"
+    ]
+  }
+}"
+`;
+
+exports[`should add React specific configuration if projects depends on React 2`] = `
+"import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+"
+`;
+
 exports[`should add TypeScript specific configuration if projects depends on TypeScript 1`] = `
 Object {
   "/.gitignore": "coverage/",
@@ -87,6 +118,26 @@ describe('pizza()', () => {
 	});
 });
 "
+`;
+
+exports[`should not overwrite Jest setup file 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"dependencies\\": {
+    \\"react\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"test:jest\\": \\"jest\\",
+    \\"test:watch\\": \\"jest --watch\\",
+    \\"test:coverage\\": \\"jest --coverage\\",
+    \\"test\\": \\"npm run test:jest\\"
+  },
+  \\"jest\\": {
+    \\"snapshotSerializers\\": [
+      \\"enzyme-to-json/serializer\\"
+    ]
+  }
+}"
 `;
 
 exports[`should not overwrite test.js 1`] = `"still here"`;
