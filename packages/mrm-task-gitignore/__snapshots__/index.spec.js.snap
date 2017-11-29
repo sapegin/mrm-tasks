@@ -23,7 +23,6 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 *.log
-.eslintcache
 package-lock.json",
   "/yarn.lock": "",
 }
@@ -39,7 +38,6 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 *.log
-.eslintcache
 yarn.lock",
   "/package-lock.json": "",
 }

@@ -6,6 +6,7 @@ Object {
   "/.eslintrc": "{
   \\"extends\\": \\"eslint:recommended\\"
 }",
+  "/.gitignore": ".eslintcache",
   "/package.json": "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
@@ -38,6 +39,7 @@ Object {
     \\"no-useless-constructor\\": 0
   }
 }",
+  "/.gitignore": ".eslintcache",
   "/package.json": "{
   \\"name\\": \\"unicorn\\",
   \\"devDependencies\\": {
