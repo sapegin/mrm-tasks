@@ -25,8 +25,6 @@ function task(config) {
 	// Peer dependencies
 	packages.push(...eslintPeerDependencies);
 
-	const pkg = packageJson();
-
 	// .eslintrc
 	const eslintrc = json('.eslintrc');
 	if (!eslintrc.get('extends', '').startsWith(eslintPreset)) {
@@ -35,6 +33,17 @@ function task(config) {
 	if (eslintRules) {
 		eslintrc.merge({ rules: eslintRules });
 	}
+
+	const pkg = packageJson();
+
+	// TODO: Babel
+	// Not sure how to detect that we need it, checking for babel-core is not enough because
+	// babel-eslint is only needed for experimental features and Flow (this one is easy to test)
+	// Flow also needs this: https://github.com/gajus/eslint-plugin-flowtype
+	// if (pkg.get('devDependencies.babel-core')) {
+	// 	packages.push('babel-eslint');
+	// 	eslintrc.set('parser', 'babel-eslint');
+	// }
 
 	// TypeScript
 	if (pkg.get('devDependencies.typescript')) {
