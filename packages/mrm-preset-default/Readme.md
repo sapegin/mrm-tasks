@@ -9,6 +9,7 @@ See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 <!-- textlint-disable terminology -->
 
 * [codecov](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-codecov)
+* [contributing](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-contributing)
 * [editorconfig](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-editorconfig)
 * [eslint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-eslint)
 * [gitignore](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-gitignore)
@@ -16,6 +17,7 @@ See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 * [license](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-license)
 * [lintstaged](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-lintstaged)
 * [package](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-package)
+* [prettier](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-prettier)
 * [readme](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-readme)
 * [semantic-release](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-semantic-release)
 * [styleguidist](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-styleguidist)
