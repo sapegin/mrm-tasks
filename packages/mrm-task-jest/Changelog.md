@@ -1,3 +1,7 @@
+## 1.2.0
+
+* Add Enzyme if project depends on React.
+
 ## 1.1.1
 
 * Don’t update `.npmignore` for private packages.
