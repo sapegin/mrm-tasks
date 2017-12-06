@@ -3,7 +3,8 @@
 
 const fs = require('fs');
 const path = require('path');
-const { lines, packageJson, copyFiles, install, uninstall } = require('mrm-core');
+const { camelCase } = require('lodash');
+const { lines, packageJson, template, install, uninstall } = require('mrm-core');
 
 function task() {
 	const packages = ['jest'];
@@ -58,7 +59,7 @@ function task() {
 			},
 		});
 
-		const templatesDir = path.join(__dirname, 'templates');
+		const templateFile = path.join(__dirname, 'templates/jestsetup.js');
 		const jestSetupFile = './test/jestsetup.js';
 		if (!fs.existsSync(jestSetupFile)) {
 			pkg.merge({
@@ -66,13 +67,15 @@ function task() {
 					setupFiles: [jestSetupFile],
 				},
 			});
-			copyFiles(templatesDir, jestSetupFile);
+			template(jestSetupFile, templateFile)
+				.apply()
+				.save();
 		} else {
 			const contents = fs.readFileSync(jestSetupFile, 'utf8');
 			if (!contents.includes('enzyme-adapter-react-')) {
 				console.log(`\nCannot setup Enzyme. Add these lines to your Jest setup file:
 
-${fs.readFileSync(path.join(templatesDir, jestSetupFile), 'utf8')}
+${fs.readFileSync(templateFile, 'utf8')}
 
 More info:
 http://blog.sapegin.me/all/react-jest
@@ -114,7 +117,11 @@ http://blog.sapegin.me/all/react-jest
 
 	// Test template for small projects
 	if (fs.existsSync('index.js') && !fs.existsSync('test.js')) {
-		copyFiles(path.join(__dirname, 'templates'), 'test.js');
+		template('test.js', path.join(__dirname, 'templates/test.js'))
+			.apply({
+				func: camelCase(pkg.get('name')),
+			})
+			.save();
 	}
 
 	// Dependencies

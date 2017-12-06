@@ -81,8 +81,8 @@ it('should add TypeScript specific configuration if projects depends on TypeScri
 
 it('should add React specific configuration if projects depends on React', () => {
 	vol.fromJSON({
-		[`${__dirname}/templates/test/jestsetup.js`]: fs.readFileSync(
-			path.join(__dirname, 'templates/test/jestsetup.js')
+		[`${__dirname}/templates/jestsetup.js`]: fs.readFileSync(
+			path.join(__dirname, 'templates/jestsetup.js')
 		),
 		'/package.json': stringify({
 			name: 'unicorn',
@@ -91,7 +91,6 @@ it('should add React specific configuration if projects depends on React', () =>
 			},
 		}),
 	});
-
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
@@ -101,8 +100,8 @@ it('should add React specific configuration if projects depends on React', () =>
 
 it('should not overwrite Jest setup file', () => {
 	vol.fromJSON({
-		[`${__dirname}/templates/test/jestsetup.js`]: fs.readFileSync(
-			path.join(__dirname, 'templates/test/jestsetup.js')
+		[`${__dirname}/templates/jestsetup.js`]: fs.readFileSync(
+			path.join(__dirname, 'templates/jestsetup.js')
 		),
 		'/test/jestsetup.js': 'pizza',
 		'/package.json': stringify({
@@ -138,7 +137,9 @@ it('should update or create .eslintignore if projects depends on ESLint', () => 
 it('should add a basic test case when index.js file is present', () => {
 	vol.fromJSON({
 		[`${__dirname}/templates/test.js`]: fs.readFileSync(path.join(__dirname, 'templates/test.js')),
-		'/package.json': packageJson,
+		'/package.json': stringify({
+			name: 'uber-unicorn',
+		}),
 		'/index.js': '',
 	});
 

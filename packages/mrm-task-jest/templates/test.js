@@ -1,8 +1,6 @@
-const pizza = require('./index');
+const ${func} = require('./index');
 
-describe('pizza()', () => {
-	it('should work please', () => {
-		const result = pizza(1);
-		expect(result).toBe(2);
-	});
+test('${func}', () => {
+	const result = ${func}();
+	expect(result).toBeTruthy();
 });

@@ -109,13 +109,11 @@ Object {
 `;
 
 exports[`should add a basic test case when index.js file is present 1`] = `
-"const pizza = require('./index');
+"const uberUnicorn = require('./index');
 
-describe('pizza()', () => {
-	it('should work please', () => {
-		const result = pizza(1);
-		expect(result).toBe(2);
-	});
+test('uberUnicorn', () => {
+	const result = uberUnicorn();
+	expect(result).toBeTruthy();
 });
 "
 `;

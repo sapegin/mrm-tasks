@@ -28,5 +28,11 @@
     "test": "npm run test:jest",
     "format": "prettier --write '**/*.md'",
     "posttest": "npm run format"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/templates/"
+    ]
   }
 }
