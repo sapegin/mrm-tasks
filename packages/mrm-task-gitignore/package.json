@@ -24,6 +24,6 @@
     "gitignore"
   ],
   "dependencies": {
-    "mrm-core": "^2.2.2"
+    "mrm-core": "^2.6.0"
   }
 }

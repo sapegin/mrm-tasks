@@ -25,6 +25,7 @@
     "testing"
   ],
   "dependencies": {
-    "mrm-core": "^2.2.2"
+    "lodash": "^4.17.4",
+    "mrm-core": "^2.6.0"
   }
 }
