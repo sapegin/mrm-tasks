@@ -21,7 +21,7 @@ const defaultOverrides = {
 				printWidth: 70,
 				useTabs: false,
 				trailingComma: 'none',
-				proseWrap: false,
+				proseWrap: 'never',
 			},
 		},
 	],

@@ -13,7 +13,7 @@ Object {
         \\"printWidth\\": 70,
         \\"useTabs\\": false,
         \\"trailingComma\\": \\"none\\",
-        \\"proseWrap\\": false
+        \\"proseWrap\\": \\"never\\"
       }
     }
   ]
@@ -40,7 +40,7 @@ exports[`should infer options from EditorConfig 1`] = `
         \\"printWidth\\": 70,
         \\"useTabs\\": false,
         \\"trailingComma\\": \\"none\\",
-        \\"proseWrap\\": false
+        \\"proseWrap\\": \\"never\\"
       }
     }
   ]
@@ -71,7 +71,7 @@ exports[`should use a custom options 1`] = `
         \\"printWidth\\": 70,
         \\"useTabs\\": false,
         \\"trailingComma\\": \\"none\\",
-        \\"proseWrap\\": false
+        \\"proseWrap\\": \\"never\\"
       }
     }
   ]
