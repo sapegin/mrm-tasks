@@ -13,16 +13,19 @@ const ANONYMOUS_LICENSES = ['Unlicense'];
 const isAnonymouseLicense = name => ANONYMOUS_LICENSES.indexOf(name) > -1;
 
 function task(config) {
-	config.defaults({ licenseFile: 'License.md' }).defaults(meta);
+	const pkg = packageJson();
+	config
+		.defaults({ licenseFile: 'License.md' })
+		.defaults({ name: pkg.get('author.name') })
+		.defaults(meta);
 
 	const configLicense = config.values().license;
 
 	if (!isAnonymouseLicense(configLicense)) {
-		config.require('name', 'email', 'url');
+		config.require('name', 'email');
 	}
 
-	const { name, email, url, licenseFile } = config.values();
-	const pkg = packageJson();
+	const { name, email, licenseFile } = config.values();
 
 	let license = configLicense;
 	let shouldUpdatePkgLicense = false;
@@ -47,7 +50,6 @@ function task(config) {
 		.apply({
 			name,
 			email,
-			url,
 			year: new Date().getFullYear(),
 		})
 		.save();
