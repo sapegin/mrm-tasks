@@ -59,6 +59,24 @@ it('should add ESLint if project depends on it', () => {
 	expect(install).toBeCalledWith(['lint-staged', 'husky']);
 });
 
+it('should use default JS extension if eslint command has no --ext key', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			scripts: {
+				lint: 'eslint --fix',
+			},
+			devDependencies: {
+				eslint: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});
+
 it('should infer ESLint extension for an npm script', () => {
 	vol.fromJSON({
 		'/package.json': stringify({
@@ -74,7 +92,7 @@ it('should infer ESLint extension for an npm script', () => {
 
 	task(getConfigGetter({}));
 
-	expect(vol.toJSON()).toMatchSnapshot();
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
 });
 
 it('should use a custom ESLint extension', () => {

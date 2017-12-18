@@ -24,7 +24,7 @@ function task(config) {
 		if (pkg.get('devDependencies.eslint')) {
 			const lintScript = pkg.getScript('lint');
 			const args = lintScript && minimist(lintScript.split(' ').slice(1));
-			const exts = args ? args.ext : eslintExtensions;
+			const exts = (args && args.ext) || eslintExtensions;
 			rules[`*${exts}`] = ['eslint --fix', 'git add'];
 		}
 
