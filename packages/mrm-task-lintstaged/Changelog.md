@@ -1,3 +1,8 @@
+## 1.2.0
+
+* Add Prettier.
+* Use default JS extension if eslint command has no --ext key.
+
 ## 1.1.0
 
 * Infer ESLint extensions from an npm script.

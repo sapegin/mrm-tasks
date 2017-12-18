@@ -1,3 +1,8 @@
+## 1.2.0
+
+* Use author.name from package.json by default.
+* Remove URL required field.
+
 ## 1.1.2
 
 Format templates with Prettier.

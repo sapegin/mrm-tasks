@@ -1,3 +1,7 @@
+## 1.2.1
+
+* Make basic test file template more useful.
+
 ## 1.2.0
 
 * Add Enzyme if project depends on React.
