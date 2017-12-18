@@ -1,6 +1,10 @@
+## 1.5.0
+
+* Update tasks.
+
 ## 1.4.0
 
-New tasks: contributing, prettier.
+* New tasks: contributing, prettier.
 
 ## 1.3.1
 
