@@ -2,7 +2,7 @@
 
 [Mrm](https://github.com/sapegin/mrm) task that adds [lint-staged](https://github.com/okonet/lint-staged).
 
-**Note:** supports only ESLint and stylelint now, pull requests are welcome.
+**Note:** supports only Prettier, ESLint and Stylelint now, pull requests are welcome.
 
 ## What it does
 
@@ -28,6 +28,10 @@ Custom rules. By default will try to infer by project dependencies.
 ### `eslintExtensions` (default: infer or `.js`)
 
 File extensions to run ESLint on. By default will try to infer from your `lint` npm script or use `.js`.
+
+### `prettierExtensions` (default: infer or `.js`)
+
+File extensions to run Prettier on. By default will try to infer from your `format` npm script or use `.js`.
 
 ### `stylelintExtensions` (default: `.css`)
 

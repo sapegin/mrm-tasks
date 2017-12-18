@@ -20,6 +20,26 @@ Object {
 }
 `;
 
+exports[`should add Prettier if project depends on it 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"prettier\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.js\\": [
+      \\"prettier --write\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
 exports[`should add stylelint if project depends on it 1`] = `
 Object {
   "/package.json": "{
@@ -59,15 +79,43 @@ exports[`should infer ESLint extension for an npm script 1`] = `
 }"
 `;
 
-exports[`should not do anything if not supported tools are found 1`] = `
-Object {
-  "/package.json": "{
+exports[`should infer Prettier extension for an npm script 1`] = `
+"{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
-    \\"test\\": \\"jest\\"
+    \\"format\\": \\"prettier --write '**/*.{js,jsx}'\\",
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"devDependencies\\": {
+    \\"prettier\\": \\"*\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.js,jsx\\": [
+      \\"prettier --write\\",
+      \\"git add\\"
+    ]
   }
-}",
-}
+}"
+`;
+
+exports[`should merge ESLint and Prettier into a single lint-staged rule 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"eslint\\": \\"*\\",
+    \\"prettier\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.js\\": [
+      \\"eslint --fix\\",
+      \\"prettier --write\\",
+      \\"git add\\"
+    ]
+  }
+}"
 `;
 
 exports[`should use a custom ESLint extension 1`] = `

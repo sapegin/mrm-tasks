@@ -39,7 +39,61 @@ it('should not do anything if not supported tools are found', () => {
 
 	task(getConfigGetter({}));
 
+	expect(Object.keys(vol.toJSON())).toEqual(['/package.json']);
+	expect(vol.toJSON()['/package.json']).toEqual(packageJson);
+	expect(console.log).toBeCalledWith(expect.stringMatching('Cannot configure lint-staged'));
+});
+
+it('should add Prettier if project depends on it', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				prettier: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
 	expect(vol.toJSON()).toMatchSnapshot();
+	expect(install).toBeCalledWith(['lint-staged', 'husky']);
+});
+
+it('should infer Prettier extension for an npm script', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			scripts: {
+				format: "prettier --write '**/*.{js,jsx}'",
+			},
+			devDependencies: {
+				prettier: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});
+
+it('should not do anything if project is using Prettier via ESLint plugin', () => {
+	const pkg = stringify({
+		name: 'unicorn',
+		devDependencies: {
+			prettier: '*',
+			'eslint-plugin-prettier': '*',
+		},
+	});
+	vol.fromJSON({
+		'/package.json': pkg,
+	});
+
+	task(getConfigGetter({}));
+
+	expect(Object.keys(vol.toJSON())).toEqual(['/package.json']);
+	expect(vol.toJSON()['/package.json']).toEqual(pkg);
 	expect(console.log).toBeCalledWith(expect.stringMatching('Cannot configure lint-staged'));
 });
 
@@ -108,6 +162,23 @@ it('should use a custom ESLint extension', () => {
 	task(getConfigGetter({ eslintExtensions: '.js,.jsx' }));
 
 	expect(vol.toJSON()).toMatchSnapshot();
+});
+
+it('should merge ESLint and Prettier into a single lint-staged rule', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				eslint: '*',
+				prettier: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+	expect(install).toBeCalledWith(['lint-staged', 'husky']);
 });
 
 it('should add stylelint if project depends on it', () => {
