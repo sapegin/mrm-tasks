@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Add `eslintObsoleteDependencies` option.
+
 ## 1.0.2
 
 * Add `.eslintcache` to `.gitignore`.
