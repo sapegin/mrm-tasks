@@ -1,3 +1,8 @@
+## 1.2.0
+
+* Remove default options (keep only default overrides).
+* New options: `indent` and `prettierOverrides`.
+
 ## 1.1.0
 
 * Support Prettier 1.9.
