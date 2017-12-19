@@ -10,7 +10,7 @@ jest.mock('mrm-core/src/npm', () => ({
 	uninstall: jest.fn(),
 }));
 
-const { install } = require('mrm-core');
+const { install, uninstall } = require('mrm-core');
 const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
@@ -27,6 +27,7 @@ const packageJson = stringify({
 afterEach(() => {
 	vol.reset();
 	install.mockClear();
+	uninstall.mockClear();
 });
 
 it('should add ESLint', () => {
@@ -69,6 +70,21 @@ it('should install extra dependencies', () => {
 	task(getConfigGetter({ eslintPeerDependencies: ['eslint-plugin-react'] }));
 
 	expect(install).toBeCalledWith(['eslint', 'eslint-plugin-react']);
+});
+
+it('should remove obsolete dependencies', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				prettier: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({ eslintObsoleteDependencies: ['prettier'] }));
+
+	expect(uninstall).toBeCalledWith(['jslint', 'jshint', 'prettier']);
 });
 
 it('should keep custom extensions defined in a package.json script', () => {

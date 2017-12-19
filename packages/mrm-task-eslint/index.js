@@ -10,10 +10,11 @@ function task(config) {
 	const gitIgnores = ['.eslintcache'];
 	const packages = ['eslint'];
 	const oldPackages = ['jslint', 'jshint'];
-	const { eslintPreset, eslintPeerDependencies, eslintRules } = config
+	const { eslintPreset, eslintPeerDependencies, eslintObsoleteDependencies, eslintRules } = config
 		.defaults({
 			eslintPreset: 'eslint:recommended',
 			eslintPeerDependencies: [],
+			eslintObsoleteDependencies: [],
 		})
 		.values();
 
@@ -94,7 +95,7 @@ function task(config) {
 		.save();
 
 	// Dependencies
-	uninstall(oldPackages);
+	uninstall([...oldPackages, ...eslintObsoleteDependencies]);
 	install(packages);
 }
 

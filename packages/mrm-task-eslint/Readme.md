@@ -29,6 +29,10 @@ ESLint preset name (not npm package name, e.g. `airbnb`).
 
 Additional dependencies to install (e.g. `['prettier', 'eslint-plugin-prettier']`).
 
+### `eslintObsoleteDependencies` (optional)
+
+Dependencies that should be removed (e.g. `['eslint-plugin-prettier']`).
+
 ### `eslintRules` (optional)
 
 Additional rules (e.g. `{ 'no-undef': 0 }`).
