@@ -8,24 +8,17 @@ const { json, packageJson, install } = require('mrm-core');
 const { getStyleForFile } = require('mrm-core');
 
 const defaultPattern = '**/*.{js,css,md}';
-const defaultOptions = {
-	singleQuote: true,
-	trailingComma: 'es5',
-	useTabs: true,
-};
-const defaultOverrides = {
-	overrides: [
-		{
-			files: '*.md',
-			options: {
-				printWidth: 70,
-				useTabs: false,
-				trailingComma: 'none',
-				proseWrap: 'never',
-			},
+const defaultOverrides = [
+	{
+		files: '*.md',
+		options: {
+			printWidth: 70,
+			useTabs: false,
+			trailingComma: 'none',
+			proseWrap: 'never',
 		},
-	],
-};
+	},
+];
 const defaultPrettierOptions = {
 	printWidth: 80,
 	tabWidth: 2,
@@ -40,10 +33,10 @@ const defaultPrettierOptions = {
 function task(config) {
 	const packages = ['prettier'];
 
-	const { prettierPattern, prettierOptions } = config
+	const { indent, prettierPattern, prettierOptions, prettierOverrides } = config
 		.defaults({
+			indent: 'tab',
 			prettierPattern: defaultPattern,
-			prettierOptions: {},
 		})
 		.values();
 
@@ -53,12 +46,17 @@ function task(config) {
 
 	const pkg = packageJson();
 
+	const overrides = prettierOverrides || defaultOverrides;
 	const options = Object.assign(
 		{},
-		defaultOptions,
+		prettierOptions
+			? {}
+			: {
+					useTabs: indent === 'tab',
+				},
 		editorconfigOptions,
 		prettierOptions,
-		defaultOverrides
+		overrides && { overrides }
 	);
 
 	// Remove options that have the same values as Prettier defaults

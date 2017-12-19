@@ -15,13 +15,27 @@ npm install -g mrm mrm-task-prettier
 mrm prettier
 ```
 
+Now run:
+
+```
+npm run format
+```
+
 ## Options
 
 See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 
+### `indent` (default: `tab`)
+
+Indentation, `tab` or number of spaces. Will be overwritten by options from EditorConfig.
+
 ### `prettierOptions`
 
 Prettier options, by default will try to infer options from EditorConfig.
+
+### `prettierOverrides`
+
+[Prettier overrides](https://prettier.io/docs/en/configuration.html#configuration-overrides), by default will use overrides for Markdown to improve documentation readability.
 
 ### `prettierPattern` (default: `**/*.{js,css,md}`)
 

@@ -39,12 +39,43 @@ it('should add Prettier', () => {
 	expect(install).toBeCalledWith(['prettier']);
 });
 
+it('should use a custom indent', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+	});
+
+	task(getConfigGetter({ indent: 'tab' }));
+
+	expect(vol.toJSON()['/.prettierrc']).toMatchSnapshot();
+});
+
 it('should use a custom options', () => {
 	vol.fromJSON({
 		'/package.json': packageJson,
 	});
 
 	task(getConfigGetter({ prettierOptions: { printWidth: 333 } }));
+
+	expect(vol.toJSON()['/.prettierrc']).toMatchSnapshot();
+});
+
+it('should use custom overrides', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+	});
+
+	task(
+		getConfigGetter({
+			prettierOverrides: [
+				{
+					files: '*.css',
+					options: {
+						printWidth: 42,
+					},
+				},
+			],
+		})
+	);
 
 	expect(vol.toJSON()['/.prettierrc']).toMatchSnapshot();
 });

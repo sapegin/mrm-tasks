@@ -3,8 +3,6 @@
 exports[`should add Prettier 1`] = `
 Object {
   "/.prettierrc": "{
-  \\"singleQuote\\": true,
-  \\"trailingComma\\": \\"es5\\",
   \\"useTabs\\": true,
   \\"overrides\\": [
     {
@@ -31,8 +29,6 @@ Object {
 
 exports[`should infer options from EditorConfig 1`] = `
 "{
-  \\"singleQuote\\": true,
-  \\"trailingComma\\": \\"es5\\",
   \\"overrides\\": [
     {
       \\"files\\": \\"*.md\\",
@@ -58,11 +54,25 @@ exports[`should keep a custom pattern defined in a package.json script 1`] = `
 }"
 `;
 
+exports[`should use a custom indent 1`] = `
+"{
+  \\"useTabs\\": true,
+  \\"overrides\\": [
+    {
+      \\"files\\": \\"*.md\\",
+      \\"options\\": {
+        \\"printWidth\\": 70,
+        \\"useTabs\\": false,
+        \\"trailingComma\\": \\"none\\",
+        \\"proseWrap\\": \\"never\\"
+      }
+    }
+  ]
+}"
+`;
+
 exports[`should use a custom options 1`] = `
 "{
-  \\"singleQuote\\": true,
-  \\"trailingComma\\": \\"es5\\",
-  \\"useTabs\\": true,
   \\"printWidth\\": 333,
   \\"overrides\\": [
     {
@@ -72,6 +82,20 @@ exports[`should use a custom options 1`] = `
         \\"useTabs\\": false,
         \\"trailingComma\\": \\"none\\",
         \\"proseWrap\\": \\"never\\"
+      }
+    }
+  ]
+}"
+`;
+
+exports[`should use custom overrides 1`] = `
+"{
+  \\"useTabs\\": true,
+  \\"overrides\\": [
+    {
+      \\"files\\": \\"*.css\\",
+      \\"options\\": {
+        \\"printWidth\\": 42
       }
     }
   ]
