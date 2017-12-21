@@ -29,6 +29,14 @@ Your name.
 
 Your site URL.
 
+### `minNode` (default: 6.9)
+
+Minimum required Node.js version.
+
+### `license` (default: MIT)
+
+License.
+
 ## Change log
 
 The change log can be found in [Changelog.md](Changelog.md).

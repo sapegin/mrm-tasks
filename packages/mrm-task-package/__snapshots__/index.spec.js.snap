@@ -13,13 +13,15 @@ exports[`should add package.json 1`] = `
   \\"repository\\": \\"gendalf/mrm-task-package\\",
   \\"license\\": \\"MIT\\",
   \\"engines\\": {
-    \\"node\\": \\">=4\\"
+    \\"node\\": \\">=6.9\\"
   },
   \\"main\\": \\"index.js\\",
   \\"files\\": [
     \\"index.js\\"
   ],
   \\"scripts\\": {},
-  \\"keywords\\": []
+  \\"keywords\\": [],
+  \\"dependencies\\": {},
+  \\"devDependencies\\": {}
 }"
 `;

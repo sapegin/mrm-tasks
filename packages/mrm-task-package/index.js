@@ -7,8 +7,8 @@ const gitUsername = require('git-username');
 const { json } = require('mrm-core');
 
 function task(config) {
-	const { name, url, github } = config
-		.defaults({ github: gitUsername(), readmeFile: 'Readme.md' })
+	const { name, url, github, minNode, license } = config
+		.defaults({ github: gitUsername(), minNode: 6.9, license: 'MIT' })
 		.defaults(meta)
 		.require('name', 'url', 'github')
 		.values();
@@ -16,8 +16,8 @@ function task(config) {
 	const packageName = path.basename(process.cwd());
 	const repository = `${github}/${packageName}`;
 
-	// Create package.json (no update)
-	json('package.json', {
+	// Create package.json
+	const pkg = json('package.json', {
 		name: packageName,
 		version: '1.0.0',
 		description: '',
@@ -27,15 +27,28 @@ function task(config) {
 		},
 		homepage: `https://github.com/${repository}`,
 		repository,
-		license: 'MIT',
+		license,
 		engines: {
-			node: '>=4',
+			node: `>=${minNode}`,
 		},
 		main: 'index.js',
 		files: ['index.js'],
 		scripts: {},
 		keywords: [],
-	}).save();
+		dependencies: {},
+		devDependencies: {},
+	});
+
+	// Update
+	if (pkg.exists()) {
+		pkg.merge({
+			engines: {
+				node: `>=${minNode}`,
+			},
+		});
+	}
+
+	pkg.save();
 }
 
 task.description = 'Adds package.json';
