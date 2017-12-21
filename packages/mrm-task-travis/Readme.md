@@ -26,6 +26,10 @@ Your GitHub user name.
 
 Name of the Readme file.
 
+### `maxNode` (default: 9)
+
+Maximum Node.js version to run tests. Minimum version will be taken from `engines.node` field of you `package.json`.
+
 ## Change log
 
 The change log can be found in [Changelog.md](Changelog.md).

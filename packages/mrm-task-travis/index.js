@@ -7,11 +7,9 @@ const semverUtils = require('semver-utils');
 const gitUsername = require('git-username');
 const { yaml, json, markdown } = require('mrm-core');
 
-const latestNodeVersion = 8;
-
 function task(config) {
-	const { github, readmeFile } = config
-		.defaults({ github: gitUsername(), readmeFile: 'Readme.md' })
+	const { github, readmeFile, maxNode } = config
+		.defaults({ github: gitUsername(), readmeFile: 'Readme.md', maxNode: 9 })
 		.require('github')
 		.values();
 
@@ -36,11 +34,11 @@ function task(config) {
 	const requireNodeVersion = pkg.get('engines.node');
 	const minNodeVersion = requireNodeVersion
 		? semverUtils.parseRange(requireNodeVersion)[0].major
-		: latestNodeVersion;
+		: maxNode;
 
 	// Only LTS or latest
-	const nodeVersions = range(minNodeVersion, latestNodeVersion + 1).filter(
-		ver => ver % 2 === 0 || ver === latestNodeVersion
+	const nodeVersions = range(minNodeVersion, maxNode + 1).filter(
+		ver => ver % 2 === 0 || ver === maxNode
 	);
 	travisYml.set('node_js', nodeVersions);
 
