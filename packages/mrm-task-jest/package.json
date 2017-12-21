@@ -26,6 +26,6 @@
   ],
   "dependencies": {
     "lodash": "^4.17.4",
-    "mrm-core": "^2.6.0"
+    "mrm-core": "^3.0.0"
   }
 }

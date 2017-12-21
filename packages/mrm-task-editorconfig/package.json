@@ -23,6 +23,6 @@
     "editorconfig"
   ],
   "dependencies": {
-    "mrm-core": "^2.6.0"
+    "mrm-core": "^3.0.0"
   }
 }

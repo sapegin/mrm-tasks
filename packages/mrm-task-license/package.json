@@ -26,7 +26,7 @@
     "badge"
   ],
   "dependencies": {
-    "mrm-core": "^2.6.0",
+    "mrm-core": "^3.0.0",
     "user-meta": "^1.0.0"
   }
 }
