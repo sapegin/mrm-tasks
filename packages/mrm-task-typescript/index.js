@@ -1,6 +1,3 @@
-// @ts-check
-'use strict';
-
 const { json, packageJson, install } = require('mrm-core');
 
 const packages = ['typescript'];

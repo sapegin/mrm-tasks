@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-'use strict';
-
 jest.mock('fs');
 jest.mock('mrm-core/src/util/log', () => ({
 	added: jest.fn(),

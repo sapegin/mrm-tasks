@@ -10,7 +10,7 @@
   "repository": "sapegin/mrm-tasks",
   "license": "MIT",
   "engines": {
-    "node": ">=4"
+    "node": ">=6.9"
   },
   "main": "config.json",
   "files": [

@@ -1,6 +1,3 @@
-// @ts-check
-'use strict';
-
 const fs = require('fs');
 const { MrmError, packageJson, lines, yaml, markdown, uninstall } = require('mrm-core');
 

@@ -1,6 +1,3 @@
-// @ts-check
-'use strict';
-
 const { ini } = require('mrm-core');
 
 const jsonRules = {

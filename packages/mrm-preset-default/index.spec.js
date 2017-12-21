@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-'use strict';
-
 it('should have codecov task', () => {
 	const task = require('./codecov/index.js');
 	expect(task).toEqual(expect.any(Function));

@@ -1,6 +1,3 @@
-// @ts-check
-'use strict';
-
 const path = require('path');
 const minimist = require('minimist');
 const { packageJson, install } = require('mrm-core');

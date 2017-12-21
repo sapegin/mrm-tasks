@@ -1,4 +1,5 @@
 {
+  "private": true,
   "description": "Mrm tasks repository",
   "author": {
     "name": "Artem Sapegin",

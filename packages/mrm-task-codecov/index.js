@@ -1,6 +1,3 @@
-// @ts-check
-'use strict';
-
 const gitUsername = require('git-username');
 const { MrmError, yaml, markdown, packageJson } = require('mrm-core');
 

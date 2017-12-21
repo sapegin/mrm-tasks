@@ -1,6 +1,3 @@
-// @ts-check
-'use strict';
-
 const path = require('path');
 const minimist = require('minimist');
 const editorConfigToPrettier = require('editorconfig-to-prettier');

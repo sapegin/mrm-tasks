@@ -1,6 +1,3 @@
-// @ts-check
-'use strict';
-
 const fs = require('fs');
 const { lines } = require('mrm-core');
 

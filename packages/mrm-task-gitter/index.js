@@ -1,6 +1,3 @@
-// @ts-check
-'use strict';
-
 const { markdown, packageJson } = require('mrm-core');
 
 function task(config) {
