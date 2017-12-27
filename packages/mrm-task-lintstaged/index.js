@@ -1,14 +1,18 @@
-const path = require('path');
-const minimist = require('minimist');
-const { packageJson, install } = require('mrm-core');
+const { packageJson, install, getExtsFromCommand } = require('mrm-core');
 
 const packages = ['lint-staged', 'husky'];
 
-// '**/*.{js,jsx}' → js,jsx
-const globToExts = g => {
-	const suffix = path.extname(g);
-	return suffix.replace(/[^\w.,]/g, '');
-};
+function extsToGlob(exts, defaults) {
+	if (!exts) {
+		exts = defaults.split(',').map(x => x.replace(/^\./, ''));
+	}
+
+	if (exts.length > 1) {
+		return `*.{${exts}}`;
+	}
+
+	return `*.${exts}`;
+}
 
 function task(config) {
 	const { lintStagedRules, eslintExtensions, prettierExtensions, stylelintExtensions } = config
@@ -29,25 +33,22 @@ function task(config) {
 		// Prettier
 		if (pkg.get('devDependencies.prettier') && !pkg.get('devDependencies.eslint-plugin-prettier')) {
 			const script = pkg.getScript('format');
-			const args = script && minimist(script.split(' ').slice(1));
-			// XXX: Fragile, it’s not really a value of the --write option,
-			// but a separate anonymous parameter
-			const exts = (args && args.write && globToExts(args.write)) || prettierExtensions;
-			newRules.push([`*${exts}`, 'prettier --write']);
+			const exts = getExtsFromCommand(script);
+			newRules.push([extsToGlob(exts, prettierExtensions), 'prettier --write']);
 		}
 
 		// ESLint
 		if (pkg.get('devDependencies.eslint')) {
 			const script = pkg.getScript('lint');
-			const args = script && minimist(script.split(' ').slice(1));
-			const exts = (args && args.ext) || eslintExtensions;
-			newRules.push([`*${exts}`, 'eslint --fix']);
+			const exts = getExtsFromCommand(script, 'ext');
+			newRules.push([extsToGlob(exts, eslintExtensions), 'eslint --fix']);
 		}
 
 		// Stylelint
 		if (pkg.get('devDependencies.stylelint')) {
-			// TODO: infer extensions from package.json
-			newRules.push([`*${stylelintExtensions}`, 'stylelint --fix']);
+			const script = pkg.getScript('lint:css');
+			const exts = getExtsFromCommand(script);
+			newRules.push([extsToGlob(exts, stylelintExtensions), 'stylelint --fix']);
 		}
 
 		// Merge rules with the same extensions

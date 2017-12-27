@@ -57,7 +57,7 @@ it('should add Prettier if project depends on it', () => {
 	expect(install).toBeCalledWith(['lint-staged', 'husky']);
 });
 
-it('should infer Prettier extension for an npm script', () => {
+it('should infer Prettier extension from an npm script', () => {
 	vol.fromJSON({
 		'/package.json': stringify({
 			name: 'unicorn',

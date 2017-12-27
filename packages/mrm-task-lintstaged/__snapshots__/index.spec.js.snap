@@ -71,7 +71,7 @@ exports[`should infer ESLint extension for an npm script 1`] = `
     \\"eslint\\": \\"*\\"
   },
   \\"lint-staged\\": {
-    \\"*.js,.jsx\\": [
+    \\"*.{js,jsx}\\": [
       \\"eslint --fix\\",
       \\"git add\\"
     ]
@@ -79,7 +79,7 @@ exports[`should infer ESLint extension for an npm script 1`] = `
 }"
 `;
 
-exports[`should infer Prettier extension for an npm script 1`] = `
+exports[`should infer Prettier extension from an npm script 1`] = `
 "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
@@ -90,7 +90,7 @@ exports[`should infer Prettier extension for an npm script 1`] = `
     \\"prettier\\": \\"*\\"
   },
   \\"lint-staged\\": {
-    \\"*.js,jsx\\": [
+    \\"*.{js,jsx}\\": [
       \\"prettier --write\\",
       \\"git add\\"
     ]
@@ -129,7 +129,7 @@ Object {
     \\"precommit\\": \\"lint-staged\\"
   },
   \\"lint-staged\\": {
-    \\"*.js,.jsx\\": [
+    \\"*.{js,jsx}\\": [
       \\"eslint --fix\\",
       \\"git add\\"
     ]
