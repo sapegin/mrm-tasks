@@ -25,6 +25,6 @@
     "badge"
   ],
   "dependencies": {
-    "mrm-core": "^3.0.0"
+    "mrm-core": "^3.0.3"
   }
 }

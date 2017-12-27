@@ -25,7 +25,7 @@
   "dependencies": {
     "git-username": "^0.5.0",
     "lodash": "^4.17.4",
-    "mrm-core": "^3.0.0",
+    "mrm-core": "^3.0.3",
     "semver-utils": "^1.1.1"
   }
 }
