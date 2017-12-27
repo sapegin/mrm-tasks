@@ -1,6 +1,6 @@
 {
   "name": "mrm-task-lintstaged",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Mrm task that adds lint-staged",
   "author": {
     "name": "Artem Sapegin",
