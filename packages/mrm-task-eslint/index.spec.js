@@ -100,6 +100,21 @@ it('should keep custom extensions defined in a package.json script', () => {
 	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
 });
 
+it('should replace scripts.test.eslint with scripts.lint and scripts.pretest', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			scripts: {
+				test: 'eslint --ext .ts && jest',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});
+
 it('should remove custom extension if it’s "js" (default value)', () => {
 	vol.fromJSON({
 		'/package.json': stringify({

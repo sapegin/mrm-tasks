@@ -10,9 +10,9 @@ Object {
   "/package.json": "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
+    \\"pretest\\": \\"npm run lint\\",
     \\"test\\": \\"jest\\",
-    \\"lint\\": \\"eslint . --cache --fix\\",
-    \\"pretest\\": \\"npm run lint\\"
+    \\"lint\\": \\"eslint . --cache --fix\\"
   }
 }",
 }
@@ -58,8 +58,8 @@ exports[`should keep custom extensions defined in a package.json script 1`] = `
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
     \\"lint\\": \\"eslint . --cache --fix --ext .ts\\",
-    \\"test\\": \\"jest\\",
-    \\"pretest\\": \\"npm run lint\\"
+    \\"pretest\\": \\"npm run lint\\",
+    \\"test\\": \\"jest\\"
   }
 }"
 `;
@@ -69,8 +69,19 @@ exports[`should remove custom extension if it’s "js" (default value) 1`] = `
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
     \\"lint\\": \\"eslint . --cache --fix\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"test\\": \\"jest\\"
+  }
+}"
+`;
+
+exports[`should replace scripts.test.eslint with scripts.lint and scripts.pretest 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"pretest\\": \\"npm run lint\\",
     \\"test\\": \\"jest\\",
-    \\"pretest\\": \\"npm run lint\\"
+    \\"lint\\": \\"eslint . --cache --fix --ext .ts\\"
   }
 }"
 `;

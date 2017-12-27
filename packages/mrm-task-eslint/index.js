@@ -1,5 +1,4 @@
-const minimist = require('minimist');
-const { json, packageJson, lines, install, uninstall } = require('mrm-core');
+const { json, packageJson, lines, install, uninstall, getExtsFromCommand } = require('mrm-core');
 
 function task(config) {
 	let exts = '';
@@ -73,18 +72,20 @@ function task(config) {
 		.save();
 
 	// Keep custom extensions
-	const lintScript = pkg.getScript('lint');
+	const lintScript = pkg.getScript('lint', 'eslint') || pkg.getScript('test', 'eslint');
 	if (lintScript) {
-		const args = minimist(lintScript.split(' ').slice(1));
-		if (args.ext && args.ext !== '.js') {
-			exts = ` --ext ${args.ext}`;
+		const lintExts = getExtsFromCommand(lintScript);
+		if (lintExts && lintExts.toString() !== 'js') {
+			const extsPattern = lintExts.map(x => `.${x}`).join(',');
+			exts = ` --ext ${extsPattern}`;
 		}
 	}
 
 	pkg
 		// Remove existing JS linters
 		.removeScript(/^(lint:js|eslint|jshint|jslint)$/)
-		.removeScript('test', / (lint|lint:js|eslint|jshint|jslint)( |$)/)
+		.removeScript('test', / (lint|lint:js|eslint|jshint|jslint)( |$)/) // npm run jest && npm run lint
+		.removeScript('test', /\beslint|jshint|jslint\b/) // jest && eslint
 		// Add lint script
 		.setScript('lint', 'eslint . --cache --fix' + exts)
 		// Add pretest script
