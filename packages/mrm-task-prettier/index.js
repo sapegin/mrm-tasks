@@ -1,8 +1,7 @@
 const path = require('path');
-const minimist = require('minimist');
 const editorConfigToPrettier = require('editorconfig-to-prettier');
 const { json, packageJson, install } = require('mrm-core');
-const { getStyleForFile } = require('mrm-core');
+const { getStyleForFile, getExtsFromCommand } = require('mrm-core');
 
 const defaultPattern = '**/*.{js,css,md}';
 const defaultOverrides = [
@@ -72,9 +71,9 @@ function task(config) {
 	let pattern = prettierPattern;
 	const formatScript = pkg.getScript('format');
 	if (formatScript) {
-		const args = minimist(formatScript.split(' ').slice(1));
-		if (args.write && args.write !== `'${defaultPattern}`) {
-			pattern = args.write.replace(/(^'|'$)/g, '');
+		const exts = getExtsFromCommand(formatScript);
+		if (exts) {
+			pattern = `**/*.{${exts}}`;
 		}
 	}
 

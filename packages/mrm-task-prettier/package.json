@@ -29,7 +29,6 @@
   ],
   "dependencies": {
     "editorconfig-to-prettier": "0.0.4",
-    "minimist": "^1.2.0",
-    "mrm-core": "^3.0.0"
+    "mrm-core": "^3.0.3"
   }
 }
