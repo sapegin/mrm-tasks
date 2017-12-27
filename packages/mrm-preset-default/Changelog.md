@@ -1,3 +1,23 @@
+## 1.6.0
+
+### lintstaged
+
+* Correct extensions inference.
+
+### package
+
+* New options: minNode, license.
+* Update engines.node on second run.
+
+### semantic-release
+
+* Update to semantic-release 11.
+* New option semanticArgs.
+
+### travis
+
+* New option: maxNode.
+
 ## 1.5.0
 
 * Update tasks.

@@ -1,3 +1,8 @@
+## 2.0.0
+
+* Update to semantic-release 11.
+* New option semanticArgs.
+
 ## 1.1.1
 
 * Fix: Install peer dependencies locally.

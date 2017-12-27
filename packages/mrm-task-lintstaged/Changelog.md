@@ -1,3 +1,7 @@
+## 1.2.1
+
+* Correct extensions inference.
+
 ## 1.2.0
 
 * Add Prettier.
