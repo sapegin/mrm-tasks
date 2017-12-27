@@ -2,7 +2,13 @@ const fs = require('fs');
 const { MrmError, packageJson, lines, yaml, markdown, uninstall } = require('mrm-core');
 
 function task(config) {
-	const { readmeFile, changelogFile, semanticConfig, semanticPeerDependencies } = config
+	const {
+		readmeFile,
+		changelogFile,
+		semanticConfig,
+		semanticArgs,
+		semanticPeerDependencies,
+	} = config
 		.defaults({
 			readmeFile: 'Readme.md',
 			changelogFile: 'Changelog.md',
@@ -39,9 +45,11 @@ https://github.com/semantic-release/semantic-release#setup
 	// Remove semantic-release script
 	pkg.removeScript('semantic-release');
 
-	// Add custom semantic-release config
+	// Add or remove custom semantic-release config
 	if (semanticConfig) {
 		pkg.merge({ release: semanticConfig });
+	} else {
+		pkg.unset('release');
 	}
 
 	// Save package.json
@@ -60,7 +68,7 @@ https://github.com/semantic-release/semantic-release#setup
 		'npm install -g semantic-release',
 		semanticPeerDependencies.length > 0 &&
 			`npm install --no-save ${semanticPeerDependencies.join(' ')}`,
-		'semantic-release pre && npm publish && semantic-release post',
+		'semantic-release' + (semanticArgs ? ` ${semanticArgs}` : ''),
 	].filter(Boolean);
 	travisYml
 		.merge({

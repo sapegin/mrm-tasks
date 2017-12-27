@@ -23,6 +23,10 @@ See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 
 A semantic-release [config object](https://github.com/semantic-release/semantic-release#plugins), will be added to `package.json` as a `release` key.
 
+### `semanticArgs` (string, optional)
+
+Extra arguments for `semantic-release` command. For example `--analyze-commits semantic-release-tamia/analyzeCommits`.
+
 ### `semanticPeerDependencies` (array, optional)
 
 Additional dependencies to install.

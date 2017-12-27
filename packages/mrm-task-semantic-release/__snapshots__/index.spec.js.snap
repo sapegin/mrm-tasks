@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should add custom arguments to semantic-release command 1`] = `
+"language: node_js
+node_js:
+  - 8
+after_success:
+  - npm install -g semantic-release
+  - semantic-release --arg val
+branches:
+  except:
+    - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/
+"
+`;
+
 exports[`should add custom config to package.json 1`] = `
 "{
   \\"name\\": \\"unicorn\\",
@@ -18,7 +31,7 @@ node_js:
   - 8
 after_success:
   - npm install -g semantic-release
-  - semantic-release pre && npm publish && semantic-release post
+  - semantic-release
 branches:
   except:
     - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/
@@ -40,11 +53,18 @@ node_js:
 after_success:
   - npm install -g semantic-release
   - npm install --no-save pizza
-  - semantic-release pre && npm publish && semantic-release post
+  - semantic-release
 branches:
   except:
     - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/
 "
+`;
+
+exports[`should remove custom config from package.json 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {}
+}"
 `;
 
 exports[`should remove the official semantic-release runner 1`] = `
@@ -54,7 +74,7 @@ node_js:
 after_success:
   - 'bash <(curl -s https://codecov.io/bash)'
   - npm install -g semantic-release
-  - semantic-release pre && npm publish && semantic-release post
+  - semantic-release
 branches:
   except:
     - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/

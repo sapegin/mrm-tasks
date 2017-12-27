@@ -57,6 +57,40 @@ it('should add custom config to package.json', () => {
 	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
 });
 
+it('should remove custom config from package.json', () => {
+	vol.fromJSON({
+		'/.travis.yml': travisYml,
+		'/package.json': stringify({
+			name: 'unicorn',
+			scripts: {
+				'semantic-release': 'semantic-release',
+			},
+			release: {
+				analyzeCommits: 'semantic-release-tamia/analyzeCommits',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});
+
+it('should add custom arguments to semantic-release command', () => {
+	vol.fromJSON({
+		'/.travis.yml': travisYml,
+		'/package.json': packageJson,
+	});
+
+	task(
+		getConfigGetter({
+			semanticArgs: '--arg val',
+		})
+	);
+
+	expect(vol.toJSON()['/.travis.yml']).toMatchSnapshot();
+});
+
 it('should install extra dependencies on CI', () => {
 	vol.fromJSON({
 		'/.travis.yml': travisYml,
