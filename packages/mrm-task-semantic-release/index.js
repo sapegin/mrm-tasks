@@ -37,7 +37,7 @@ semantic-release needs to add required auth keys to Travis CI.
 WARNING: Do not agree to update your .travis.yml when asked.
 
 More info:
-https://github.com/semantic-release/semantic-release#setup
+https://semantic-release.gitbooks.io/semantic-release/content/docs/usage/ci-configuration.html#automatic-setup-with-semantic-release-cli
 `
 		);
 	}
