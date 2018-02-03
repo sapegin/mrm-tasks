@@ -20,8 +20,8 @@ Object {
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
     \\"test\\": \\"jest\\",
-    \\"format\\": \\"prettier --write '**/*.{js,css,md}'\\",
-    \\"posttest\\": \\"npm run format\\"
+    \\"posttest\\": \\"npm run format\\",
+    \\"format\\": \\"prettier --write '**/*.{js,css,md}'\\"
   }
 }",
 }

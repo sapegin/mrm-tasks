@@ -5,8 +5,8 @@ Object {
   "/package.json": "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
-    \\"test\\": \\"jest\\",
-    \\"pretest\\": \\"tsc --noEmit\\"
+    \\"pretest\\": \\"tsc --noEmit\\",
+    \\"test\\": \\"jest\\"
   }
 }",
   "/tsconfig.json": "{

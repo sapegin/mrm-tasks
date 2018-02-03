@@ -24,7 +24,7 @@
     "mrm-preset"
   ],
   "dependencies": {
-    "mrm-core": "^3.0.3",
+    "mrm-core": "^3.1.0",
     "mrm-task-codecov": "^1.0.1",
     "mrm-task-contributing": "^1.0.2",
     "mrm-task-editorconfig": "^1.0.2",

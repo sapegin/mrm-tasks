@@ -16,9 +16,9 @@ Object {
   "/package.json": "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
+    \\"pretest\\": \\"npm run lint:css\\",
     \\"test\\": \\"jest\\",
-    \\"lint:css\\": \\"stylelint '**/*.css'\\",
-    \\"pretest\\": \\"npm run lint:css\\"
+    \\"lint:css\\": \\"stylelint '**/*.css'\\"
   }
 }",
 }
@@ -34,9 +34,9 @@ exports[`should use custom extension 1`] = `
 "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
+    \\"pretest\\": \\"npm run lint:css\\",
     \\"test\\": \\"jest\\",
-    \\"lint:css\\": \\"stylelint '**/*.sass'\\",
-    \\"pretest\\": \\"npm run lint:css\\"
+    \\"lint:css\\": \\"stylelint '**/*.sass'\\"
   }
 }"
 `;
