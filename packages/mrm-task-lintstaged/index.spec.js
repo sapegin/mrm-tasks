@@ -57,6 +57,68 @@ it('should add Prettier if project depends on it', () => {
 	expect(install).toBeCalledWith(['lint-staged', 'husky']);
 });
 
+it('should add *.css to Prettier extensions if Prettier >= 1.4', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				prettier: '1.4.0',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});
+
+it('should add *.css and *.json to Prettier extensions if Prettier >= 1.5', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				prettier: '>=1.5.3',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});
+
+it('should add *.css, *.json and *.md to Prettier extensions if Prettier >= 1.8', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				prettier: '~1.8.5',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});
+
+it('should add Prettier and ESLint', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			scripts: {},
+			devDependencies: {
+				eslint: '4.0.1',
+				prettier: '1.9.2',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});
+
 it('should infer Prettier extension from an npm script', () => {
 	vol.fromJSON({
 		'/package.json': stringify({
@@ -65,7 +127,7 @@ it('should infer Prettier extension from an npm script', () => {
 				format: "prettier --write '**/*.{js,jsx}'",
 			},
 			devDependencies: {
-				prettier: '*',
+				prettier: '1.9.2',
 			},
 		}),
 	});
@@ -144,6 +206,21 @@ it('should infer ESLint extension for an npm script', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});
+
+it('should use custom Prettier extensions', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				prettier: '1.9.2',
+			},
+		}),
+	});
+
+	task(getConfigGetter({ prettierExtensions: '.js,.jsx,.mjs' }));
+
+	expect(vol.toJSON()).toMatchSnapshot();
 });
 
 it('should use a custom ESLint extension', () => {

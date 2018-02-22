@@ -1,5 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should add *.css and *.json to Prettier extensions if Prettier >= 1.5 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"prettier\\": \\">=1.5.3\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.{js,css,json}\\": [
+      \\"prettier --write\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
+exports[`should add *.css to Prettier extensions if Prettier >= 1.4 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"prettier\\": \\"1.4.0\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.{js,css}\\": [
+      \\"prettier --write\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
+exports[`should add *.css, *.json and *.md to Prettier extensions if Prettier >= 1.8 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"prettier\\": \\"~1.8.5\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.{js,css,json,md}\\": [
+      \\"prettier --write\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
 exports[`should add ESLint if project depends on it 1`] = `
 Object {
   "/package.json": "{
@@ -11,6 +71,31 @@ Object {
     \\"precommit\\": \\"lint-staged\\"
   },
   \\"lint-staged\\": {
+    \\"*.js\\": [
+      \\"eslint --fix\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
+exports[`should add Prettier and ESLint 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"devDependencies\\": {
+    \\"eslint\\": \\"4.0.1\\",
+    \\"prettier\\": \\"1.9.2\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.{js,css,json,md}\\": [
+      \\"prettier --write\\",
+      \\"git add\\"
+    ],
     \\"*.js\\": [
       \\"eslint --fix\\",
       \\"git add\\"
@@ -87,7 +172,7 @@ exports[`should infer Prettier extension from an npm script 1`] = `
     \\"precommit\\": \\"lint-staged\\"
   },
   \\"devDependencies\\": {
-    \\"prettier\\": \\"*\\"
+    \\"prettier\\": \\"1.9.2\\"
   },
   \\"lint-staged\\": {
     \\"*.{js,jsx}\\": [
@@ -169,6 +254,26 @@ Object {
   \\"lint-staged\\": {
     \\"*.scss\\": [
       \\"stylelint --fix\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
+exports[`should use custom Prettier extensions 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"prettier\\": \\"1.9.2\\"
+  },
+  \\"scripts\\": {
+    \\"precommit\\": \\"lint-staged\\"
+  },
+  \\"lint-staged\\": {
+    \\"*.{js,jsx,mjs}\\": [
+      \\"prettier --write\\",
       \\"git add\\"
     ]
   }

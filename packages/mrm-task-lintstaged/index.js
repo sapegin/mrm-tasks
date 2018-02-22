@@ -1,4 +1,5 @@
 const { packageJson, install, getExtsFromCommand } = require('mrm-core');
+const semver = require('semver');
 
 const packages = ['lint-staged', 'husky'];
 
@@ -14,14 +15,19 @@ function extsToGlob(exts, defaults) {
 	return `*.${exts}`;
 }
 
+const defaults = {
+	eslintExtensions: '.js',
+	prettierExtensions: '.js',
+	stylelintExtensions: '.css',
+};
+
 function task(config) {
-	const { lintStagedRules, eslintExtensions, prettierExtensions, stylelintExtensions } = config
-		.defaults({
-			eslintExtensions: '.js',
-			prettierExtensions: '.js',
-			stylelintExtensions: '.css',
-		})
-		.values();
+	const {
+		lintStagedRules,
+		eslintExtensions,
+		prettierExtensions,
+		stylelintExtensions,
+	} = config.defaults(defaults).values();
 
 	const pkg = packageJson();
 
@@ -34,7 +40,23 @@ function task(config) {
 		if (pkg.get('devDependencies.prettier') && !pkg.get('devDependencies.eslint-plugin-prettier')) {
 			const script = pkg.getScript('format');
 			const exts = getExtsFromCommand(script);
-			newRules.push([extsToGlob(exts, prettierExtensions), 'prettier --write']);
+			let suggestedExtensions = prettierExtensions;
+			// Use different extensions for Prettier depending on its version
+			// but only do so if user didn't override default extensions
+			if (prettierExtensions === defaults.prettierExtensions) {
+				const prettierVersion = semver.coerce(pkg.get('devDependencies.prettier'));
+				if (semver.satisfies(prettierVersion, '1.4.0 - 1.5.0')) {
+					// CSS was added in 1.4
+					suggestedExtensions = '.js,.css';
+				} else if (semver.satisfies(prettierVersion, '1.5.0 - 1.8.0')) {
+					// JSON was added in 1.5
+					suggestedExtensions = '.js,.css,.json';
+				} else if (semver.satisfies(prettierVersion, '>=1.8.0')) {
+					// Markdown was added in 1.8
+					suggestedExtensions = '.js,.css,.json,.md';
+				}
+			}
+			newRules.push([extsToGlob(exts, suggestedExtensions), 'prettier --write']);
 		}
 
 		// ESLint
