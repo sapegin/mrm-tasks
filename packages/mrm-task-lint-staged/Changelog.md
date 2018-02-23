@@ -1,3 +1,8 @@
+## 1.3.0
+
+* Rename to lint-staged to match the package name.
+* Use different default extensions for Prettier depending on its version.
+
 ## 1.2.1
 
 * Correct extensions inference.
