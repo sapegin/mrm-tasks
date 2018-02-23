@@ -69,7 +69,9 @@ it('should skip when template not found', () => {
 
 it('should use license config argument', () => {
 	vol.fromJSON({
-		[`${__dirname}/templates/Unlicense.md`]: fs.readFileSync(path.join(__dirname, 'templates/Unlicense.md')), // eslint-disable-line
+		[`${__dirname}/templates/Unlicense.md`]: fs.readFileSync(
+			path.join(__dirname, 'templates/Unlicense.md')
+		), // eslint-disable-line
 	});
 
 	task(

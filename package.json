@@ -9,17 +9,16 @@
   "repository": "sapegin/mrm-tasks",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^4.11.0",
-    "eslint-config-tamia": "^4.2.3",
-    "eslint-plugin-prettier": "^2.3.1",
+    "eslint": "^4.18.1",
+    "eslint-config-tamia": "^5.0.0",
     "husky": "^0.14.3",
     "jest": "^21.2.1",
-    "lerna": "^2.5.1",
-    "lint-staged": "^6.1.1",
-    "lodash": "^4.17.4",
-    "memfs": "^2.5.9",
+    "lerna": "^2.9.0",
+    "lint-staged": "^7.0.0",
+    "lodash": "^4.17.5",
+    "memfs": "~2.7.0",
     "mrm": "^1.1.1",
-    "prettier": "1.9.2"
+    "prettier": "1.10.2"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
@@ -29,7 +28,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test": "npm run test:jest",
-    "format": "prettier --write '**/*.md'",
+    "format": "prettier --write '**/*.{js,md}'",
     "posttest": "npm run format",
     "precommit": "lint-staged"
   },
@@ -42,6 +41,7 @@
   "lint-staged": {
     "*.js": [
       "eslint --fix",
+      "prettier --write",
       "git add"
     ],
     "*.md": [
