@@ -1,6 +1,6 @@
 ## 1.6.0
 
-### lintstaged
+### lint-staged
 
 * Correct extensions inference.
 

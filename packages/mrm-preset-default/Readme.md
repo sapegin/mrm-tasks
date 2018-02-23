@@ -15,7 +15,7 @@ See [Mrm docs](https://github.com/sapegin/mrm#usage) for more details.
 * [gitignore](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-gitignore)
 * [jest](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-jest)
 * [license](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-license)
-* [lintstaged](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-lintstaged)
+* [lint-staged](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-lint-staged)
 * [package](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-package)
 * [prettier](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-prettier)
 * [readme](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-readme)

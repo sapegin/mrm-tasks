@@ -32,7 +32,7 @@
     "mrm-task-gitignore": "^1.1.1",
     "mrm-task-jest": "^1.2.2",
     "mrm-task-license": "^1.2.1",
-    "mrm-task-lintstaged": "^1.2.1",
+    "mrm-task-lint-staged": "^1.2.1",
     "mrm-task-package": "^1.1.0",
     "mrm-task-prettier": "^1.2.1",
     "mrm-task-readme": "^1.1.1",

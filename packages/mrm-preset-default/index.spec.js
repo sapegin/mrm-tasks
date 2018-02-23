@@ -40,8 +40,8 @@ it('should have license task', () => {
 	expect(task.description).toMatch('license');
 });
 
-it('should have lintstaged task', () => {
-	const task = require('./lintstaged/index.js');
+it('should have lint-staged task', () => {
+	const task = require('./lint-staged/index.js');
 	expect(task).toEqual(expect.any(Function));
 	expect(task.description).toMatch('lint-staged');
 });

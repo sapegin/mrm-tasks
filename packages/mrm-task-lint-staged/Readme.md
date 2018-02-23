@@ -1,4 +1,4 @@
-# mrm-task-lintstaged
+# mrm-task-lint-staged
 
 [Mrm](https://github.com/sapegin/mrm) task that adds [lint-staged](https://github.com/okonet/lint-staged).
 
@@ -13,8 +13,8 @@
 ## Usage
 
 ```
-npm install -g mrm mrm-task-lintstaged
-mrm lintstaged
+npm install -g mrm mrm-task-lint-staged
+mrm lint-staged
 ```
 
 ## Options
