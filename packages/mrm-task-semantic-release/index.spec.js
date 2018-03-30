@@ -121,7 +121,7 @@ after_success:
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()['/.travis.yml']).toMatchSnapshot();
-	expect(uninstall).toBeCalledWith('semantic-release');
+	expect(uninstall).toBeCalledWith(['semantic-release', 'travis-deploy-once']);
 });
 
 it('should throw when .travis.yml not found', () => {

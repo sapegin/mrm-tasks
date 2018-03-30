@@ -5,8 +5,8 @@ exports[`should add custom arguments to semantic-release command 1`] = `
 node_js:
   - 8
 after_success:
-  - npm install -g semantic-release
-  - semantic-release --arg val
+  - npm install --no-save semantic-release
+  - npx travis-deploy-once \\"semantic-release --arg val\\"
 branches:
   except:
     - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/
@@ -30,8 +30,8 @@ Object {
 node_js:
   - 8
 after_success:
-  - npm install -g semantic-release
-  - semantic-release
+  - npm install --no-save semantic-release
+  - npx travis-deploy-once \\"semantic-release\\"
 branches:
   except:
     - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/
@@ -51,9 +51,8 @@ exports[`should install extra dependencies on CI 1`] = `
 node_js:
   - 8
 after_success:
-  - npm install -g semantic-release
-  - npm install --no-save pizza
-  - semantic-release
+  - npm install --no-save semantic-release pizza
+  - npx travis-deploy-once \\"semantic-release\\"
 branches:
   except:
     - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/
@@ -73,8 +72,8 @@ node_js:
   - 8
 after_success:
   - 'bash <(curl -s https://codecov.io/bash)'
-  - npm install -g semantic-release
-  - semantic-release
+  - npm install --no-save semantic-release
+  - npx travis-deploy-once \\"semantic-release\\"
 branches:
   except:
     - /^v\\\\d+\\\\.\\\\d+\\\\.\\\\d+$/

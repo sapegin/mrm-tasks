@@ -1,3 +1,7 @@
+## 2.1.0
+
+* Update CI command to use travis-deploy-once.
+
 ## 2.0.0
 
 * Update to semantic-release 11.

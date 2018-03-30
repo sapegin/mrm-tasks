@@ -44,6 +44,7 @@ https://semantic-release.gitbooks.io/semantic-release/content/docs/usage/ci-conf
 
 	// Remove semantic-release script
 	pkg.removeScript('semantic-release');
+	pkg.removeScript('travis-deploy-once');
 
 	// Add or remove custom semantic-release config
 	if (semanticConfig) {
@@ -64,12 +65,11 @@ https://semantic-release.gitbooks.io/semantic-release/content/docs/usage/ci-conf
 	}
 
 	// Add global semantic-release runner to .travis.yml
+	const dependencies = ['semantic-release'].concat(semanticPeerDependencies);
 	const commands = [
-		'npm install -g semantic-release',
-		semanticPeerDependencies.length > 0 &&
-			`npm install --no-save ${semanticPeerDependencies.join(' ')}`,
-		'semantic-release' + (semanticArgs ? ` ${semanticArgs}` : ''),
-	].filter(Boolean);
+		`npm install --no-save ${dependencies.join(' ')}`,
+		'npx travis-deploy-once "semantic-release' + (semanticArgs ? ` ${semanticArgs}` : '') + '"',
+	];
 	travisYml
 		.merge({
 			after_success: commands,
@@ -98,7 +98,7 @@ https://semantic-release.gitbooks.io/semantic-release/content/docs/usage/ci-conf
 	}
 
 	// Remove semantic-release from project dependencies
-	uninstall('semantic-release');
+	uninstall(['semantic-release', 'travis-deploy-once']);
 }
 
 task.description = 'Adds semantic-release';
