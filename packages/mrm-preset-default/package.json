@@ -1,6 +1,6 @@
 {
   "name": "mrm-preset-default",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Common tasks for Mrm",
   "author": {
     "name": "Artem Sapegin",
@@ -36,7 +36,7 @@
     "mrm-task-package": "^1.1.1",
     "mrm-task-prettier": "^1.2.2",
     "mrm-task-readme": "^1.1.2",
-    "mrm-task-semantic-release": "^2.0.1",
+    "mrm-task-semantic-release": "^2.1.0",
     "mrm-task-styleguidist": "^1.0.2",
     "mrm-task-stylelint": "^2.0.2",
     "mrm-task-travis": "^1.1.1",
