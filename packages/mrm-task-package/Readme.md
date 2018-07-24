@@ -4,7 +4,7 @@
 
 ## What it does
 
-* Creates `package.json`
+- Creates `package.json`
 
 ## Usage
 

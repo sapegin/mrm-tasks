@@ -2,78 +2,78 @@
 
 ### lint-staged
 
-* Correct extensions inference.
+- Correct extensions inference.
 
 ### package
 
-* New options: minNode, license.
-* Update engines.node on second run.
+- New options: minNode, license.
+- Update engines.node on second run.
 
 ### semantic-release
 
-* Update to semantic-release 11.
-* New option semanticArgs.
+- Update to semantic-release 11.
+- New option semanticArgs.
 
 ### travis
 
-* New option: maxNode.
+- New option: maxNode.
 
 ## 1.5.0
 
-* Update tasks.
+- Update tasks.
 
 ## 1.4.0
 
-* New tasks: contributing, prettier.
+- New tasks: contributing, prettier.
 
 ## 1.3.1
 
 ### jest
 
-* Don’t update `.npmignore` for private packages.
-* Suggest to run jest-codemods via npx and with the --force switch.
+- Don’t update `.npmignore` for private packages.
+- Suggest to run jest-codemods via npx and with the --force switch.
 
 ## 1.3.0
 
 ### license
 
-* Add Unlicense license (#7).
+- Add Unlicense license (#7).
 
 ## 1.2.1
 
 ### editorconfig
 
-* Add `root=true` flag.
+- Add `root=true` flag.
 
 ## 1.2.0
 
 ### package
 
-* Fix: Correct package name.
+- Fix: Correct package name.
 
 ### readme
 
-* Make package name required and configurable.
+- Make package name required and configurable.
 
 ### semantic-release
 
-* Fix: Install peer dependencies locally.
+- Fix: Install peer dependencies locally.
 
 ## 1.1.0
 
 ### eslint
 
-* Fix: Correct `--ext` value for TypeScript.
+- Fix: Correct `--ext` value for TypeScript.
 
 ### jest
 
-* TypeScript support.
-* More useful default template (for single-file projects).
-* Fix: Keep default `testPathIgnorePatterns` value.
+- TypeScript support.
+- More useful default template (for single-file projects).
+- Fix: Keep default `testPathIgnorePatterns` value.
 
 ### semantic-release
 
-* Add options for custom semantic-release config and extra dependencies.
+- Add options for custom semantic-release config and extra dependencies.
 
 ## 1.0.1
 

@@ -1,6 +1,6 @@
 ## 1.1.0
 
-* New option: maxNode.
+- New option: maxNode.
 
 ## 1.0.0
 

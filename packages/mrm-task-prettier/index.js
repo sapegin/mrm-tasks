@@ -49,7 +49,7 @@ function task(config) {
 			? {}
 			: {
 					useTabs: indent === 'tab',
-				},
+			  },
 		editorconfigOptions,
 		prettierOptions,
 		overrides && { overrides }

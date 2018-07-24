@@ -4,9 +4,9 @@
 
 ## What it does
 
-* Runs semantic-release on Travis CI
-* Adds an npm version badge to the Readme
-* Adds change log file to `.gitignore`
+- Runs semantic-release on Travis CI
+- Adds an npm version badge to the Readme
+- Adds change log file to `.gitignore`
 
 ## Usage
 

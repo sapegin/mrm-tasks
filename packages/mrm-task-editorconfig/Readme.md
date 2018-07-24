@@ -4,7 +4,7 @@
 
 ## What it does
 
-* Creates `.editorconfig`.
+- Creates `.editorconfig`.
 
 ## Usage
 

@@ -6,9 +6,9 @@ Supports JavaScript and TypeScript.
 
 ## What it does
 
-* Creates `.eslintrc`
-* Adds an npm script to run ESLint before tests
-* Installs dependencies
+- Creates `.eslintrc`
+- Adds an npm script to run ESLint before tests
+- Installs dependencies
 
 ## Usage
 

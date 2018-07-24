@@ -4,7 +4,7 @@
 
 ## What it does
 
-* Creates `.gitignore`.
+- Creates `.gitignore`.
 
 ## Usage
 

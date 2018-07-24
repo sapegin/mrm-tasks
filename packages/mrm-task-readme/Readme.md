@@ -4,7 +4,7 @@
 
 ## What it does
 
-* Creates a Readme file
+- Creates a Readme file
 
 ## Usage
 

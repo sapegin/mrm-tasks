@@ -4,8 +4,8 @@
 
 ## What it does
 
-* Creates a style guide config
-* Installs dependencies
+- Creates a style guide config
+- Installs dependencies
 
 ## Usage
 

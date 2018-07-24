@@ -6,11 +6,11 @@ Supports Babel (via [babel-jest](https://github.com/facebook/jest/tree/master/pa
 
 ## What it does
 
-* Adds npm scripts
-* Updates `.gitignore`, `.npmignore`, `.eslintignore` with common patterns
-* Creates a sample test file, `test.js`, when the project has `index.js` in the root folder
-* Tries to get rid of Mocha and AVA configs and dependencies
-* Installs dependencies
+- Adds npm scripts
+- Updates `.gitignore`, `.npmignore`, `.eslintignore` with common patterns
+- Creates a sample test file, `test.js`, when the project has `index.js` in the root folder
+- Tries to get rid of Mocha and AVA configs and dependencies
+- Installs dependencies
 
 ## Usage
 

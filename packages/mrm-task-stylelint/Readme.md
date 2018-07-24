@@ -4,9 +4,9 @@
 
 ## What it does
 
-* Creates `.stylelintrc`
-* Adds npm script to run stylelint before tests
-* Installs dependencies
+- Creates `.stylelintrc`
+- Adds npm script to run stylelint before tests
+- Installs dependencies
 
 ## Usage
 

@@ -4,7 +4,7 @@
 
 ## What it does
 
-* Creates a license file.
+- Creates a license file.
 
 ## Usage
 

@@ -13,11 +13,11 @@ function task(config) {
 		indent === 'tab'
 			? {
 					indent_style: 'tab',
-				}
+			  }
 			: {
 					indent_style: 'space',
 					indent_size: indent,
-				},
+			  },
 		{
 			end_of_line: 'lf',
 			charset: 'utf-8',

@@ -4,7 +4,7 @@
 
 ## What it does
 
-* Creates a contributing guidelines file
+- Creates a contributing guidelines file
 
 ## Usage
 

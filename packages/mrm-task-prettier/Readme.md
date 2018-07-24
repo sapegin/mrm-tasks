@@ -4,9 +4,9 @@
 
 ## What it does
 
-* Creates `.prettierrc`
-* Adds an npm script to run Prettier after tests
-* Installs dependencies
+- Creates `.prettierrc`
+- Adds an npm script to run Prettier after tests
+- Installs dependencies
 
 ## Usage
 

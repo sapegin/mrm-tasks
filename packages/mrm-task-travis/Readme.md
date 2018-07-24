@@ -4,8 +4,8 @@
 
 ## What it does
 
-* Creates `.travis.yml`
-* Adds Travis CI badge to the Readme
+- Creates `.travis.yml`
+- Adds Travis CI badge to the Readme
 
 ## Usage
 

@@ -6,9 +6,9 @@
 
 ## What it does
 
-* Creates a config in `package.json`
-* Sets up a pre-commit Git hook
-* Installs dependencies
+- Creates a config in `package.json`
+- Sets up a pre-commit Git hook
+- Installs dependencies
 
 ## Usage
 

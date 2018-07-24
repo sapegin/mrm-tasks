@@ -10,28 +10,28 @@ See [mrm-preset-default](https://github.com/sapegin/mrm-tasks/tree/master/packag
 
 <!-- textlint-disable terminology -->
 
-* [codecov](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-codecov)
-* [contributing](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-contributing)
-* [editorconfig](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-editorconfig)
-* [eslint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-eslint)
-* [gitignore](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-gitignore)
-* [jest](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-jest)
-* [license](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-license)
-* [lint-staged](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-lint-staged)
-* [package](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-package)
-* [prettier](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-prettier)
-* [readme](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-readme)
-* [semantic-release](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-semantic-release)
-* [styleguidist](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-styleguidist)
-* [stylelint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-stylelint)
-* [travis](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-travis)
-* [typescript](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-typescript)
+- [codecov](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-codecov)
+- [contributing](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-contributing)
+- [editorconfig](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-editorconfig)
+- [eslint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-eslint)
+- [gitignore](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-gitignore)
+- [jest](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-jest)
+- [license](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-license)
+- [lint-staged](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-lint-staged)
+- [package](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-package)
+- [prettier](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-prettier)
+- [readme](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-readme)
+- [semantic-release](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-semantic-release)
+- [styleguidist](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-styleguidist)
+- [stylelint](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-stylelint)
+- [travis](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-travis)
+- [typescript](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-typescript)
 
 <!-- textlint-enable -->
 
 ## Additional tasks
 
-* [Gitter](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-gitter)
+- [Gitter](https://github.com/sapegin/mrm-tasks/tree/master/packages/mrm-task-gitter)
 
 ## Contributing
 

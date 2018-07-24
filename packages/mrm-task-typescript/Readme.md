@@ -4,9 +4,9 @@
 
 ## What it does
 
-* Creates `tsconfig.json`
-* Adds an npm script to run type check before tests
-* Installs dependencies
+- Creates `tsconfig.json`
+- Adds an npm script to run type check before tests
+- Installs dependencies
 
 ## Usage
 
