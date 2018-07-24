@@ -100,6 +100,22 @@ it('should keep custom extensions defined in a package.json script', () => {
 	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
 });
 
+it('should not add custom extensions when they were not specified', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			scripts: {
+				lint: 'eslint . --cache --fix',
+				test: 'jest',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
+});
+
 it('should replace scripts.test.eslint with scripts.lint and scripts.pretest', () => {
 	vol.fromJSON({
 		'/package.json': stringify({

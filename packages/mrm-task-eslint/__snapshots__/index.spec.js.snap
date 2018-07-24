@@ -64,6 +64,17 @@ exports[`should keep custom extensions defined in a package.json script 1`] = `
 }"
 `;
 
+exports[`should not add custom extensions when they were not specified 1`] = `
+"{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"lint\\": \\"eslint . --cache --fix\\",
+    \\"pretest\\": \\"npm run lint\\",
+    \\"test\\": \\"jest\\"
+  }
+}"
+`;
+
 exports[`should remove custom extension if it’s "js" (default value) 1`] = `
 "{
   \\"name\\": \\"unicorn\\",

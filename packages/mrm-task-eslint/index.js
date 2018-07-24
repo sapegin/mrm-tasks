@@ -74,7 +74,7 @@ function task(config) {
 	// Keep custom extensions
 	const lintScript = pkg.getScript('lint', 'eslint') || pkg.getScript('test', 'eslint');
 	if (lintScript) {
-		const lintExts = getExtsFromCommand(lintScript);
+		const lintExts = getExtsFromCommand(lintScript, 'ext');
 		if (lintExts && lintExts.toString() !== 'js') {
 			const extsPattern = lintExts.map(x => `.${x}`).join(',');
 			exts = ` --ext ${extsPattern}`;
