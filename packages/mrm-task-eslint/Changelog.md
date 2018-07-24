@@ -1,4 +1,4 @@
-## 1.1.1
+## 1.1.3
 
 - Fix incorrect custom extensions handling.
 
