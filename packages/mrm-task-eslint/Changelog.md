@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Fix incorrect custom extensions handling.
+
 ## 1.1.0
 
 - Add `eslintObsoleteDependencies` option.

@@ -1,3 +1,9 @@
+## 1.7.1
+
+### eslint
+
+- Fix incorrect custom extensions handling.
+
 ## 1.6.0
 
 ### lint-staged
