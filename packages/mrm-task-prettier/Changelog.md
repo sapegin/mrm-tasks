@@ -1,3 +1,7 @@
+## 1.2.4
+
+- Use double quotes to make it work on Windows.
+
 ## 1.2.3
 
 - Update deps.
