@@ -79,7 +79,9 @@ function task(config) {
 
 	pkg
 		// Add format script
-		.setScript('format', `prettier --write '${pattern}'`)
+		// Double quotes are essential to support Windows:
+		// https://github.com/prettier/prettier/issues/4086#issuecomment-370228517
+		.setScript('format', `prettier --write "${pattern}"`)
 		// Add pretest script
 		.appendScript('posttest', 'npm run format')
 		.save();

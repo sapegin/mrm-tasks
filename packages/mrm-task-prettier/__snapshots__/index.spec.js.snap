@@ -21,7 +21,7 @@ Object {
   \\"scripts\\": {
     \\"test\\": \\"jest\\",
     \\"posttest\\": \\"npm run format\\",
-    \\"format\\": \\"prettier --write '**/*.{js,css,md}'\\"
+    \\"format\\": \\"prettier --write \\\\\\"**/*.{js,css,md}\\\\\\"\\"
   }
 }",
 }
@@ -47,7 +47,7 @@ exports[`should keep a custom pattern defined in a package.json script 1`] = `
 "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
-    \\"format\\": \\"prettier --write '**/*.{xxx,yyy}'\\",
+    \\"format\\": \\"prettier --write \\\\\\"**/*.{xxx,yyy}\\\\\\"\\",
     \\"test\\": \\"jest\\",
     \\"posttest\\": \\"npm run format\\"
   }
