@@ -1,3 +1,9 @@
+## 1.8.2
+
+### prettier
+
+- Use double quotes to make it work on Windows.
+
 ## 1.8.1
 
 ### eslint
