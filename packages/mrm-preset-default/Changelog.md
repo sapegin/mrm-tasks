@@ -1,3 +1,13 @@
+## 1.9.0
+
+### eslint
+
+- Remove legacy ESLint config, `.eslintrc`.
+
+### all tasks
+
+- Update deps.
+
 ## 1.8.2
 
 ### prettier

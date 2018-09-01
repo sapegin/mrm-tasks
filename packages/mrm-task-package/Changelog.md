@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Update deps.
+
 ## 1.1.0
 
 - New options: minNode, license.

@@ -1,3 +1,7 @@
+## 1.2.1
+
+- Update deps.
+
 ## 1.2.0
 
 - Use author.name from package.json by default.

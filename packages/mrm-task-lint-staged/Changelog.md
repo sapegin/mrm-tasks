@@ -1,3 +1,7 @@
+## 1.3.1
+
+- Update deps.
+
 ## 1.3.0
 
 - Rename to lint-staged to match the package name.

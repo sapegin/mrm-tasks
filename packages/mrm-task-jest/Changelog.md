@@ -1,3 +1,7 @@
+## 1.2.2
+
+- Update deps.
+
 ## 1.2.1
 
 - Make basic test file template more useful.
