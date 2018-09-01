@@ -28,7 +28,7 @@
     "markdown"
   ],
   "dependencies": {
-    "editorconfig-to-prettier": "0.0.4",
-    "mrm-core": "^3.1.0"
+    "editorconfig-to-prettier": "0.0.6",
+    "mrm-core": "^3.3.0"
   }
 }

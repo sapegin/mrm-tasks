@@ -24,7 +24,7 @@
     "contributing"
   ],
   "dependencies": {
-    "git-username": "^0.5.0",
-    "mrm-core": "^3.1.0"
+    "git-username": "^1.0.0",
+    "mrm-core": "^3.3.0"
   }
 }
