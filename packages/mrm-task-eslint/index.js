@@ -2,6 +2,8 @@ const { json, packageJson, lines, install, uninstall, getExtsFromCommand } = req
 
 function task(config) {
 	let exts = '';
+	const legacyConfigFile = '.eslintrc';
+	const configFile = '.eslintrc.json';
 	const ignores = ['node_modules/'];
 	const gitIgnores = ['.eslintcache'];
 	const packages = ['eslint'];
@@ -22,8 +24,13 @@ function task(config) {
 	// Peer dependencies
 	packages.push(...eslintPeerDependencies);
 
-	// .eslintrc
-	const eslintrc = json('.eslintrc');
+	// Migrate legacy config
+	const legacyEslintrc = json(legacyConfigFile);
+	const legacyConfig = legacyEslintrc.get();
+	legacyEslintrc.delete();
+
+	// .eslintrc.json
+	const eslintrc = json(configFile, legacyConfig);
 	if (!eslintrc.get('extends', '').startsWith(eslintPreset)) {
 		eslintrc.set('extends', eslintPreset);
 	}

@@ -3,7 +3,7 @@
 exports[`should add ESLint 1`] = `
 Object {
   "/.eslintignore": "node_modules/",
-  "/.eslintrc": "{
+  "/.eslintrc.json": "{
   \\"extends\\": \\"eslint:recommended\\"
 }",
   "/.gitignore": ".eslintcache",
@@ -30,7 +30,7 @@ exports[`should add custom rules 1`] = `
 exports[`should add extra rules, parser and extensions for a TypeScript project 1`] = `
 Object {
   "/.eslintignore": "node_modules/",
-  "/.eslintrc": "{
+  "/.eslintrc.json": "{
   \\"extends\\": \\"eslint:recommended\\",
   \\"parser\\": \\"typescript-eslint-parser\\",
   \\"rules\\": {
@@ -62,6 +62,27 @@ exports[`should keep custom extensions defined in a package.json script 1`] = `
     \\"test\\": \\"jest\\"
   }
 }"
+`;
+
+exports[`should migrate legacy config file 1`] = `
+Object {
+  "/.eslintignore": "node_modules/",
+  "/.eslintrc.json": "{
+  \\"rules\\": {
+    \\"no-foo\\": 2
+  },
+  \\"extends\\": \\"eslint:recommended\\"
+}",
+  "/.gitignore": ".eslintcache",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {
+    \\"pretest\\": \\"npm run lint\\",
+    \\"test\\": \\"jest\\",
+    \\"lint\\": \\"eslint . --cache --fix\\"
+  }
+}",
+}
 `;
 
 exports[`should not add custom extensions when they were not specified 1`] = `

@@ -1,6 +1,7 @@
 jest.mock('fs');
 jest.mock('mrm-core/src/util/log', () => ({
 	added: jest.fn(),
+	removed: jest.fn(),
 }));
 jest.mock('mrm-core/src/npm', () => ({
 	install: jest.fn(),
@@ -14,6 +15,8 @@ const task = require('./index');
 
 const stringify = o => JSON.stringify(o, null, '  ');
 
+const legacyConfigFile = '/.eslintrc';
+const configFile = '/.eslintrc.json';
 const packageJson = stringify({
 	name: 'unicorn',
 	scripts: {
@@ -45,7 +48,7 @@ it('should use a custom preset', () => {
 
 	task(getConfigGetter({ eslintPreset: 'airbnb' }));
 
-	expect(vol.toJSON()['/.eslintrc']).toMatchSnapshot();
+	expect(vol.toJSON()[configFile]).toMatchSnapshot();
 	expect(install).toBeCalledWith(['eslint', 'eslint-config-airbnb']);
 });
 
@@ -56,7 +59,7 @@ it('should add custom rules', () => {
 
 	task(getConfigGetter({ eslintRules: { 'no-undef': 0 } }));
 
-	expect(vol.toJSON()['/.eslintrc']).toMatchSnapshot();
+	expect(vol.toJSON()[configFile]).toMatchSnapshot();
 });
 
 it('should install extra dependencies', () => {
@@ -161,4 +164,15 @@ it('should add extra rules, parser and extensions for a TypeScript project', () 
 
 	expect(vol.toJSON()).toMatchSnapshot();
 	expect(install).toBeCalledWith(['eslint', 'typescript-eslint-parser']);
+});
+
+it('should migrate legacy config file', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+		[legacyConfigFile]: stringify({ rules: { 'no-foo': 2 } }),
+	});
+
+	task(getConfigGetter());
+
+	expect(vol.toJSON()).toMatchSnapshot();
 });

@@ -6,7 +6,7 @@ Supports JavaScript and TypeScript.
 
 ## What it does
 
-- Creates `.eslintrc`
+- Creates `.eslintrc.json`
 - Adds an npm script to run ESLint before tests
 - Installs dependencies
 

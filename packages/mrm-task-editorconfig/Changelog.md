@@ -1,3 +1,8 @@
+## 1.1.0
+
+- Remove legacy ESLint config, `.eslintrc`.
+- Update deps.
+
 ## 1.0.4
 
 - Update deps.

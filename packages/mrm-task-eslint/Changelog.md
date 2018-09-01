@@ -1,3 +1,8 @@
+## 1.2.0
+
+- Migrate `.eslintrc` to `.eslintrc.json`.
+- Update deps.
+
 ## 1.1.3
 
 - Fix incorrect custom extensions handling.
