@@ -1,3 +1,9 @@
+## 1.10.0
+
+### lint-staged
+
+- Support husky 1.0, automatically migrate old configs.
+
 ## 1.9.0
 
 ### eslint
