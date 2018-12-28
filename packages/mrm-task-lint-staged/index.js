@@ -1,7 +1,7 @@
 const { packageJson, install, getExtsFromCommand } = require('mrm-core');
 const semver = require('semver');
 
-const packages = ['lint-staged', 'husky'];
+const packages = { 'lint-staged': '>=8', husky: '>=1' };
 
 function extsToGlob(exts, defaults) {
 	if (!exts) {
@@ -92,15 +92,20 @@ function task(config) {
 
 	// package.json
 	pkg
+		// Remove husky 0.14 config
+		.unset('scripts.precommit')
+		// Add new config
 		.merge({
-			scripts: {
-				precommit: 'lint-staged',
+			husky: {
+				hooks: {
+					precommit: 'lint-staged',
+				},
 			},
 			'lint-staged': rules,
 		})
 		.save();
 
-	// package.json: dependencies
+	// Install dependencies
 	install(packages);
 }
 

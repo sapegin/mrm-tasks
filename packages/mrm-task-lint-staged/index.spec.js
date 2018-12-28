@@ -54,7 +54,7 @@ it('should add Prettier if project depends on it', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
-	expect(install).toBeCalledWith(['lint-staged', 'husky']);
+	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
 });
 
 it('should add *.css to Prettier extensions if Prettier >= 1.4', () => {
@@ -169,7 +169,7 @@ it('should add ESLint if project depends on it', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
-	expect(install).toBeCalledWith(['lint-staged', 'husky']);
+	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
 });
 
 it('should use default JS extension if eslint command has no --ext key', () => {
@@ -252,7 +252,7 @@ it('should merge ESLint and Prettier into a single lint-staged rule', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
-	expect(install).toBeCalledWith(['lint-staged', 'husky']);
+	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
 });
 
 it('should add stylelint if project depends on it', () => {
@@ -268,7 +268,7 @@ it('should add stylelint if project depends on it', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
-	expect(install).toBeCalledWith(['lint-staged', 'husky']);
+	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
 });
 
 it('should use a custom stylelint extension', () => {
@@ -300,5 +300,23 @@ it('should use a custom rules', () => {
 	task(getConfigGetter({ lintStagedRules: { '*.js': 'false' } }));
 
 	expect(vol.toJSON()).toMatchSnapshot();
-	expect(install).toBeCalledWith(['lint-staged', 'husky']);
+	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
+});
+
+it('should remove husky 0.14 config from package.json', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			scripts: {
+				precommit: 'lint-staged',
+			},
+			devDependencies: {
+				eslint: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter());
+
+	expect(vol.toJSON()).toMatchSnapshot();
 });

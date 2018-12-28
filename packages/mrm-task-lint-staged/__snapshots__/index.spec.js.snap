@@ -7,8 +7,10 @@ Object {
   \\"devDependencies\\": {
     \\"prettier\\": \\">=1.5.3\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.{js,css,json}\\": [
@@ -27,8 +29,10 @@ Object {
   \\"devDependencies\\": {
     \\"prettier\\": \\"1.4.0\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.{js,css}\\": [
@@ -47,8 +51,10 @@ Object {
   \\"devDependencies\\": {
     \\"prettier\\": \\"~1.8.5\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.{js,css,json,md}\\": [
@@ -67,8 +73,10 @@ Object {
   \\"devDependencies\\": {
     \\"eslint\\": \\"*\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.js\\": [
@@ -84,12 +92,15 @@ exports[`should add Prettier and ESLint 1`] = `
 Object {
   "/package.json": "{
   \\"name\\": \\"unicorn\\",
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
-  },
+  \\"scripts\\": {},
   \\"devDependencies\\": {
     \\"eslint\\": \\"4.0.1\\",
     \\"prettier\\": \\"1.9.2\\"
+  },
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.{js,css,json,md}\\": [
@@ -112,8 +123,10 @@ Object {
   \\"devDependencies\\": {
     \\"prettier\\": \\"*\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.js\\": [
@@ -132,8 +145,10 @@ Object {
   \\"devDependencies\\": {
     \\"stylelint\\": \\"*\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.css\\": [
@@ -149,11 +164,15 @@ exports[`should infer ESLint extension for an npm script 1`] = `
 "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
-    \\"lint\\": \\"eslint --fix --ext .js,.jsx\\",
-    \\"precommit\\": \\"lint-staged\\"
+    \\"lint\\": \\"eslint --fix --ext .js,.jsx\\"
   },
   \\"devDependencies\\": {
     \\"eslint\\": \\"*\\"
+  },
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.{js,jsx}\\": [
@@ -168,11 +187,15 @@ exports[`should infer Prettier extension from an npm script 1`] = `
 "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
-    \\"format\\": \\"prettier --write '**/*.{js,jsx}'\\",
-    \\"precommit\\": \\"lint-staged\\"
+    \\"format\\": \\"prettier --write '**/*.{js,jsx}'\\"
   },
   \\"devDependencies\\": {
     \\"prettier\\": \\"1.9.2\\"
+  },
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.{js,jsx}\\": [
@@ -190,8 +213,10 @@ exports[`should merge ESLint and Prettier into a single lint-staged rule 1`] = `
     \\"eslint\\": \\"*\\",
     \\"prettier\\": \\"*\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.js\\": [
@@ -203,6 +228,29 @@ exports[`should merge ESLint and Prettier into a single lint-staged rule 1`] = `
 }"
 `;
 
+exports[`should remove husky 0.14 config from package.json 1`] = `
+Object {
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"scripts\\": {},
+  \\"devDependencies\\": {
+    \\"eslint\\": \\"*\\"
+  },
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
+  },
+  \\"lint-staged\\": {
+    \\"*.js\\": [
+      \\"eslint --fix\\",
+      \\"git add\\"
+    ]
+  }
+}",
+}
+`;
+
 exports[`should use a custom ESLint extension 1`] = `
 Object {
   "/package.json": "{
@@ -210,8 +258,10 @@ Object {
   \\"devDependencies\\": {
     \\"eslint\\": \\"*\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.{js,jsx}\\": [
@@ -231,8 +281,10 @@ Object {
     \\"eslint\\": \\"*\\",
     \\"stylelint\\": \\"*\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.js\\": \\"false\\"
@@ -248,8 +300,10 @@ Object {
   \\"devDependencies\\": {
     \\"stylelint\\": \\"*\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.scss\\": [
@@ -268,8 +322,10 @@ Object {
   \\"devDependencies\\": {
     \\"prettier\\": \\"1.9.2\\"
   },
-  \\"scripts\\": {
-    \\"precommit\\": \\"lint-staged\\"
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.{js,jsx,mjs}\\": [
@@ -285,11 +341,15 @@ exports[`should use default JS extension if eslint command has no --ext key 1`] 
 "{
   \\"name\\": \\"unicorn\\",
   \\"scripts\\": {
-    \\"lint\\": \\"eslint --fix\\",
-    \\"precommit\\": \\"lint-staged\\"
+    \\"lint\\": \\"eslint --fix\\"
   },
   \\"devDependencies\\": {
     \\"eslint\\": \\"*\\"
+  },
+  \\"husky\\": {
+    \\"hooks\\": {
+      \\"precommit\\": \\"lint-staged\\"
+    }
   },
   \\"lint-staged\\": {
     \\"*.js\\": [

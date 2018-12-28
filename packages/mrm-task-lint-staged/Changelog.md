@@ -1,3 +1,7 @@
+## 1.4.0
+
+- Support husky 1.0, automatically migrate old configs.
+
 ## 1.3.1
 
 - Update deps.
