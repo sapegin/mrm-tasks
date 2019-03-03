@@ -1,3 +1,7 @@
+## 1.4.1
+
+- Use correct Husky hook name: `pre-commit` instead of `precommit`.
+
 ## 1.4.0
 
 - Support husky 1.0, automatically migrate old configs.
