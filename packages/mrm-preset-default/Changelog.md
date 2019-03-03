@@ -1,3 +1,9 @@
+## 1.10.1
+
+### lint-staged
+
+- Use correct Husky hook name: `pre-commit` instead of `precommit`.
+
 ## 1.10.0
 
 ### lint-staged
