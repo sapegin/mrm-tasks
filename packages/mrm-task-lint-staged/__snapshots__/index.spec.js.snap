@@ -9,7 +9,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -31,7 +31,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -53,7 +53,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -75,7 +75,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -99,7 +99,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -125,7 +125,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -147,7 +147,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -171,7 +171,7 @@ exports[`should infer ESLint extension for an npm script 1`] = `
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -194,7 +194,7 @@ exports[`should infer Prettier extension from an npm script 1`] = `
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -215,7 +215,7 @@ exports[`should merge ESLint and Prettier into a single lint-staged rule 1`] = `
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -238,7 +238,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -260,7 +260,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -283,7 +283,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -302,7 +302,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -324,7 +324,7 @@ Object {
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {
@@ -348,7 +348,7 @@ exports[`should use default JS extension if eslint command has no --ext key 1`] 
   },
   \\"husky\\": {
     \\"hooks\\": {
-      \\"precommit\\": \\"lint-staged\\"
+      \\"pre-commit\\": \\"lint-staged\\"
     }
   },
   \\"lint-staged\\": {

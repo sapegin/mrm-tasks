@@ -98,7 +98,7 @@ function task(config) {
 		.merge({
 			husky: {
 				hooks: {
-					precommit: 'lint-staged',
+					'pre-commit': 'lint-staged',
 				},
 			},
 			'lint-staged': rules,

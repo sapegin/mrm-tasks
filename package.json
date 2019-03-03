@@ -29,14 +29,18 @@
     "test:coverage": "jest --coverage",
     "test": "npm run test:jest",
     "format": "prettier --write '**/*.{js,md}'",
-    "posttest": "npm run format",
-    "precommit": "lint-staged"
+    "posttest": "npm run format"
   },
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/templates/"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.js": [
