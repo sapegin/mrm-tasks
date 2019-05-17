@@ -8,7 +8,8 @@
     "publish": {
       "ignoreChanges": [
         "package-lock.json",
-        "*.md",
+        "Readme.md",
+        "Changelog.md",
         "*.spec.js",
         "*.snap"
       ]
