@@ -1,8 +1,10 @@
 const fs = require('fs');
+const gitUsername = require('git-username');
 const { MrmError, packageJson, lines, yaml, markdown, uninstall } = require('mrm-core');
 
 function task(config) {
 	const {
+		github,
 		readmeFile,
 		changelogFile,
 		semanticConfig,
@@ -10,6 +12,7 @@ function task(config) {
 		semanticPeerDependencies,
 	} = config
 		.defaults({
+			github: gitUsername(),
 			readmeFile: 'Readme.md',
 			changelogFile: 'Changelog.md',
 			semanticPeerDependencies: [],
@@ -26,21 +29,6 @@ function task(config) {
 
 	// package.json
 	const pkg = packageJson();
-
-	if (!pkg.getScript('semantic-release')) {
-		throw new MrmError(
-			`Setup semantic-release first:
-  npx semantic-release-cli setup
-
-semantic-release needs to add required auth keys to Travis CI.
-
-WARNING: Do not agree to update your .travis.yml when asked.
-
-More info:
-https://semantic-release.gitbooks.io/semantic-release/content/docs/usage/ci-configuration.html#automatic-setup-with-semantic-release-cli
-`
-		);
-	}
 
 	// Remove semantic-release script
 	pkg.removeScript('semantic-release');
@@ -99,6 +87,38 @@ https://semantic-release.gitbooks.io/semantic-release/content/docs/usage/ci-conf
 
 	// Remove semantic-release from project dependencies
 	uninstall(['semantic-release', 'travis-deploy-once']);
+
+	console.log(
+		`Please setup semantic-release authentication on Travis CI:
+
+1. Generate npm token:
+
+   npm token create
+
+   Note: Only the auth-only level of npm two-factor authentication is supported.
+
+   More info: https://docs.npmjs.com/getting-started/working_with_tokens#how-to-create-new-tokens
+
+2. Generate GitHub token:
+
+   https://github.com/settings/tokens/new
+
+   Select the “repo” scope.
+
+   More info: https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line
+
+3. Add environment variables to Travis CI:
+
+   https://travis-ci.org/${github}/${packageName}/settings
+
+   NPM_TOKEN=<Generated npm token>
+   GH_TOKEN=<Generated GitHub token>
+
+   DO NOT enable “Display value in build log”.
+
+   More info: https://semantic-release.gitbook.io/semantic-release/usage/ci-configuration
+`
+	);
 }
 
 task.description = 'Adds semantic-release';

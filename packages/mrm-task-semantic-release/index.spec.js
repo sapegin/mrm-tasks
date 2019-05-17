@@ -11,6 +11,8 @@ const { getConfigGetter } = require('mrm');
 const vol = require('memfs').vol;
 const task = require('./index');
 
+const console$log = console.log;
+
 const stringify = o => JSON.stringify(o, null, '  ');
 
 const travisYml = `language: node_js
@@ -25,9 +27,14 @@ const packageJson = stringify({
 });
 const readmeMd = '# Unicorn';
 
+beforeEach(() => {
+	console.log = jest.fn();
+});
+
 afterEach(() => {
 	vol.reset();
 	uninstall.mockClear();
+	console.log = console$log;
 });
 
 it('should add semantic-release', () => {
@@ -132,15 +139,4 @@ it('should throw when .travis.yml not found', () => {
 	const fn = () => task(getConfigGetter({}));
 
 	expect(fn).toThrowError('Run travis task');
-});
-
-it('should throw when semantic-release script not found', () => {
-	vol.fromJSON({
-		'/.travis.yml': travisYml,
-		'/package.json': '{}',
-	});
-
-	const fn = () => task(getConfigGetter({}));
-
-	expect(fn).toThrowError('semantic-release needs to add required auth keys');
 });
