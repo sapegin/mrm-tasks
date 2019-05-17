@@ -1,6 +1,6 @@
 {
   "name": "mrm-task-semantic-release",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Mrm task that adds semantic-release",
   "author": {
     "name": "Artem Sapegin",
