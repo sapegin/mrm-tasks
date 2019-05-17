@@ -1,3 +1,7 @@
+## 2.2.0
+
+- Show complete authentication instructions instead of relying on `semantic-release-cli`, which doesn't work well with npm two-factor authentication.
+
 ## 2.1.1
 
 - Update deps.
