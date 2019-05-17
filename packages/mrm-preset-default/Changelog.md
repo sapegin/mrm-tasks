@@ -1,3 +1,13 @@
+## 1.11.0
+
+### semantic-release
+
+- Show complete authentication instructions instead of relying on `semantic-release-cli`, which doesn't work well with npm two-factor authentication.
+
+### contributing
+
+- Tweak the template.
+
 ## 1.10.1
 
 ### lint-staged
