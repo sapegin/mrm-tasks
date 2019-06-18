@@ -1,3 +1,9 @@
+## 1.11.1
+
+### eslint
+
+- Support arrays in `extends` config option
+
 ## 1.11.0
 
 ### semantic-release

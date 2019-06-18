@@ -1,3 +1,7 @@
+## 1.2.1
+
+- Support arrays in `extends` config option
+
 ## 1.2.0
 
 - Migrate `.eslintrc` to `.eslintrc.json`.
