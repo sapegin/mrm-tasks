@@ -18,6 +18,16 @@ Object {
 }
 `;
 
+exports[`should add a custom preset (array) 1`] = `
+"{
+  \\"extends\\": [
+    \\"airbnb\\",
+    \\"coffee\\",
+    \\"pizza\\"
+  ]
+}"
+`;
+
 exports[`should add custom rules 1`] = `
 "{
   \\"extends\\": \\"eslint:recommended\\",
@@ -83,6 +93,21 @@ Object {
   }
 }",
 }
+`;
+
+exports[`should not add a custom preset if it’s already there (array) 1`] = `
+"{
+  \\"extends\\": [
+    \\"airbnb\\",
+    \\"pizza\\"
+  ]
+}"
+`;
+
+exports[`should not add a custom preset if it’s already there 1`] = `
+"{
+  \\"extends\\": \\"airbnb\\"
+}"
 `;
 
 exports[`should not add custom extensions when they were not specified 1`] = `

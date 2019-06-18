@@ -52,6 +52,42 @@ it('should use a custom preset', () => {
 	expect(install).toBeCalledWith(['eslint', 'eslint-config-airbnb']);
 });
 
+it('should not add a custom preset if it’s already there', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+		[configFile]: stringify({ extends: 'airbnb' }),
+	});
+
+	task(getConfigGetter({ eslintPreset: 'airbnb' }));
+
+	expect(vol.toJSON()[configFile]).toMatchSnapshot();
+	expect(install).toBeCalledWith(['eslint', 'eslint-config-airbnb']);
+});
+
+it('should add a custom preset (array)', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+		[configFile]: stringify({ extends: ['coffee', 'pizza'] }),
+	});
+
+	task(getConfigGetter({ eslintPreset: 'airbnb' }));
+
+	expect(vol.toJSON()[configFile]).toMatchSnapshot();
+	expect(install).toBeCalledWith(['eslint', 'eslint-config-airbnb']);
+});
+
+it('should not add a custom preset if it’s already there (array)', () => {
+	vol.fromJSON({
+		'/package.json': packageJson,
+		[configFile]: stringify({ extends: ['airbnb', 'pizza'] }),
+	});
+
+	task(getConfigGetter({ eslintPreset: 'airbnb' }));
+
+	expect(vol.toJSON()[configFile]).toMatchSnapshot();
+	expect(install).toBeCalledWith(['eslint', 'eslint-config-airbnb']);
+});
+
 it('should add custom rules', () => {
 	vol.fromJSON({
 		'/package.json': packageJson,

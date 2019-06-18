@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const { json, packageJson, lines, install, uninstall, getExtsFromCommand } = require('mrm-core');
 
 function task(config) {
@@ -31,8 +32,16 @@ function task(config) {
 
 	// .eslintrc.json
 	const eslintrc = json(configFile, legacyConfig);
-	if (!eslintrc.get('extends', '').startsWith(eslintPreset)) {
-		eslintrc.set('extends', eslintPreset);
+	const hasCustomPreset = _.castArray(eslintrc.get('extends', [])).find(x =>
+		x.startsWith(eslintPreset)
+	);
+	if (!hasCustomPreset) {
+		const presets = eslintrc.get('extends');
+		if (!presets) {
+			eslintrc.set('extends', eslintPreset);
+		} else {
+			eslintrc.set('extends', [eslintPreset, ..._.castArray(presets)]);
+		}
 	}
 	if (eslintRules) {
 		eslintrc.merge({ rules: eslintRules });
