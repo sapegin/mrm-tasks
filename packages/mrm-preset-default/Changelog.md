@@ -1,3 +1,13 @@
+## 1.12.0
+
+### codecov
+
+- Collecting test coverage on CI should respect pretest and posttest scripts
+
+### jest
+
+- Allow passing arguments via `test` script (like `npm test -- --coverage`).
+
 ## 1.11.1
 
 ### eslint

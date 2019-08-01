@@ -1,3 +1,7 @@
+## 1.2.3
+
+- Allow passing arguments via `test` script (like `npm test -- --coverage`).
+
 ## 1.2.2
 
 - Update deps.
