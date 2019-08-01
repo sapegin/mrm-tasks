@@ -13,7 +13,7 @@ Object {
     \\"test:jest\\": \\"jest\\",
     \\"test:watch\\": \\"jest --watch\\",
     \\"test:coverage\\": \\"jest --coverage\\",
-    \\"test\\": \\"npm run test:jest\\"
+    \\"test\\": \\"npm run test:jest --\\"
   },
   \\"jest\\": {
     \\"testPathIgnorePatterns\\": [
@@ -35,7 +35,7 @@ Object {
     \\"test:jest\\": \\"jest\\",
     \\"test:watch\\": \\"jest --watch\\",
     \\"test:coverage\\": \\"jest --coverage\\",
-    \\"test\\": \\"npm run test:jest\\"
+    \\"test\\": \\"npm run test:jest --\\"
   }
 }",
 }
@@ -51,7 +51,7 @@ exports[`should add React specific configuration if projects depends on React 1`
     \\"test:jest\\": \\"jest\\",
     \\"test:watch\\": \\"jest --watch\\",
     \\"test:coverage\\": \\"jest --coverage\\",
-    \\"test\\": \\"npm run test:jest\\"
+    \\"test\\": \\"npm run test:jest --\\"
   },
   \\"jest\\": {
     \\"snapshotSerializers\\": [
@@ -85,7 +85,7 @@ Object {
     \\"test:jest\\": \\"jest\\",
     \\"test:watch\\": \\"jest --watch\\",
     \\"test:coverage\\": \\"jest --coverage\\",
-    \\"test\\": \\"npm run test:jest\\"
+    \\"test\\": \\"npm run test:jest --\\"
   },
   \\"jest\\": {
     \\"testPathIgnorePatterns\\": [
@@ -128,7 +128,7 @@ exports[`should not overwrite Jest setup file 1`] = `
     \\"test:jest\\": \\"jest\\",
     \\"test:watch\\": \\"jest --watch\\",
     \\"test:coverage\\": \\"jest --coverage\\",
-    \\"test\\": \\"npm run test:jest\\"
+    \\"test\\": \\"npm run test:jest --\\"
   },
   \\"jest\\": {
     \\"snapshotSerializers\\": [

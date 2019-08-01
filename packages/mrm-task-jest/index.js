@@ -87,7 +87,7 @@ http://blog.sapegin.me/all/react-jest
 		.removeScript('test', /mocha|ava/);
 
 	// package.json: test command
-	pkg.appendScript('test', 'npm run test:jest');
+	pkg.appendScript('test', 'npm run test:jest --');
 
 	pkg.save();
 

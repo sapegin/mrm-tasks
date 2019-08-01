@@ -36,7 +36,7 @@ function task(config) {
 	if (!travisYml.get('after_success', []).includes(uploadCommand)) {
 		travisYml
 			.merge({
-				script: [`npm run ${coverageScript}`],
+				script: [`npm run test -- --coverage`],
 				after_success: [uploadCommand],
 			})
 			.save();
