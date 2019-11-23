@@ -4,11 +4,9 @@
   ],
   "version": "independent",
   "command": {
-    "version": {
-      "conventionalCommits": true,
-      "changelogPreset": "eslint"
-    },
     "publish": {
+      "conventionalCommits": true,
+      "changelogPreset": "eslint",
       "ignoreChanges": [
         "package-lock.json",
         "Readme.md",
