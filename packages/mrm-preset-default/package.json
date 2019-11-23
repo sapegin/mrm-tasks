@@ -10,7 +10,7 @@
   "repository": "sapegin/mrm-tasks",
   "license": "MIT",
   "engines": {
-    "node": ">=6.9"
+    "node": ">=8.9"
   },
   "main": "config.json",
   "files": [
@@ -24,7 +24,7 @@
     "mrm-preset"
   ],
   "dependencies": {
-    "mrm-core": "^3.3.0",
+    "mrm-core": "^4.0.0",
     "mrm-task-codecov": "^1.1.0",
     "mrm-task-contributing": "^1.1.0",
     "mrm-task-editorconfig": "^1.1.0",

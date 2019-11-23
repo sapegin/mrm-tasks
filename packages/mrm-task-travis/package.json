@@ -10,7 +10,7 @@
   "repository": "sapegin/mrm-tasks",
   "license": "MIT",
   "engines": {
-    "node": ">=6.9"
+    "node": ">=8.9"
   },
   "main": "index.js",
   "files": [
@@ -24,8 +24,8 @@
   ],
   "dependencies": {
     "git-username": "^1.0.0",
-    "lodash": "^4.17.10",
-    "mrm-core": "^3.3.0",
-    "semver-utils": "^1.1.2"
+    "lodash": "^4.17.15",
+    "mrm-core": "^4.0.0",
+    "semver-utils": "^1.1.4"
   }
 }

@@ -10,7 +10,7 @@
   "repository": "sapegin/mrm-tasks",
   "license": "MIT",
   "engines": {
-    "node": ">=6.9"
+    "node": ">=8.9"
   },
   "main": "index.js",
   "files": [
@@ -28,7 +28,7 @@
     "markdown"
   ],
   "dependencies": {
-    "editorconfig-to-prettier": "0.0.6",
-    "mrm-core": "^3.3.0"
+    "editorconfig-to-prettier": "0.1.1",
+    "mrm-core": "^4.0.0"
   }
 }

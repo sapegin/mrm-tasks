@@ -10,7 +10,7 @@
   "repository": "sapegin/mrm-tasks",
   "license": "MIT",
   "engines": {
-    "node": ">=6.9"
+    "node": ">=8.9"
   },
   "main": "index.js",
   "files": [
@@ -25,6 +25,6 @@
     "react"
   ],
   "dependencies": {
-    "mrm-core": "^3.3.0"
+    "mrm-core": "^4.0.0"
   }
 }
