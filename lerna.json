@@ -1,11 +1,12 @@
 {
-  "lerna": "2.1.0",
   "packages": [
     "packages/*"
   ],
   "version": "independent",
   "command": {
     "publish": {
+      "conventionalCommits": true,
+      "changelogPreset": "eslint",
       "ignoreChanges": [
         "package-lock.json",
         "Readme.md",
