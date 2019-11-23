@@ -49,7 +49,10 @@ function task(config) {
 
 	// Remove the official semantic-release runner from commands list on .travis.yml
 	if (Array.isArray(afterSuccess)) {
-		travisYml.set('after_success', afterSuccess.filter(cmd => cmd !== 'npm run semantic-release'));
+		travisYml.set(
+			'after_success',
+			afterSuccess.filter(cmd => cmd !== 'npm run semantic-release')
+		);
 	}
 
 	// Add global semantic-release runner to .travis.yml
