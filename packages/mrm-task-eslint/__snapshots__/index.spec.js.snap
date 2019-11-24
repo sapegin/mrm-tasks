@@ -37,17 +37,19 @@ exports[`should add custom rules 1`] = `
 }"
 `;
 
-exports[`should add extra rules, parser and extensions for a TypeScript project 1`] = `
+exports[`should add extra plugin, parser and extensions for a TypeScript project 1`] = `
 Object {
   "/.eslintignore": "node_modules/",
   "/.eslintrc.json": "{
   \\"extends\\": \\"eslint:recommended\\",
-  \\"parser\\": \\"typescript-eslint-parser\\",
-  \\"rules\\": {
-    \\"no-undef\\": 0,
-    \\"no-unused-vars\\": 0,
-    \\"no-useless-constructor\\": 0
-  }
+  \\"parser\\": \\"@typescript-eslint/parser\\",
+  \\"plugins\\": [
+    \\"@typescript-eslint/eslint-plugin\\"
+  ],
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
+  },
+  \\"rules\\": {}
 }",
   "/.gitignore": ".eslintcache",
   "/package.json": "{
@@ -141,6 +143,73 @@ exports[`should replace scripts.test.eslint with scripts.lint and scripts.pretes
     \\"lint\\": \\"eslint . --cache --fix --ext .ts\\"
   }
 }"
+`;
+
+exports[`should turn off TypeScript-specific eslint rules that conflict with Prettier if prettier is installed 1`] = `
+Object {
+  "/.eslintignore": "node_modules/",
+  "/.eslintrc.json": "{
+  \\"extends\\": [
+    \\"eslint:recommended\\",
+    \\"prettier\\",
+    \\"prettier/@typescript-eslint\\"
+  ],
+  \\"parser\\": \\"@typescript-eslint/parser\\",
+  \\"plugins\\": [
+    \\"@typescript-eslint/eslint-plugin\\"
+  ],
+  \\"parserOptions\\": {
+    \\"project\\": \\"./tsconfig.json\\"
+  },
+  \\"rules\\": {}
+}",
+  "/.gitignore": ".eslintcache",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"devDependencies\\": {
+    \\"typescript\\": \\"*\\",
+    \\"prettier\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"lint\\": \\"eslint . --cache --fix --ext .ts,.tsx\\",
+    \\"pretest\\": \\"npm run lint\\"
+  }
+}",
+}
+`;
+
+exports[`should turn on JSX support in TypeScript parser if TypeScript and React are installed 1`] = `
+Object {
+  "/.eslintignore": "node_modules/",
+  "/.eslintrc.json": "{
+  \\"extends\\": \\"eslint:recommended\\",
+  \\"parser\\": \\"@typescript-eslint/parser\\",
+  \\"plugins\\": [
+    \\"@typescript-eslint/eslint-plugin\\"
+  ],
+  \\"parserOptions\\": {
+    \\"ecmaFeatures\\": {
+      \\"jsx\\": true
+    },
+    \\"project\\": \\"./tsconfig.json\\"
+  },
+  \\"rules\\": {}
+}",
+  "/.gitignore": ".eslintcache",
+  "/package.json": "{
+  \\"name\\": \\"unicorn\\",
+  \\"dependencies\\": {
+    \\"react\\": \\"*\\"
+  },
+  \\"devDependencies\\": {
+    \\"typescript\\": \\"*\\"
+  },
+  \\"scripts\\": {
+    \\"lint\\": \\"eslint . --cache --fix --ext .ts,.tsx\\",
+    \\"pretest\\": \\"npm run lint\\"
+  }
+}",
+}
 `;
 
 exports[`should use a custom preset 1`] = `

@@ -60,19 +60,32 @@ function task(config) {
 
 	// TypeScript
 	if (pkg.get('devDependencies.typescript')) {
-		const parser = 'typescript-eslint-parser';
-		packages.push(parser);
+		const parser = '@typescript-eslint/parser';
+		const plugin = '@typescript-eslint/eslint-plugin';
+		packages.push(parser, plugin);
 		eslintrc.merge({
 			parser,
-			rules: eslintRules || {
-				// Disable rules not supported by TypeScript parser
-				// https://github.com/eslint/typescript-eslint-parser#known-issues
-				'no-undef': 0,
-				'no-unused-vars': 0,
-				'no-useless-constructor': 0,
+			plugins: [plugin],
+			parserOptions: {
+				// If using React, turn on JSX support in the TypeScript parser.
+				...(pkg.get('dependencies.react') && { ecmaFeatures: { jsx: true } }),
+				project: './tsconfig.json',
 			},
+			rules: eslintRules || {},
 		});
 		exts = ' --ext .ts,.tsx';
+
+		if (pkg.get('devDependencies.prettier')) {
+			packages.push('eslint-config-prettier');
+			const extensions = eslintrc.get('extends', []);
+			eslintrc.merge({
+				extends: [
+					...(Array.isArray(extensions) ? extensions : [extensions]),
+					'prettier',
+					'prettier/@typescript-eslint',
+				],
+			});
+		}
 	}
 
 	eslintrc.save();

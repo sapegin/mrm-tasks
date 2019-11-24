@@ -186,7 +186,7 @@ it('should remove custom extension if it’s "js" (default value)', () => {
 	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
 });
 
-it('should add extra rules, parser and extensions for a TypeScript project', () => {
+it('should add extra plugin, parser and extensions for a TypeScript project', () => {
 	vol.fromJSON({
 		'/package.json': stringify({
 			name: 'unicorn',
@@ -199,7 +199,45 @@ it('should add extra rules, parser and extensions for a TypeScript project', () 
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
-	expect(install).toBeCalledWith(['eslint', 'typescript-eslint-parser']);
+	expect(install).toBeCalledWith([
+		'eslint',
+		'@typescript-eslint/parser',
+		'@typescript-eslint/eslint-plugin',
+	]);
+});
+
+it('should turn on JSX support in TypeScript parser if TypeScript and React are installed', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			dependencies: {
+				react: '*',
+			},
+			devDependencies: {
+				typescript: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
+});
+
+it('should turn off TypeScript-specific eslint rules that conflict with Prettier if prettier is installed', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				typescript: '*',
+				prettier: '*',
+			},
+		}),
+	});
+
+	task(getConfigGetter({}));
+
+	expect(vol.toJSON()).toMatchSnapshot();
 });
 
 it('should migrate legacy config file', () => {
