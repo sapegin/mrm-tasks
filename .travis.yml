@@ -1,14 +1,41 @@
 language: node_js
+
 cache:
   directories:
     - node_modules
+
 node_js:
   - 8
+  - 10
+  - 12
+
+# Trigger a push build on master branches only + PRs build on every branches
+# Avoid double build on PRs (See https://github.com/travis-ci/travis-ci/issues/1147)
+branches:
+  only:
+    - master
+
 before_script: npm run bootstrap
-script:
-  - 'npm run test:coverage'
-after_success:
-  - 'bash <(curl -s https://codecov.io/bash)'
-  # Make a release
-  - npx lerna version --yes --github-release
-  - npx lerna publish from-git --yes
+
+script: npm run test
+
+stages:
+  - coverage
+  - name: release
+    if: type != pull_request AND branch = master
+
+jobs:
+  include:
+    - stage: test
+      script:
+
+    - stage: coverage
+      script:
+        - npm run test:coverage
+        - 'bash <(curl -s https://codecov.io/bash)'
+
+    - stage: release
+      script:
+        - git checkout master
+        - npx lerna version --yes --create-release=github
+        - npx lerna publish from-git --yes
