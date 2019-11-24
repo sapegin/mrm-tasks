@@ -9,3 +9,6 @@ script:
   - 'npm run test:coverage'
 after_success:
   - 'bash <(curl -s https://codecov.io/bash)'
+  # Make a release
+  - npx lerna version --yes --github-release
+  - npx lerna publish from-git --yes

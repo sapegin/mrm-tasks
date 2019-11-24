@@ -5,7 +5,8 @@
   "version": "independent",
   "command": {
     "version": {
-      "allowBranch": "master"
+      "allowBranch": "master",
+      "message": "chore: %s [skip ci]"
     },
     "publish": {
       "conventionalCommits": true,
