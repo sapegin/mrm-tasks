@@ -9,7 +9,6 @@
     },
     "publish": {
       "conventionalCommits": true,
-      "changelogPreset": "eslint",
       "ignoreChanges": [
         "package-lock.json",
         "Readme.md",
