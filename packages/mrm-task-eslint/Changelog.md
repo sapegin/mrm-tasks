@@ -1,3 +1,12 @@
+## 2.0.0
+
+- Drop Node 6 support (Node 8.9 is the oldest supported version).
+
+For TypeScript projects:
+
+- Use @typescript-eslint/parser and @typescript-eslint/eslint-plugin
+- Use eslint-config-prettier if a project uses Prettier
+
 ## 1.2.1
 
 - Support arrays in `extends` config option

@@ -1,3 +1,7 @@
+## 2.0.0
+
+- Drop Node 6 support (Node 8.9 is the oldest supported version).
+
 ## 1.2.3
 
 - Allow passing arguments via `test` script (like `npm test -- --coverage`).

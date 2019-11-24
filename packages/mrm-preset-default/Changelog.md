@@ -1,3 +1,20 @@
+## 2.0.0
+
+- Drop Node 6 support (Node 8.9 is the oldest supported version).
+
+### eslint
+
+For TypeScript projects:
+
+- Use @typescript-eslint/parser and @typescript-eslint/eslint-plugin
+- Use eslint-config-prettier if a project uses Prettier
+
+### semantic-release
+
+- Don't use travis-deploy-once, run semantic-release directly
+- Support custom presets
+- Don't create .gitignore (was needed only for custom Tâmia workflow)
+
 ## 1.12.0
 
 ### codecov
