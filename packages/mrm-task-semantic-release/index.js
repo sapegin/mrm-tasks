@@ -1,21 +1,22 @@
 const fs = require('fs');
 const gitUsername = require('git-username');
-const { MrmError, packageJson, lines, yaml, markdown, uninstall } = require('mrm-core');
+const { MrmError, packageJson, json, yaml, markdown, uninstall } = require('mrm-core');
 
 function task(config) {
 	const {
 		github,
 		readmeFile,
-		changelogFile,
 		semanticConfig,
 		semanticArgs,
 		semanticPeerDependencies,
+		semanticPreset,
 	} = config
 		.defaults({
 			github: gitUsername(),
 			readmeFile: 'Readme.md',
-			changelogFile: 'Changelog.md',
+			semanticArgs: '',
 			semanticPeerDependencies: [],
+			semanticPreset: null,
 		})
 		.values();
 
@@ -55,12 +56,15 @@ function task(config) {
 		);
 	}
 
-	// Add global semantic-release runner to .travis.yml
-	const dependencies = ['semantic-release'].concat(semanticPeerDependencies);
+	// Add semantic-release runner to .travis.yml
+	const dependencies = [
+		...semanticPeerDependencies,
+		semanticPreset ? `conventional-changelog-${semanticPreset}` : null,
+	].filter(Boolean);
 	const commands = [
-		`npm install --no-save ${dependencies.join(' ')}`,
-		'npx travis-deploy-once "semantic-release' + (semanticArgs ? ` ${semanticArgs}` : '') + '"',
-	];
+		dependencies.length > 0 ? `npm install --no-save ${dependencies.join(' ')}` : null,
+		`npx semantic-release ${semanticArgs}`.trim(),
+	].filter(Boolean);
 	travisYml
 		.merge({
 			after_success: commands,
@@ -70,10 +74,29 @@ function task(config) {
 		})
 		.save();
 
-	// Add Changelog.md to .gitignore
-	lines('.gitignore')
-		.add(changelogFile)
-		.save();
+	// Add semantic-release config if we’re using a preset
+	if (semanticPreset) {
+		json('.releaserc.json')
+			.set({
+				plugins: [
+					[
+						'@semantic-release/commit-analyzer',
+						{
+							preset: semanticPreset,
+						},
+					],
+					[
+						'@semantic-release/release-notes-generator',
+						{
+							preset: semanticPreset,
+						},
+					],
+					'@semantic-release/npm',
+					'@semantic-release/github',
+				],
+			})
+			.save();
+	}
 
 	// Add npm package version badge to Readme.md
 	const packageName = pkg.get('name');

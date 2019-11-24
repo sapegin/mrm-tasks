@@ -6,7 +6,7 @@
 
 - Runs semantic-release on Travis CI
 - Adds an npm version badge to the Readme
-- Adds change log file to `.gitignore`
+- Adds `.releaserc.json` file with a custom preset if needed
 
 ## Usage
 
@@ -31,13 +31,13 @@ Extra arguments for `semantic-release` command. For example `--analyze-commits s
 
 Additional dependencies to install.
 
+## `semanticPreset` (default: `null`)
+
+Name of the semantic-release preset, like `eslint`.
+
 ### `readmeFile` (default: `Readme.md`)
 
 Name of the Readme file.
-
-### `changelogFile` (default: `Changelog.md`)
-
-Name of the change log file.
 
 ## Change log
 

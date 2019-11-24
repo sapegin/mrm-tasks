@@ -113,6 +113,22 @@ it('should install extra dependencies on CI', () => {
 	expect(vol.toJSON()['/.travis.yml']).toMatchSnapshot();
 });
 
+it('should crate semantic-release config and install extra dependencies when a preset is defined', () => {
+	vol.fromJSON({
+		'/.travis.yml': travisYml,
+		'/package.json': packageJson,
+	});
+
+	task(
+		getConfigGetter({
+			semanticPreset: 'pizza',
+		})
+	);
+
+	expect(vol.toJSON()['/.travis.yml']).toMatchSnapshot();
+	expect(vol.toJSON()['/.releaserc.json']).toMatchSnapshot();
+});
+
 it('should remove the official semantic-release runner', () => {
 	vol.fromJSON({
 		'/.travis.yml': `language: node_js

@@ -1,3 +1,9 @@
+## 3.0.0
+
+- Don't use travis-deploy-once, run semantic-release directly
+- Don't create .gitignore (was needed only for custom Tâmia workflow)
+- Support custom presets (`semanticPreset` option)
+
 ## 2.2.0
 
 - Show complete authentication instructions instead of relying on `semantic-release-cli`, which doesn't work well with npm two-factor authentication.
