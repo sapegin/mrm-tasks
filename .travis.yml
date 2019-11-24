@@ -26,9 +26,6 @@ stages:
 
 jobs:
   include:
-    - stage: test
-      script:
-
     - stage: coverage
       script:
         - npm run test:coverage
@@ -36,6 +33,11 @@ jobs:
 
     - stage: release
       script:
+        - git config --global user.name "Mrm Bot"
+        - git config --global user.email "${BOT_EMAIL}"
+        - git remote set-url origin "https://${GH_TOKEN}@github.com/sapegin/mrm-tasks.git" > /dev/null 2>&1
         - git checkout master
+        - git reset --hard
+        - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
         - npx lerna version --yes --create-release=github
         - npx lerna publish from-git --yes
