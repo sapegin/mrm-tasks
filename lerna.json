@@ -6,7 +6,7 @@
   "command": {
     "version": {
       "allowBranch": "master",
-      "message": "chore: %s [skip ci]"
+      "message": "chore: publish [skip ci]"
     },
     "publish": {
       "conventionalCommits": true,
