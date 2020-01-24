@@ -37,7 +37,9 @@ function task(config) {
 
 	// Add or remove custom semantic-release config
 	if (semanticConfig) {
-		pkg.merge({ release: semanticConfig });
+		pkg.merge({
+			release: semanticConfig,
+		});
 	} else {
 		pkg.unset('release');
 	}
@@ -137,8 +139,8 @@ function task(config) {
 
    https://travis-ci.org/${github}/${packageName}/settings
 
-   NPM_TOKEN=<Generated npm token>
-   GH_TOKEN=<Generated GitHub token>
+   NPM_TOKEN = <Generated npm token>
+   GH_TOKEN = <Generated GitHub token>
 
    DO NOT enable “Display value in build log”.
 
