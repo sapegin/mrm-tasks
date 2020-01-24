@@ -6,9 +6,10 @@ function task(config) {
 	const legacyConfigFile = '.eslintrc';
 	const configFile = '.eslintrc.json';
 	const ignores = ['node_modules/'];
+	const ignoresToRemove = ['node_modules'];
 	const gitIgnores = ['.eslintcache'];
 	const packages = ['eslint'];
-	const oldPackages = ['jslint', 'jshint'];
+	const packagesToRemove = ['jslint', 'jshint'];
 	const { eslintPreset, eslintPeerDependencies, eslintObsoleteDependencies, eslintRules } = config
 		.defaults({
 			eslintPreset: 'eslint:recommended',
@@ -44,7 +45,9 @@ function task(config) {
 		}
 	}
 	if (eslintRules) {
-		eslintrc.merge({ rules: eslintRules });
+		eslintrc.merge({
+			rules: eslintRules,
+		});
 	}
 
 	const pkg = packageJson();
@@ -68,7 +71,11 @@ function task(config) {
 			plugins: [plugin],
 			parserOptions: {
 				// If using React, turn on JSX support in the TypeScript parser.
-				...(pkg.get('dependencies.react') && { ecmaFeatures: { jsx: true } }),
+				...(pkg.get('dependencies.react') && {
+					ecmaFeatures: {
+						jsx: true,
+					},
+				}),
 				project: './tsconfig.json',
 			},
 			rules: eslintRules || {},
@@ -92,6 +99,7 @@ function task(config) {
 
 	// .eslintignore
 	lines('.eslintignore')
+		.remove(ignoresToRemove)
 		.add(ignores)
 		.save();
 
@@ -122,7 +130,7 @@ function task(config) {
 		.save();
 
 	// Dependencies
-	uninstall([...oldPackages, ...eslintObsoleteDependencies]);
+	uninstall([...packagesToRemove, ...eslintObsoleteDependencies]);
 	install(packages);
 }
 
