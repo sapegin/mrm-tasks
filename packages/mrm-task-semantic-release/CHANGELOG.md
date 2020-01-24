@@ -1,18 +1,35 @@
-# Change Log
+## 3.0.0
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+- Drop Node 6 support (Node 8.9 is the oldest supported version).
+- Don't use travis-deploy-once, run semantic-release directly
+- Don't create .gitignore (was needed only for custom Tâmia workflow)
+- Support custom presets (`semanticPreset` option)
 
-# [3.0.0](https://github.com/sapegin/mrm-tasks/compare/mrm-task-semantic-release@2.2.0...mrm-task-semantic-release@3.0.0) (2019-11-24)
+## 2.2.0
 
+- Show complete authentication instructions instead of relying on `semantic-release-cli`, which doesn't work well with npm two-factor authentication.
 
-### Features
+## 2.1.1
 
-* **semantic-release:** Semantic-release updates ([#51](https://github.com/sapegin/mrm-tasks/issues/51)) ([c4b30b6](https://github.com/sapegin/mrm-tasks/commit/c4b30b6f6a119db5e7e63b6dbe613578a47889c3))
-* Drop Node 6 (changelogs) ([aafb11c](https://github.com/sapegin/mrm-tasks/commit/aafb11cbbc049089b91b1f0f11593a8494841dc7))
+- Update deps.
 
+## 2.1.0
 
-### BREAKING CHANGES
+- Update CI command to use travis-deploy-once.
 
-* Drop Node 6 support (Node 8.9 is the oldest supported version).
-* **semantic-release:** * Don't create .gitignore (was needed only for custom Tâmia workflow)
+## 2.0.0
+
+- Update to semantic-release 11.
+- New option semanticArgs.
+
+## 1.1.1
+
+- Fix: Install peer dependencies locally.
+
+## 1.1.0
+
+- Add options for custom semantic-release config and extra dependencies.
+
+## 1.0.0
+
+Initial release.

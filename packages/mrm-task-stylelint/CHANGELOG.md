@@ -1,16 +1,17 @@
-# Change Log
+## 3.0.0
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+- Drop Node 6 support (Node 8.9 is the oldest supported version).
 
-# 3.0.0 (2019-11-24)
+## 2.0.1
 
+- Update deps.
 
-### Features
+## 2.0.0
 
-* Drop Node 6 (changelogs) ([aafb11c](https://github.com/sapegin/mrm-tasks/commit/aafb11cbbc049089b91b1f0f11593a8494841dc7))
+- No hardcoded rules.
+- Add `stylelintRules` option.
+- Remove `indent` option.
 
+## 1.0.0
 
-### BREAKING CHANGES
-
-* Drop Node 6 support (Node 8.9 is the oldest supported version).
+Initial release.
