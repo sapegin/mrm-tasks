@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.1](https://github.com/sapegin/mrm-tasks/compare/mrm-task-eslint@2.0.0...mrm-task-eslint@2.0.1) (2020-01-25)
+
+
+### Bug Fixes
+
+* **eslint:** Remove incorrectly formatted node_modules from eslintignore file ([f831ace](https://github.com/sapegin/mrm-tasks/commit/f831ace3d1b64578e15c63b2b1069b678f2ea10a))
+
+
+
+
+
 ## 2.0.0
 
 - Drop Node 6 support (Node 8.9 is the oldest supported version).

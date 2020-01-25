@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [3.0.1](https://github.com/sapegin/mrm-tasks/compare/mrm-task-semantic-release@3.0.0...mrm-task-semantic-release@3.0.1) (2020-01-25)
+
+
+### Bug Fixes
+
+* **semantic-release:** Add whitespace around variable names to make them easier to select ([1568a35](https://github.com/sapegin/mrm-tasks/commit/1568a35376831d6a3c7269c1c6a510ca355ba250))
+
+
+
+
+
 ## 3.0.0
 
 - Drop Node 6 support (Node 8.9 is the oldest supported version).
