@@ -28,7 +28,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test": "npm run test:jest",
-    "format": "prettier --write \"**/*.{js,md}\"",
+    "format": "prettier --loglevel warn --write \"**/*.{js,md}\"",
     "posttest": "npm run format"
   },
   "jest": {
