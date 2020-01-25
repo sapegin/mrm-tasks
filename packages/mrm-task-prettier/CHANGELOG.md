@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/sapegin/mrm-tasks/compare/mrm-task-prettier@2.0.1...mrm-task-prettier@2.1.0) (2020-01-25)
+
+
+### Features
+
+* **prettier:** Do not print all filenames when running Prettier ([2c1efec](https://github.com/sapegin/mrm-tasks/commit/2c1efeccbddab4471085509e571510e99fd203ed))
+
+
+
+
+
 ## [2.0.1](https://github.com/sapegin/mrm-tasks/compare/mrm-task-prettier@2.0.0...mrm-task-prettier@2.0.1) (2020-01-25)
 
 **Note:** Version bump only for package mrm-task-prettier
