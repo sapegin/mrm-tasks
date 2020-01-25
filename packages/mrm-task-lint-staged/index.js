@@ -1,13 +1,80 @@
 const { packageJson, install, getExtsFromCommand } = require('mrm-core');
-const semver = require('semver');
+const { castArray } = require('lodash');
 
-const packages = { 'lint-staged': '>=8', husky: '>=1' };
+const packages = {
+	'lint-staged': '>=10',
+	husky: '>=4',
+};
 
-function extsToGlob(exts, defaults) {
-	if (!exts) {
-		exts = defaults.split(',').map(x => x.replace(/^\./, ''));
-	}
+/**
+ * Default lint-staged rules
+ *
+ * @param name Name of the rule to match user overrides
+ * @param [condition] Function that returns true when the rule should be added
+ * @param extensions Default extension (if we can't infer them from an npm script)
+ * @param [script] Name of an npm script to infer extensions
+ * @param [param] Command line parameter of an npm script to infer extensions (for example, `ext` for `--ext`)
+ * @param command Command to run for a lint-staged rule
+ */
+const defaultRules = [
+	// ESLint
+	{
+		name: 'eslint',
+		condition: pkg => !!pkg.get('devDependencies.eslint'),
+		extensions: ['js'],
+		script: 'lint',
+		param: 'ext',
+		command: 'eslint --cache --fix',
+	},
+	// Stylelint
+	{
+		name: 'stylelint',
+		condition: pkg => !!pkg.get('devDependencies.stylelint'),
+		extensions: ['css'],
+		script: 'lint:css',
+		command: 'stylelint --fix',
+	},
+	// Prettier
+	{
+		name: 'prettier',
+		condition: pkg =>
+			!!pkg.get('devDependencies.prettier') && !pkg.get('devDependencies.eslint-plugin-prettier'),
+		extensions: ['js', 'css', 'md'],
+		script: 'format',
+		command: 'prettier --write',
+	},
+];
 
+/**
+ * Merge default rules with user overrides
+ *
+ * @param {Array} defaults
+ * @param {Object} overrides
+ */
+function mergeRules(defaults, overrides) {
+	// Overrides for default rules
+	const rulesWithOverrides = defaults.map(rule => ({
+		...rule,
+		...overrides[rule.name],
+	}));
+
+	// Custom rules
+	return Object.entries(overrides).reduce((acc, [name, rule]) => {
+		if (acc.some(x => x.name === name)) {
+			return acc;
+		}
+		return [...acc, rule];
+	}, rulesWithOverrides);
+}
+
+/**
+ * Convert an array of extensions to a glob pattern
+ *
+ * Example: ['js', 'ts'] -> '*.{js,ts}'
+ *
+ * @param {string[]} exts
+ */
+function extsToGlob(exts) {
 	if (exts.length > 1) {
 		return `*.{${exts}}`;
 	}
@@ -15,77 +82,85 @@ function extsToGlob(exts, defaults) {
 	return `*.${exts}`;
 }
 
-const defaults = {
-	eslintExtensions: '.js',
-	prettierExtensions: '.js',
-	stylelintExtensions: '.css',
-};
+/**
+ * Generate a regular expression to detect a rule in existing rules. For simplicity
+ * assumes that the first word in the command is the binary you're running.
+ *
+ * Example: 'eslint --fix' -> /\beslint\b/
+ *
+ * TODO: Allow overriding for more complex commands
+ *
+ * @param {string} command
+ */
+function getRuleRegExp(command) {
+	return new RegExp(`\\b${command.split(' ').shift()}\\b`);
+}
+
+/**
+ * Check if a given command belongs to a rule
+ *
+ * @param {string | string[]} ruleCommands
+ * @param {string} command
+ */
+function isCommandBelongsToRule(ruleCommands, command) {
+	const regExp = getRuleRegExp(command);
+	return castArray(ruleCommands).some(x => regExp.test(x));
+}
 
 function task(config) {
-	const {
-		lintStagedRules,
-		eslintExtensions,
-		prettierExtensions,
-		stylelintExtensions,
-	} = config.defaults(defaults).values();
+	const { lintStagedRules } = config.defaults({ lintStagedRules: {} }).values();
 
 	const pkg = packageJson();
+	const allRules = mergeRules(defaultRules, lintStagedRules);
+	const existingRules = Object.entries(pkg.get('lint-staged', {}));
 
-	const rules = lintStagedRules || {};
+	// Remove exising rules that run any of default commands
+	const commandsToRemove = allRules.map(rule => rule.command);
+	const existingRulesToKeep = existingRules.filter(([, ruleCommands]) =>
+		commandsToRemove
+			.map(command => isCommandBelongsToRule(ruleCommands, command))
+			.every(x => x === false)
+	);
 
-	if (!lintStagedRules) {
-		const newRules = [];
-
-		// Prettier
-		if (pkg.get('devDependencies.prettier') && !pkg.get('devDependencies.eslint-plugin-prettier')) {
-			const script = pkg.getScript('format');
-			const exts = getExtsFromCommand(script);
-			let suggestedExtensions = prettierExtensions;
-			// Use different extensions for Prettier depending on its version
-			// but only do so if user didn't override default extensions
-			if (prettierExtensions === defaults.prettierExtensions) {
-				const prettierVersion = semver.coerce(pkg.get('devDependencies.prettier'));
-				if (semver.satisfies(prettierVersion, '1.4.0 - 1.5.0')) {
-					// CSS was added in 1.4
-					suggestedExtensions = '.js,.css';
-				} else if (semver.satisfies(prettierVersion, '1.5.0 - 1.8.0')) {
-					// JSON was added in 1.5
-					suggestedExtensions = '.js,.css,.json';
-				} else if (semver.satisfies(prettierVersion, '>=1.8.0')) {
-					// Markdown was added in 1.8
-					suggestedExtensions = '.js,.css,.json,.md';
-				}
+	// New rules
+	const rulesToAdd = allRules.map(
+		({
+			condition = () => true,
+			extensions: defaultExtensions,
+			script,
+			param,
+			command,
+			enabled = true,
+		}) => {
+			if (!enabled || !condition(pkg)) {
+				return null;
 			}
-			newRules.push([extsToGlob(exts, suggestedExtensions), 'prettier --write']);
-		}
 
-		// ESLint
-		if (pkg.get('devDependencies.eslint')) {
-			const script = pkg.getScript('lint');
-			const exts = getExtsFromCommand(script, 'ext');
-			newRules.push([extsToGlob(exts, eslintExtensions), 'eslint --fix']);
-		}
+			const extensions = getExtsFromCommand(pkg.getScript(script), param) || defaultExtensions;
+			const pattern = extsToGlob(extensions);
 
-		// Stylelint
-		if (pkg.get('devDependencies.stylelint')) {
-			const script = pkg.getScript('lint:css');
-			const exts = getExtsFromCommand(script);
-			newRules.push([extsToGlob(exts, stylelintExtensions), 'stylelint --fix']);
+			return [pattern, command];
 		}
+	);
 
-		// Merge rules with the same extensions
-		newRules.forEach(([exts, command]) => {
-			if (rules[exts]) {
-				rules[exts].unshift(command);
-			} else {
-				rules[exts] = [command, 'git add'];
-			}
-		});
-	}
+	// Merge existing and new rules, clean up
+	const rulesToWrite = [...existingRulesToKeep, ...rulesToAdd].filter(Boolean);
+
+	// Merge rules with the same pattern and convert to an object
+	// Wrap commands in an array only when a pattern has multiple commands
+	const rules = {};
+	rulesToWrite.forEach(([pattern, command]) => {
+		if (rules[pattern]) {
+			rules[pattern] = [...castArray(rules[pattern]), command];
+		} else {
+			rules[pattern] = command;
+		}
+	});
 
 	if (Object.keys(rules).length === 0) {
+		const names = defaultRules.map(rule => rule.name);
 		console.log(
-			'\nCannot configure lint-staged, only ESLint, stylelint or custom rules are supported.'
+			`\nCannot add lint-staged: only ${names.join(', ')} or custom rules are supported.`
 		);
 		return;
 	}

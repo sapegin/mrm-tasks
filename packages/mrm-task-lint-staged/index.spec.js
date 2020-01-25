@@ -38,7 +38,7 @@ it('should not do anything if not supported tools are found', () => {
 
 	expect(Object.keys(vol.toJSON())).toEqual(['/package.json']);
 	expect(vol.toJSON()['/package.json']).toEqual(packageJson);
-	expect(console.log).toBeCalledWith(expect.stringMatching('Cannot configure lint-staged'));
+	expect(console.log).toBeCalledWith(expect.stringMatching('Cannot add lint-staged'));
 });
 
 it('should add Prettier if project depends on it', () => {
@@ -54,52 +54,7 @@ it('should add Prettier if project depends on it', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
-	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
-});
-
-it('should add *.css to Prettier extensions if Prettier >= 1.4', () => {
-	vol.fromJSON({
-		'/package.json': stringify({
-			name: 'unicorn',
-			devDependencies: {
-				prettier: '1.4.0',
-			},
-		}),
-	});
-
-	task(getConfigGetter({}));
-
-	expect(vol.toJSON()).toMatchSnapshot();
-});
-
-it('should add *.css and *.json to Prettier extensions if Prettier >= 1.5', () => {
-	vol.fromJSON({
-		'/package.json': stringify({
-			name: 'unicorn',
-			devDependencies: {
-				prettier: '>=1.5.3',
-			},
-		}),
-	});
-
-	task(getConfigGetter({}));
-
-	expect(vol.toJSON()).toMatchSnapshot();
-});
-
-it('should add *.css, *.json and *.md to Prettier extensions if Prettier >= 1.8', () => {
-	vol.fromJSON({
-		'/package.json': stringify({
-			name: 'unicorn',
-			devDependencies: {
-				prettier: '~1.8.5',
-			},
-		}),
-	});
-
-	task(getConfigGetter({}));
-
-	expect(vol.toJSON()).toMatchSnapshot();
+	expect(install).toBeCalledWith({ 'lint-staged': '>=10', husky: '>=4' });
 });
 
 it('should add Prettier and ESLint', () => {
@@ -119,7 +74,7 @@ it('should add Prettier and ESLint', () => {
 	expect(vol.toJSON()).toMatchSnapshot();
 });
 
-it('should infer Prettier extension from an npm script', () => {
+it('should infer Prettier extensions from an npm script', () => {
 	vol.fromJSON({
 		'/package.json': stringify({
 			name: 'unicorn',
@@ -153,7 +108,7 @@ it('should not do anything if project is using Prettier via ESLint plugin', () =
 
 	expect(Object.keys(vol.toJSON())).toEqual(['/package.json']);
 	expect(vol.toJSON()['/package.json']).toEqual(pkg);
-	expect(console.log).toBeCalledWith(expect.stringMatching('Cannot configure lint-staged'));
+	expect(console.log).toBeCalledWith(expect.stringMatching('Cannot add lint-staged'));
 });
 
 it('should add ESLint if project depends on it', () => {
@@ -169,7 +124,7 @@ it('should add ESLint if project depends on it', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
-	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
+	expect(install).toBeCalledWith({ 'lint-staged': '>=10', husky: '>=4' });
 });
 
 it('should use default JS extension if eslint command has no --ext key', () => {
@@ -218,7 +173,7 @@ it('should use custom Prettier extensions', () => {
 		}),
 	});
 
-	task(getConfigGetter({ prettierExtensions: '.js,.jsx,.mjs' }));
+	task(getConfigGetter({ lintStagedRules: { prettier: { extensions: ['js', 'jsx', 'mjs'] } } }));
 
 	expect(vol.toJSON()).toMatchSnapshot();
 });
@@ -233,12 +188,12 @@ it('should use a custom ESLint extension', () => {
 		}),
 	});
 
-	task(getConfigGetter({ eslintExtensions: '.js,.jsx' }));
+	task(getConfigGetter({ lintStagedRules: { eslint: { extensions: ['js', 'jsx'] } } }));
 
 	expect(vol.toJSON()).toMatchSnapshot();
 });
 
-it('should merge ESLint and Prettier into a single lint-staged rule', () => {
+it('shouldn’t add a default rule if it’s disabled in overrides', () => {
 	vol.fromJSON({
 		'/package.json': stringify({
 			name: 'unicorn',
@@ -249,10 +204,9 @@ it('should merge ESLint and Prettier into a single lint-staged rule', () => {
 		}),
 	});
 
-	task(getConfigGetter({}));
+	task(getConfigGetter({ lintStagedRules: { eslint: { enabled: false } } }));
 
-	expect(vol.toJSON()['/package.json']).toMatchSnapshot();
-	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
+	expect(vol.toJSON()).toMatchSnapshot();
 });
 
 it('should add stylelint if project depends on it', () => {
@@ -268,7 +222,7 @@ it('should add stylelint if project depends on it', () => {
 	task(getConfigGetter({}));
 
 	expect(vol.toJSON()).toMatchSnapshot();
-	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
+	expect(install).toBeCalledWith({ 'lint-staged': '>=10', husky: '>=4' });
 });
 
 it('should use a custom stylelint extension', () => {
@@ -281,26 +235,70 @@ it('should use a custom stylelint extension', () => {
 		}),
 	});
 
-	task(getConfigGetter({ stylelintExtensions: '.scss' }));
+	task(getConfigGetter({ lintStagedRules: { stylelint: { extensions: ['scss'] } } }));
 
 	expect(vol.toJSON()).toMatchSnapshot();
 });
 
-it('should use a custom rules', () => {
+it('should add a custom rule', () => {
 	vol.fromJSON({
 		'/package.json': stringify({
 			name: 'unicorn',
 			devDependencies: {
 				eslint: '*',
-				stylelint: '*',
 			},
 		}),
 	});
 
-	task(getConfigGetter({ lintStagedRules: { '*.js': 'false' } }));
+	task(getConfigGetter({ lintStagedRules: { false: { extensions: ['js'], command: 'false' } } }));
 
 	expect(vol.toJSON()).toMatchSnapshot();
-	expect(install).toBeCalledWith({ 'lint-staged': '>=8', husky: '>=1' });
+	expect(install).toBeCalledWith({ 'lint-staged': '>=10', husky: '>=4' });
+});
+
+it('should update an existing rule', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				eslint: '*',
+			},
+			'lint-staged': {
+				'*.md': 'textlint --fix',
+				'*.js': 'eslint --fix',
+			},
+		}),
+	});
+
+	task(getConfigGetter());
+
+	expect(vol.toJSON()).toMatchSnapshot();
+	expect(install).toBeCalledWith({ 'lint-staged': '>=10', husky: '>=4' });
+});
+
+it('should merge rules with the same pattern', () => {
+	vol.fromJSON({
+		'/package.json': stringify({
+			name: 'unicorn',
+			devDependencies: {
+				eslint: '*',
+				prettier: '*',
+			},
+			'lint-staged': {
+				'*.md': 'textlint --fix',
+				'*.js': 'eslint --fix',
+			},
+		}),
+	});
+
+	task(
+		getConfigGetter({
+			lintStagedRules: { eslint: { extensions: ['js'] }, prettier: { extensions: ['js'] } },
+		})
+	);
+
+	expect(vol.toJSON()).toMatchSnapshot();
+	expect(install).toBeCalledWith({ 'lint-staged': '>=10', husky: '>=4' });
 });
 
 it('should remove husky 0.14 config from package.json', () => {

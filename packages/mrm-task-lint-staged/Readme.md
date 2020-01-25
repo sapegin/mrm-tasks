@@ -10,6 +10,8 @@
 - Sets up a pre-commit Git hook
 - Installs dependencies
 
+This tasks will try to infer extensions from your npm scripts. For example, if you have `lint` script that runs ESLint for `js` and `ts` files, the task will add lint-staged rule that runs ESLint for the same extensions. And will overwrite an existing rule if you change it manually and run the task again, but it will try to keepy your custom rules.
+
 ## Usage
 
 ```
@@ -23,19 +25,58 @@ See [Mrm docs](https://github.com/sapegin/mrm#usage) and [lint-staged docs](http
 
 ### `lintStagedRules` (default: infer)
 
-Custom rules. By default will try to infer by project dependencies.
+Overrides and custom rules. By default will try to infer by project dependencies.
 
-### `eslintExtensions` (default: infer or `.js`)
+For example, a custom extension:
 
-File extensions to run ESLint on. By default will try to infer from your `lint` npm script or use `.js`.
+```json
+{
+  "lintStagedRules": {
+    "eslint": {
+      "extensions": ["js", "jsx", "mjs"]
+    }
+  }
+}
+```
 
-### `prettierExtensions` (default: infer or `.js`)
+Or a custom command:
 
-File extensions to run Prettier on. By default will try to infer from your `format` npm script or use `.js`.
+```json
+{
+  "lintStagedRules": {
+    "eslint": {
+      "command": "eslint --fix"
+    }
+  }
+}
+```
 
-### `stylelintExtensions` (default: `.css`)
+Or you can disable one of the default rules:
 
-File extensions to run stylelint on.
+```json
+{
+  "lintStagedRules": {
+    "prettier": {
+      "enabled": false
+    }
+  }
+}
+```
+
+Or add a custom rule:
+
+```json
+{
+  "lintStagedRules": {
+    "jest": {
+      "extensions": ["js"],
+      "command": "jest --bail --findRelatedTests"
+    }
+  }
+}
+```
+
+Available rules are `prettier`, `eslint` and `stylelint`.
 
 ## Change log
 

@@ -24,7 +24,7 @@
     "lint"
   ],
   "dependencies": {
-    "mrm-core": "^4.0.0",
-    "semver": "^6.3.0"
+    "lodash": "^4.17.15",
+    "mrm-core": "^4.0.0"
   }
 }
